@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c06fvt27whwei"]
+
+[ext_resource type="Texture2D" uid="uid://dyoq1ud4mttlw" path="res://assets/textures/background/Space Background.png" id="1_aua7t"]
+[ext_resource type="PackedScene" uid="uid://c3ebpydlhc0bk" path="res://src/entities/player/Player.tscn" id="2_voxir"]
+
+[node name="Main" type="Node"]
+
+[node name="BackgroundContainer" type="Node" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="BackgroundContainer"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BackgroundContainer/ParallaxBackground"]
+motion_mirroring = Vector2(432, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundContainer/ParallaxBackground/ParallaxLayer"]
+texture_filter = 2
+position = Vector2(144, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_aua7t")
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="Environment"]
+
+[node name="Player" parent="Environment/Entities" instance=ExtResource("2_voxir")]
+
+[node name="Camera2D" type="Camera2D" parent="Environment/Entities/Player"]
+ignore_rotation = false
