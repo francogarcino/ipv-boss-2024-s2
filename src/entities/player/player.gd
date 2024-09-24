@@ -1,26 +1,22 @@
 extends CharacterBody2D
 
-@onready var body_animations: AnimationPlayer = $BodyAnimations
+const speed = 400.0
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-func _ready() -> void:
-	initialize()
-
-
-func initialize() -> void:
-	pass
-
-
-func _process_input() -> void:
-	_play_animation("idle")
+func _process_input(delta) -> void:
+	var velocity = Vector2.ZERO
+	if Input.is_action_pressed("move_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("move_down"):
+		velocity.y += 1
+	if Input.is_action_pressed("move_up"):
+		velocity.y -= 1
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+		
+	position += velocity * delta
 
 
 func _physics_process(delta: float) -> void:
-	pass
-	
-	
-func _play_animation(animation: String) -> void:
-	if body_animations.has_animation(animation):
-		body_animations.play(animation)
+	_process_input(delta)
