@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=6 format=3 uid="uid://c06fvt27whwei"]
 
+[ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="Texture2D" uid="uid://dyoq1ud4mttlw" path="res://assets/textures/background/Space Background.png" id="1_aua7t"]
+[ext_resource type="PackedScene" uid="uid://clsfjnskewbkv" path="res://src/entities/enemy/enemy.tscn" id="2_oe0xi"]
 [ext_resource type="PackedScene" uid="uid://c3ebpydlhc0bk" path="res://src/entities/player/Player.tscn" id="2_voxir"]
 
+[sub_resource type="Curve2D" id="Curve2D_2r2m2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1344, -840, 0, 0, 0, 0, 4480, -824, 0, 0, 0, 0, 4480, 2432)
+}
+point_count = 3
+
 [node name="Main" type="Node"]
+script = ExtResource("1_7xe25")
+enemy_scene = ExtResource("2_oe0xi")
 
 [node name="BackgroundContainer" type="Node" parent="."]
 
@@ -26,3 +36,15 @@ texture = ExtResource("1_aua7t")
 
 [node name="Camera2D" type="Camera2D" parent="Environment/Entities/Player"]
 ignore_rotation = false
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="EnemyPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2r2m2")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2(-1344, -840)
+rotation = 0.00274725
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
