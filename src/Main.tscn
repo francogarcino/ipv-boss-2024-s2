@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
-[ext_resource type="Texture2D" uid="uid://dyoq1ud4mttlw" path="res://assets/textures/background/Space Background.png" id="1_aua7t"]
 [ext_resource type="PackedScene" uid="uid://clsfjnskewbkv" path="res://src/entities/enemy/enemy.tscn" id="2_oe0xi"]
 [ext_resource type="PackedScene" uid="uid://c3ebpydlhc0bk" path="res://src/entities/player/Player.tscn" id="2_voxir"]
+[ext_resource type="Texture2D" uid="uid://c52g7lqluxqe4" path="res://assets/textures/background/background.png" id="3_fq2yd"]
 
 [sub_resource type="Curve2D" id="Curve2D_2r2m2"]
 _data = {
@@ -20,12 +20,12 @@ enemy_scene = ExtResource("2_oe0xi")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="BackgroundContainer"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BackgroundContainer/ParallaxBackground"]
-motion_mirroring = Vector2(2880, 1620)
+motion_mirroring = Vector2(1920, 960)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundContainer/ParallaxBackground/ParallaxLayer"]
 position = Vector2(144, 0)
-scale = Vector2(10, 10)
-texture = ExtResource("1_aua7t")
+scale = Vector2(15, 15)
+texture = ExtResource("3_fq2yd")
 
 [node name="Environment" type="Node2D" parent="."]
 
