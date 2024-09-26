@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3ebpydlhc0bk"]
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_465p4"]
-[ext_resource type="Texture2D" uid="uid://dnomh0edism41" path="res://assets/textures/player/player.png" id="1_m1d5p"]
+[ext_resource type="Texture2D" uid="uid://c7fx673ab0a3i" path="res://assets/textures/player/player.png" id="2_ul2xl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo2rj"]
 size = Vector2(12, 23)
@@ -16,9 +16,8 @@ shape = SubResource("RectangleShape2D_xo2rj")
 [node name="BodyPivot" type="Node2D" parent="."]
 
 [node name="Body" type="Sprite2D" parent="BodyPivot"]
-texture_filter = 2
-position = Vector2(6, -17)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_m1d5p")
-hframes = 8
-vframes = 11
+position = Vector2(-2, -22)
+scale = Vector2(2, 2)
+texture = ExtResource("2_ul2xl")
+hframes = 9
+vframes = 5

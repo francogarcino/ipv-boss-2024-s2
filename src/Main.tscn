@@ -23,7 +23,6 @@ enemy_scene = ExtResource("2_oe0xi")
 motion_mirroring = Vector2(2880, 1620)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundContainer/ParallaxBackground/ParallaxLayer"]
-texture_filter = 2
 position = Vector2(144, 0)
 scale = Vector2(10, 10)
 texture = ExtResource("1_aua7t")
