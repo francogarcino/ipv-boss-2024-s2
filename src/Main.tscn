@@ -8,6 +8,7 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_7xe25")
 enemy_scene = ExtResource("2_oe0xi")
+enemies_to_spawn = 5
 
 [node name="BackgroundContainer" type="Node" parent="."]
 

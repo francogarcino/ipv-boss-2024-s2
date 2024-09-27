@@ -3,20 +3,26 @@ extends Node
 @export var enemy_scene: PackedScene
 @export var min_distance: float = 70.0
 @export var max_distance: float = 200.0
+@export var enemies_to_spawn: int = 3
+@onready var player_ref: Node2D = $Environment/Entities/Player
 
 func _ready():
 	pass
 
 func _on_enemy_timer_timeout() -> void:
-	var player = $Environment/Entities/Player
-	for i in range(0, 3):
+	_spawn_enemies(enemies_to_spawn)
+
+
+func _spawn_enemies(amount: int) -> void:
+	for i in range(0, amount):
 		var enemy = enemy_scene.instantiate()
 		var distance_to_player = Vector2(
 			randf_range(min_distance, max_distance), 
 			randf_range(min_distance, max_distance)
 		)
-		enemy.position = player.position + (distance_to_player * _get_relative_direction())
+		enemy.position = player_ref.position + (distance_to_player * _get_relative_direction())
 		add_child(enemy)
+
 
 func _get_relative_direction() -> Vector2:
 	var relative_x 
@@ -35,6 +41,7 @@ func _get_relative_direction() -> Vector2:
 
 
 func _on_debug_timer_timeout() -> void:
+	# delete the enemies to clear the map - ONLY DEBUG
 	var enemies = get_tree().get_nodes_in_group("demons")
 	for entity in enemies:
 		entity.queue_free()
