@@ -6,8 +6,6 @@ extends Node
 @export var enemies_to_spawn: int = 3
 @onready var player_ref: Node2D = $Environment/Entities/Player
 
-func _ready():
-	pass
 
 func _on_enemy_timer_timeout() -> void:
 	_spawn_enemies(enemies_to_spawn)

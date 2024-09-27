@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ip6wpm2onho"]
+
+[ext_resource type="PackedScene" uid="uid://bvd80efg7othw" path="res://src/entities/projectile.tscn" id="1_1dplj"]
+[ext_resource type="Texture2D" uid="uid://c7cm7hl41syir" path="res://assets/textures/player/angel_projectile.png" id="2_fh4mw"]
+
+[node name="PlayerProjectile" instance=ExtResource("1_1dplj")]
+
+[node name="Body" type="Sprite2D" parent="." index="2"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_fh4mw")
