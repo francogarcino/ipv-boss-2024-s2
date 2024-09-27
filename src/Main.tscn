@@ -15,11 +15,11 @@ enemies_to_spawn = 5
 [node name="ParallaxBackground" type="ParallaxBackground" parent="BackgroundContainer"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BackgroundContainer/ParallaxBackground"]
-motion_mirroring = Vector2(1920, 960)
+motion_mirroring = Vector2(2880, 1440)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundContainer/ParallaxBackground/ParallaxLayer"]
-position = Vector2(144, 0)
-scale = Vector2(15, 15)
+position = Vector2(64, 0)
+scale = Vector2(22.5, 22.5)
 texture = ExtResource("3_fq2yd")
 
 [node name="Environment" type="Node2D" parent="."]

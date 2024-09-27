@@ -6,7 +6,7 @@ signal delete_requested(projectile)
 
 @onready var lifetime_timer: Timer = $LifetimeTimer
 @onready var projectile_animations: AnimationPlayer = $ProjectileAnimations
-@export var VELOCITY: float = 200.0
+@export var VELOCITY: float = 500.0
 
 var direction: Vector2
 
