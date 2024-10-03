@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3ebpydlhc0bk"]
+[gd_scene load_steps=5 format=3 uid="uid://c3ebpydlhc0bk"]
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_465p4"]
 [ext_resource type="Texture2D" uid="uid://c7fx673ab0a3i" path="res://assets/textures/player/player.png" id="2_ul2xl"]
-[ext_resource type="Script" path="res://src/entities/player/angel.gd" id="3_8ceap"]
-[ext_resource type="Texture2D" uid="uid://noo8sl88vp8t" path="res://assets/textures/player/angel.png" id="3_63ffw"]
-[ext_resource type="PackedScene" uid="uid://b3ip6wpm2onho" path="res://src/entities/player/player_projectile.tscn" id="4_hnu0s"]
+[ext_resource type="PackedScene" uid="uid://b5nhyysvarcyy" path="res://src/entities/player/LinkedAngel.tscn" id="3_uhc4j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0qwr"]
 
@@ -25,18 +23,4 @@ texture = ExtResource("2_ul2xl")
 hframes = 9
 vframes = 5
 
-[node name="AngelContainer" type="Node2D" parent="."]
-
-[node name="Angel" type="Node2D" parent="AngelContainer"]
-unique_name_in_owner = true
-script = ExtResource("3_8ceap")
-projectile_scene = ExtResource("4_hnu0s")
-
-[node name="AngelBody" type="Sprite2D" parent="AngelContainer/Angel"]
-position = Vector2(-13, -33)
-rotation = 1.5708
-scale = Vector2(0.254199, 0.392898)
-texture = ExtResource("3_63ffw")
-
-[node name="AngelTip" type="Node2D" parent="AngelContainer/Angel"]
-position = Vector2(-13, -43)
+[node name="LinkedAngel" parent="." instance=ExtResource("3_uhc4j")]
