@@ -14,6 +14,7 @@ func _on_enemy_timer_timeout() -> void:
 func _spawn_enemies(amount: int) -> void:
 	for i in range(0, amount):
 		var enemy = enemy_scene.instantiate()
+		enemy.target = player_ref
 		var distance_to_player = Vector2(
 			randf_range(min_distance, max_distance), 
 			randf_range(min_distance, max_distance)
