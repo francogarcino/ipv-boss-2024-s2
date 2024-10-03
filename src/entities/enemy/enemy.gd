@@ -29,4 +29,4 @@ func _process(delta: float) -> void:
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		print('Player detected!')
-		body.queue_free()
+		get_parent()._stop_game()

@@ -5,6 +5,14 @@ extends Node
 @export var max_distance: float = 250.0
 @onready var player_ref: Node2D = $Environment/Entities/Player
 
+func _input(event: InputEvent) -> void:
+	if event.is_action("reset"):
+		_reset()
+
+func _reset() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
 func _on_enemy_timer_timeout() -> void:
 	_spawn_enemies()
 
@@ -37,8 +45,15 @@ func _get_relative_direction() -> Vector2:
 	return Vector2(relative_x, relative_y)
 
 
-func _on_debug_timer_timeout() -> void:
+#func _on_debug_timer_timeout() -> void:
 	# delete the enemies to clear the map - ONLY DEBUG
 	var enemies = get_tree().get_nodes_in_group("demons")
 	for entity in enemies:
 		entity.queue_free()
+
+
+func _stop_game() -> void:
+	get_tree().paused = true
+	player_ref.hide()
+	await get_tree().create_timer(3).timeout
+	_reset()
