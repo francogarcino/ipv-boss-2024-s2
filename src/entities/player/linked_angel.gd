@@ -6,12 +6,14 @@ class_name Angel
 var attacking: bool = false 
 var expected_coord: Vector2
 var container: Node2D
+var initial_attack_position: Vector2
 
 func _physics_process(delta: float) -> void:
 	if(attacking):
 		self.position += expected_coord * speed * delta
 
 func attackAt(position: Vector2) -> void:
+	initial_attack_position = global_position
 	container.add_child(self)
 	expected_coord = global_position.direction_to(position)
 	attacking = true
@@ -31,6 +33,7 @@ func _return_to_player():
 	var player = get_parent().get_node("Player")
 	get_parent().remove_child(self)
 	player.add_child(self)
+	global_position = initial_attack_position
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	# not working :_(
