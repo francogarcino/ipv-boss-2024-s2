@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Demon
 
 const speed = 50.0
 var target: Node2D
@@ -10,7 +11,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	#if (target != null):
-	if (false):
+	if false:
 		var velocity = Vector2.ZERO
 		var pathToPlayer = target.global_position
 		if pathToPlayer.x < global_position.x:

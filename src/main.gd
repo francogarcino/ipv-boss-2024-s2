@@ -5,10 +5,8 @@ extends Node
 @export var max_distance: float = 250.0
 @onready var player_ref: Node2D = $Environment/Entities/Player
 
-
 func _on_enemy_timer_timeout() -> void:
 	_spawn_enemies()
-
 
 func _spawn_enemies() -> void:
 	if (player_ref != null):
