@@ -1,26 +1,26 @@
 extends Node
 
 @export var enemy_scene: PackedScene
-@export var min_distance: float = 70.0
-@export var max_distance: float = 200.0
-@export var enemies_to_spawn: int = 3
+@export var min_distance: float = 100.0
+@export var max_distance: float = 250.0
 @onready var player_ref: Node2D = $Environment/Entities/Player
 
 
 func _on_enemy_timer_timeout() -> void:
-	_spawn_enemies(enemies_to_spawn)
+	_spawn_enemies()
 
 
-func _spawn_enemies(amount: int) -> void:
-	for i in range(0, amount):
-		var enemy = enemy_scene.instantiate()
-		enemy.target = player_ref
-		var distance_to_player = Vector2(
-			randf_range(min_distance, max_distance), 
-			randf_range(min_distance, max_distance)
-		)
-		enemy.position = player_ref.position + (distance_to_player * _get_relative_direction())
-		add_child(enemy)
+func _spawn_enemies() -> void:
+	if (player_ref != null):
+		for i in range(0, 4):
+			var enemy = enemy_scene.instantiate()
+			enemy.target = player_ref
+			var distance_to_player = Vector2(
+				randf_range(min_distance, max_distance), 
+				randf_range(min_distance, max_distance)
+			)
+			enemy.position = player_ref.position + (distance_to_player * _get_relative_direction())
+			add_child(enemy)
 
 
 func _get_relative_direction() -> Vector2:

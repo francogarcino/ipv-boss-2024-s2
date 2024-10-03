@@ -1,6 +1,5 @@
 extends Node2D
-
-class_name Projectile
+class_name Attacking_Angel
 
 signal delete_requested(projectile)
 

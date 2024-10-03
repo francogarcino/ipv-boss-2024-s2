@@ -9,7 +9,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if (target != null):
+	#if (target != null):
+	if (false):
 		var velocity = Vector2.ZERO
 		var pathToPlayer = target.global_position
 		if pathToPlayer.x < global_position.x:
@@ -23,3 +24,9 @@ func _process(delta: float) -> void:
 		if velocity.length() > 0:
 			velocity = velocity.normalized() * speed
 		position += velocity * delta
+
+
+func _on_detection_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		print('Player detected!')
+		body.queue_free()
