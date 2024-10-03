@@ -13,11 +13,12 @@ func _physics_process(delta: float) -> void:
 		self.position += expected_coord * speed * delta
 
 func attackAt(position: Vector2) -> void:
-	initial_attack_position = global_position
-	container.add_child(self)
-	expected_coord = global_position.direction_to(position)
-	attacking = true
-	attack_timer.start()
+	if(!attacking):
+		initial_attack_position = global_position
+		container.add_child(self)
+		expected_coord = global_position.direction_to(position)
+		attacking = true
+		attack_timer.start()
 
 
 func _on_attack_timer_timeout() -> void:
