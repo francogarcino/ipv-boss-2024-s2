@@ -5,13 +5,15 @@ class_name Player
 var projectile_container: Node
 const speed = 400.0
 
+func _ready() -> void:
+	angel.medium = self
+
 func _process_input(delta) -> void:
 	if Input.is_action_just_pressed("angel_attack"):
 		if projectile_container == null:
 			projectile_container = get_parent()
 		if (angel.container == null):
 			angel.set_container(projectile_container)
-		remove_child(angel)
 		angel.attackAt(get_global_mouse_position())
 	
 	var velocity = Vector2.ZERO
