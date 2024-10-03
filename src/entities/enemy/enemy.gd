@@ -10,8 +10,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	#if (target != null):
-	if false:
+	if (target != null):
 		var velocity = Vector2.ZERO
 		var pathToPlayer = target.global_position
 		if pathToPlayer.x < global_position.x:

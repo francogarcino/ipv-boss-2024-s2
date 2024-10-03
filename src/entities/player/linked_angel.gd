@@ -7,6 +7,7 @@ var attacking: bool = false
 var expected_coord: Vector2
 var container: Node2D
 var medium: Node2D
+var defeated_enemies = 0
 
 func _physics_process(delta: float) -> void:
 	if(attacking):
@@ -37,6 +38,10 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		print("Attacked o:) ")
 		body.queue_free()
 		_on_attack_timer_timeout()
+		defeated_enemies += 1
+		if defeated_enemies == 10:
+			speed += speed * 0.5
+			print("Angel speed increased!")
 
 func _attacking() -> bool:
 	return self.attacking
