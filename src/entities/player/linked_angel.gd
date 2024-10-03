@@ -33,10 +33,10 @@ func _return_to_player():
 	global_position = medium.global_position
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	# not working :_(
 	if body is Demon:
 		print("Attacked o:) ")
 		body.queue_free()
+		_on_attack_timer_timeout()
 
 func _attacking() -> bool:
 	return self.attacking

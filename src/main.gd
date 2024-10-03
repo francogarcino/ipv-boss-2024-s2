@@ -38,7 +38,7 @@ func _get_relative_direction() -> Vector2:
 
 
 func _on_debug_timer_timeout() -> void:
-	# delete the enemies to clear the map - ONLY DEBUG
+	 #delete the enemies to clear the map - ONLY DEBUG
 	var enemies = get_tree().get_nodes_in_group("demons")
 	for entity in enemies:
 		entity.queue_free()
