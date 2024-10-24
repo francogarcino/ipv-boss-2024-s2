@@ -3,45 +3,30 @@ class_name Angel
 
 @onready var attack_timer: Timer = $AttackTimer
 @export var speed: float = 400.0
-var attacking: bool = false 
-var expected_coord: Vector2
-var container: Node2D
-var medium: Node2D
-var defeated_enemies = 0
+@export var angel_projectile_scene: PackedScene
 
-func _physics_process(delta: float) -> void:
-	if(attacking):
-		self.position += expected_coord * speed * delta
+var attacking: bool = false 
+var container: Node2D
+var defeated_enemies = 0
 
 func attackAt(position: Vector2) -> void:
 	if(!attacking):
-		container.add_child(self)
-		expected_coord = global_position.direction_to(position)
 		attacking = true
-		attack_timer.start()
-
-
-func _on_attack_timer_timeout() -> void:
-	attacking = false
-	attack_timer.stop()
-	self._return_to_player()
-	
+		var angel_projectile_instance = angel_projectile_scene.instantiate()
+		container.add_child(angel_projectile_instance)
+		angel_projectile_instance.initialize(container, global_position, global_position.direction_to(position), speed)
+		angel_projectile_instance.angel = self
+		hide()
 
 func set_container(container: Node2D) -> void:
 	self.container = container
 
-func _return_to_player():
-	global_position = medium.global_position
+func _end_attack() -> void:
+	show()
+	attacking = false
 
-func _on_detection_area_body_entered(body: Node2D) -> void:
-	if body is Demon:
-		print("Attacked o:) ")
-		body.queue_free()
-		_on_attack_timer_timeout()
-		defeated_enemies += 1
-		if defeated_enemies == 10:
-			speed += speed * 0.5
-			print("Angel speed increased!")
-
-func _attacking() -> bool:
-	return self.attacking
+func _demon_deleted() -> void:
+	defeated_enemies += 1
+	if defeated_enemies == 10:
+		speed += speed * 0.5
+		print("Angel speed increased!")

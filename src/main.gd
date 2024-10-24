@@ -28,7 +28,6 @@ func _spawn_enemies() -> void:
 			enemy.position = player_ref.position + (distance_to_player * _get_relative_direction())
 			add_child(enemy)
 
-
 func _get_relative_direction() -> Vector2:
 	var relative_x 
 	if (randi() % 2 == 0):
@@ -44,13 +43,11 @@ func _get_relative_direction() -> Vector2:
 	
 	return Vector2(relative_x, relative_y)
 
-
-#func _on_debug_timer_timeout() -> void:
+func _on_debug_timer_timeout() -> void:
 	# delete the enemies to clear the map - ONLY DEBUG
 	var enemies = get_tree().get_nodes_in_group("demons")
 	for entity in enemies:
 		entity.queue_free()
-
 
 func _stop_game() -> void:
 	get_tree().paused = true

@@ -3,10 +3,7 @@ class_name Player
 
 @onready var angel: Node2D = $LinkedAngel
 var projectile_container: Node
-const speed = 400.0
-
-func _ready() -> void:
-	angel.medium = self
+const speed = 300.0
 
 func _process_input(delta) -> void:
 	if Input.is_action_just_pressed("angel_attack"):
@@ -29,7 +26,6 @@ func _process_input(delta) -> void:
 		velocity = velocity.normalized() * speed
 		
 	position += velocity * delta
-
 
 func _physics_process(delta: float) -> void:
 	_process_input(delta)

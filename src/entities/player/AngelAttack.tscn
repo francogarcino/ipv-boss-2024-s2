@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbc5jgt6ofjmd"]
+
+[ext_resource type="Script" path="res://src/entities/player/angel_attack.gd" id="1_vyqk3"]
+[ext_resource type="Texture2D" uid="uid://c7cm7hl41syir" path="res://assets/textures/player/angel_projectile.png" id="2_162k4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eepiv"]
+radius = 5.0
+
+[node name="AngelProjectile" type="Node2D"]
+script = ExtResource("1_vyqk3")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="BodyCollider" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_eepiv")
+
+[node name="Body" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_162k4")
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

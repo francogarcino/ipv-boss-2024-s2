@@ -28,7 +28,6 @@ scale = Vector2(1.05234, 1.01755)
 [node name="BodyShape" type="CollisionShape2D" parent="DetectionArea"]
 visible = false
 position = Vector2(-1, -12)
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_3q7wa")
 debug_color = Color(1, 0.446084, 0.433357, 0.42)
 
