@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://sq0noqlk8y6y"]
+
+[ext_resource type="Script" path="res://src/ui/mejoras_menu.gd" id="1_3p500"]
+[ext_resource type="FontFile" path="res://assets/fonts/Default-Medium.tres" id="1_wu1iv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaj6o"]
+bg_color = Color(0.402759, 0.657996, 0.602597, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.93045, 0.757758, 0.681826, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 2
+
+[node name="MejorasMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3p500")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.25098)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 202.0
+offset_right = 620.0
+offset_bottom = 342.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xaj6o")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = -10.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_wu1iv")
+text = "Mejora"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 46.0
+offset_right = 146.0
+offset_bottom = 77.0
+
+[node name="MejoraAngelButton" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Angel"
+
+[node name="MejoraMediumButton" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Medium"
+
+[connection signal="pressed" from="Panel/HBoxContainer/MejoraAngelButton" to="." method="_on_mejora_angel_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/MejoraMediumButton" to="." method="_on_mejora_medium_button_pressed"]

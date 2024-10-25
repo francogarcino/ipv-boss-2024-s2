@@ -4,6 +4,12 @@ extends Node
 @export var min_distance: float = 100.0
 @export var max_distance: float = 250.0
 @onready var player_ref: Node2D = $Environment/Entities/Player
+@onready var mejoras_menu: Control = $MejorasLayer/MejorasMenu
+
+func _ready() -> void:
+	player_ref.subir_nivel.connect(_on_mejora_conseguida)
+	mejoras_menu.mejora_angel.connect(_on_angel_mejorado)
+	mejoras_menu.mejora_medium.connect(_on_medium_mejorado)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("reset"):
@@ -54,3 +60,12 @@ func _stop_game() -> void:
 	player_ref.hide()
 	await get_tree().create_timer(3).timeout
 	_reset()
+
+func _on_mejora_conseguida() -> void:
+	mejoras_menu._show()
+
+func _on_angel_mejorado() -> void:
+	player_ref._on_angel_mejorado()
+
+func _on_medium_mejorado() -> void:
+	player_ref._obtener_mejora()

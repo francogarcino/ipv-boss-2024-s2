@@ -1,6 +1,8 @@
 extends Node2D
 class_name Angel
 
+signal subir_nivel()
+
 @onready var attack_timer: Timer = $AttackTimer
 @export var speed: float = 400.0
 @export var angel_projectile_scene: PackedScene
@@ -28,5 +30,9 @@ func _end_attack() -> void:
 func _demon_deleted() -> void:
 	defeated_enemies += 1
 	if defeated_enemies == 10:
-		speed += speed * 0.5
-		print("Angel speed increased!")
+		defeated_enemies = 0
+		emit_signal("subir_nivel")
+
+func _obtener_mejora() -> void:
+	speed += speed * 0.5
+	print("Angel speed increased!")
