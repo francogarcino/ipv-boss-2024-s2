@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://sq0noqlk8y6y"]
+[gd_scene load_steps=6 format=3 uid="uid://sq0noqlk8y6y"]
 
 [ext_resource type="Script" path="res://src/ui/mejoras_menu.gd" id="1_3p500"]
-[ext_resource type="FontFile" path="res://assets/fonts/Default-Medium.tres" id="1_wu1iv"]
+[ext_resource type="FontFile" uid="uid://b2abx8m8v7p3f" path="res://assets/fonts/Default-Big.tres" id="2_lc7e0"]
+[ext_resource type="Texture2D" uid="uid://cibwx4dcouvac" path="res://assets/textures/ui/mejora_medium.png" id="3_grats"]
+[ext_resource type="Texture2D" uid="uid://dh46u6qfvlre1" path="res://assets/textures/ui/mejora_angel.png" id="3_yxgwe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaj6o"]
 bg_color = Color(0.402759, 0.657996, 0.602597, 1)
@@ -33,10 +35,10 @@ color = Color(0, 0, 0, 0.25098)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 460.0
-offset_top = 202.0
-offset_right = 620.0
-offset_bottom = 342.0
+offset_left = 380.0
+offset_top = 170.0
+offset_right = 700.0
+offset_bottom = 450.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xaj6o")
 
 [node name="Label" type="Label" parent="Panel"]
@@ -46,27 +48,31 @@ anchor_right = 1.0
 offset_left = 10.0
 offset_top = 4.0
 offset_right = -10.0
-offset_bottom = 28.0
+offset_bottom = 44.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_wu1iv")
+theme_override_fonts/font = ExtResource("2_lc7e0")
+theme_override_font_sizes/font_size = 31
 text = "Mejora"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 46.0
-offset_right = 146.0
-offset_bottom = 77.0
-
-[node name="MejoraAngelButton" type="Button" parent="Panel/HBoxContainer"]
+[node name="MejoraAngelButton" type="Button" parent="Panel"]
 layout_mode = 2
-text = "Angel"
+offset_left = 13.0
+offset_top = 70.0
+offset_right = 585.0
+offset_bottom = 642.0
+scale = Vector2(0.25, 0.25)
+icon = ExtResource("3_yxgwe")
 
-[node name="MejoraMediumButton" type="Button" parent="Panel/HBoxContainer"]
+[node name="MejoraMediumButton" type="Button" parent="Panel"]
 layout_mode = 2
-text = "Medium"
+offset_left = 164.0
+offset_top = 70.0
+offset_right = 736.0
+offset_bottom = 642.0
+scale = Vector2(0.25, 0.25)
+icon = ExtResource("3_grats")
 
-[connection signal="pressed" from="Panel/HBoxContainer/MejoraAngelButton" to="." method="_on_mejora_angel_button_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/MejoraMediumButton" to="." method="_on_mejora_medium_button_pressed"]
+[connection signal="pressed" from="Panel/MejoraAngelButton" to="." method="_on_mejora_angel_button_pressed"]
+[connection signal="pressed" from="Panel/MejoraMediumButton" to="." method="_on_mejora_medium_button_pressed"]
