@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://r3ujw45meqcm"]
+[gd_scene load_steps=3 format=3 uid="uid://r3ujw45meqcm"]
 
+[ext_resource type="Script" path="res://src/entities/sanctuary/sanctuary.gd" id="1_87mgn"]
 [ext_resource type="Texture2D" uid="uid://cpvlglcc007lr" path="res://assets/textures/sanctuary/iglesia.png" id="1_ucqau"]
 
 [node name="Sanctuary" type="Node2D"]
+script = ExtResource("1_87mgn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

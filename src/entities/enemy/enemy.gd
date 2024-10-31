@@ -33,5 +33,11 @@ func calculate_separation() -> Vector2:
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		print('Player detected!')
-		get_parent()._player_defeated()
+		if has_active_sanctuaries():
+			get_parent()._destroy_sanctuary()
+		else:
+			print('Player detected!')
+			get_parent()._player_defeated()
+
+func has_active_sanctuaries() -> bool:
+	return get_tree().get_nodes_in_group("sanctuaries").size() > 0

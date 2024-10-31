@@ -11,8 +11,8 @@ extends Node
 
 
 func _ready() -> void:
-	x_size = float(get_viewport().size.x / 2) # 540
-	y_size = float(get_viewport().size.y / 2) # 360
+	x_size = float(get_viewport().size.x / 3)
+	y_size = float(get_viewport().size.y * 0.5)
 	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
 	player_ref.invocar_santuario.connect(_spawn_santuario)
@@ -36,7 +36,7 @@ func _spawn_enemies() -> void:
 			for i in range(0, 10):
 				var enemy = enemy_scene.instantiate()
 				enemy.target = player_ref
-				var distance_to_player = Vector2(x_size + randi_range(0, 120), y_size + randi_range(0, 120))
+				var distance_to_player = Vector2(x_size + randi_range(0, 320), y_size + randi_range(0, 80))
 				enemy.position = player_ref.position + (distance_to_player * _get_relative_direction())
 				add_child(enemy)
 	else:
@@ -67,6 +67,10 @@ func _on_debug_timer_timeout() -> void:
 func _player_defeated() -> void:
 	pause_menu.is_accepted = false
 	defeat_menu._show()
+
+func _destroy_sanctuary() -> void:
+	var sanctuary = get_tree().get_nodes_in_group("sanctuaries").pop_at(0)
+	sanctuary.queue_free()
 
 func _on_mejora_conseguida() -> void:
 	mejoras_menu._show()
