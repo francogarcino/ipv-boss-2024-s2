@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Demon
 
-const speed = 50.0
+const speed = 25.0
 var target: Node2D
 var offset: Vector2 = Vector2.ZERO
 var separation_force: float = 50

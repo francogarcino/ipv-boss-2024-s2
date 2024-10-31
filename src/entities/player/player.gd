@@ -4,7 +4,7 @@ class_name Player
 signal subir_nivel()
 
 @onready var angel: Node2D = $LinkedAngel
-@export var speed: float = 300.0
+@export var speed: float = 150.0
 var projectile_container: Node
 
 func _ready() -> void:

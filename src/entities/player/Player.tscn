@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0qwr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4t5gl"]
-radius = 700.0
+radius = 1000.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_465p4")
