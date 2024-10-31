@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvh8x27u662eu"]
+
+[ext_resource type="Script" path="res://src/ui/options_menu.gd" id="1_2xdj0"]
+[ext_resource type="PackedScene" uid="uid://ba1gum1rjiopu" path="res://src/ui/action_map.tscn" id="1_bgta1"]
+[ext_resource type="FontFile" uid="uid://b2abx8m8v7p3f" path="res://assets/fonts/Default-Big.tres" id="1_prn2g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qupa8"]
+bg_color = Color(0.403922, 0.658824, 0.603922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.929412, 0.756863, 0.682353, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 2
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -360.0
+offset_right = 540.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2xdj0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.25098)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 220.0
+offset_right = 710.0
+offset_bottom = 500.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qupa8")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 4.0
+offset_right = 326.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 31
+text = "Opciones del mando/teclado"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 210.0
+offset_right = 316.0
+offset_bottom = 265.0
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 31
+text = "Salir"
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 50.0
+offset_right = 316.0
+offset_bottom = 200.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Panel"]
+layout_mode = 0
+offset_right = 293.0
+offset_bottom = 150.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/ScrollContainer"]
+layout_mode = 2
+
+[node name="ActionMap" parent="Panel/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("1_bgta1")]
+layout_mode = 2
+action = "⭡"
+action_name = "Mover hacia arriba"
+
+[node name="ActionMap2" parent="Panel/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("1_bgta1")]
+layout_mode = 2
+action = "⭠"
+action_name = "Mover hacia arriba"
+
+[node name="ActionMap3" parent="Panel/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("1_bgta1")]
+layout_mode = 2
+action = "⭢"
+action_name = "Mover hacia arriba"
+
+[node name="ActionMap4" parent="Panel/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("1_bgta1")]
+layout_mode = 2
+action = "↓"
+action_name = "Mover hacia arriba"
+
+[node name="ActionMap5" parent="Panel/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("1_bgta1")]
+layout_mode = 2
+action = "Click_primario"
+action_name = "Mover hacia arriba"
+
+[connection signal="pressed" from="Panel/ReturnButton" to="." method="_on_return_button_pressed"]

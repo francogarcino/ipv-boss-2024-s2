@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba1gum1rjiopu"]
+
+[ext_resource type="Script" path="res://src/ui/action_map.gd" id="1_hgrfd"]
+
+[node name="ActionMap" type="PanelContainer"]
+offset_right = 167.0
+offset_bottom = 31.0
+script = ExtResource("1_hgrfd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ActionKeyButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "⭡"
+
+[node name="ActionNameLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mover hacia arriba"

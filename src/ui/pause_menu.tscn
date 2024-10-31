@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://8ohwt1d3500m"]
+
+[ext_resource type="Script" path="res://src/ui/pause_menu.gd" id="1_cnwpb"]
+[ext_resource type="FontFile" uid="uid://b2abx8m8v7p3f" path="res://assets/fonts/Default-Big.tres" id="2_tv15d"]
+[ext_resource type="PackedScene" uid="uid://dvh8x27u662eu" path="res://src/ui/options_menu.tscn" id="3_0nelo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15lt7"]
+bg_color = Color(0.403922, 0.658824, 0.603922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.929412, 0.756863, 0.682353, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 2
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -360.0
+offset_right = 540.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cnwpb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.25098)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 260.0
+offset_right = 700.0
+offset_bottom = 460.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_15lt7")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 310.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("2_tv15d")
+theme_override_font_sizes/font_size = 31
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 60.0
+offset_right = 310.0
+offset_bottom = 100.0
+
+[node name="RestartButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tv15d")
+theme_override_font_sizes/font_size = 28
+text = "Reiniciar"
+
+[node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tv15d")
+theme_override_font_sizes/font_size = 28
+text = "Mando/Teclado"
+
+[node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tv15d")
+theme_override_font_sizes/font_size = 28
+text = "Salir"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("3_0nelo")]
+layout_mode = 1
+
+[connection signal="pressed" from="Panel/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/OptionsButton" to="OptionsMenu" method="show"]
+[connection signal="pressed" from="Panel/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]

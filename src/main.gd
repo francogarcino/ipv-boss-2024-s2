@@ -6,6 +6,7 @@ extends Node
 @onready var player_ref: Node2D = $Environment/Entities/Player
 @onready var mejoras_menu: Control = $UILayer/MejorasMenu
 @onready var defeat_menu: Control = $UILayer/DefeatMenu
+@onready var pause_menu: Control = $UILayer/PauseMenu
 
 
 func _ready() -> void:
@@ -16,11 +17,8 @@ func _ready() -> void:
 	mejoras_menu.mejora_angel.connect(_on_angel_mejorado)
 	mejoras_menu.mejora_medium.connect(_on_medium_mejorado)
 	defeat_menu.retry.connect(_reset)
-	
-
-func _input(event: InputEvent) -> void:
-	if event.is_action("reset"):
-		_reset()
+	pause_menu.retry.connect(_reset)
+	pause_menu.is_accepted = true
 
 func _reset() -> void:
 	get_tree().paused = false
@@ -65,6 +63,7 @@ func _on_debug_timer_timeout() -> void:
 		entity.queue_free()
 
 func _player_defeated() -> void:
+	pause_menu.is_accepted = false
 	defeat_menu._show()
 
 func _on_mejora_conseguida() -> void:

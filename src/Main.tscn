@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=8 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://clsfjnskewbkv" path="res://src/entities/enemy/enemy.tscn" id="2_oe0xi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c52g7lqluxqe4" path="res://assets/textures/background/background.png" id="3_fq2yd"]
 [ext_resource type="PackedScene" uid="uid://sq0noqlk8y6y" path="res://src/ui/mejoras_menu.tscn" id="3_jiy77"]
 [ext_resource type="PackedScene" uid="uid://d0xolrof0y750" path="res://src/ui/defeat_menu.tscn" id="4_fcctx"]
+[ext_resource type="PackedScene" uid="uid://8ohwt1d3500m" path="res://src/ui/pause_menu.tscn" id="5_qxca1"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_7xe25")
@@ -16,6 +17,8 @@ enemy_scene = ExtResource("2_oe0xi")
 [node name="MejorasMenu" parent="UILayer" instance=ExtResource("3_jiy77")]
 
 [node name="DefeatMenu" parent="UILayer" instance=ExtResource("4_fcctx")]
+
+[node name="PauseMenu" parent="UILayer" instance=ExtResource("5_qxca1")]
 
 [node name="BackgroundContainer" type="Node" parent="."]
 
