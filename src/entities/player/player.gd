@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	_process_input(delta)
 
 func _on_mejora_conseguida() -> void:
-		emit_signal("subir_nivel")
+	emit_signal("subir_nivel")
 
 func _on_angel_mejorado() -> void:
 	angel._obtener_mejora()

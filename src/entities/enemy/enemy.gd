@@ -34,4 +34,4 @@ func calculate_separation() -> Vector2:
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		print('Player detected!')
-		get_parent()._stop_game()
+		get_parent()._player_defeated()
