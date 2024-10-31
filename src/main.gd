@@ -1,6 +1,7 @@
 extends Node
 
 @export var enemy_scene: PackedScene
+@export var sanctuary_scene: PackedScene
 @export var x_size: float 
 @export var y_size: float 
 @onready var player_ref: Node2D = $Environment/Entities/Player
@@ -14,6 +15,7 @@ func _ready() -> void:
 	y_size = float(get_viewport().size.y / 2) # 360
 	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
+	player_ref.invocar_santuario.connect(_spawn_santuario)
 	mejoras_menu.mejora_angel.connect(_on_angel_mejorado)
 	mejoras_menu.mejora_medium.connect(_on_medium_mejorado)
 	defeat_menu.retry.connect(_reset)
@@ -74,3 +76,9 @@ func _on_angel_mejorado() -> void:
 
 func _on_medium_mejorado() -> void:
 	player_ref._obtener_mejora()
+	
+func _spawn_santuario() -> void:
+	var sanctuary = sanctuary_scene.instantiate()
+	sanctuary.position = player_ref.position
+	sanctuary.z_index = -1
+	add_child(sanctuary)

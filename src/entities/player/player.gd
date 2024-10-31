@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal subir_nivel()
+signal invocar_santuario()
 
 @onready var angel: Node2D = $LinkedAngel
 @export var speed: float = 150.0
@@ -9,6 +10,7 @@ var projectile_container: Node
 
 func _ready() -> void:
 	angel.subir_nivel.connect(_on_mejora_conseguida)
+	angel.invocar_santuario.connect(_invocar_santuario)
 
 func _process_input(delta) -> void:
 	if Input.is_action_just_pressed("angel_attack"):
@@ -45,6 +47,8 @@ func _obtener_mejora() -> void:
 	speed += speed * 0.5
 	print("Medium speed increased!")
 
+func _invocar_santuario() -> void:
+	emit_signal("invocar_santuario")
 
 func _on_in_range_to_live_body_exited(body: Node2D) -> void:
 	if body is Demon:
