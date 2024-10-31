@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvh8x27u662eu"]
+[gd_scene load_steps=4 format=3 uid="uid://dvh8x27u662eu"]
 
 [ext_resource type="Script" path="res://src/ui/options_menu.gd" id="1_2xdj0"]
-[ext_resource type="PackedScene" uid="uid://ba1gum1rjiopu" path="res://src/ui/action_map.tscn" id="1_bgta1"]
 [ext_resource type="FontFile" uid="uid://b2abx8m8v7p3f" path="res://assets/fonts/Default-Big.tres" id="1_prn2g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qupa8"]
@@ -82,30 +81,96 @@ offset_bottom = 150.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="ActionMap" parent="Panel/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("1_bgta1")]
+[node name="ActionMap" type="PanelContainer" parent="Panel/Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-action = "⭡"
-action_name = "Mover hacia arriba"
 
-[node name="ActionMap2" parent="Panel/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("1_bgta1")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap"]
 layout_mode = 2
-action = "⭠"
-action_name = "Mover hacia arriba"
 
-[node name="ActionMap3" parent="Panel/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("1_bgta1")]
+[node name="ActionKeyButton" type="Button" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap/HBoxContainer"]
 layout_mode = 2
-action = "⭢"
-action_name = "Mover hacia arriba"
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 20
+text = "⭡"
 
-[node name="ActionMap4" parent="Panel/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("1_bgta1")]
+[node name="ActionNameLabel" type="Label" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap/HBoxContainer"]
 layout_mode = 2
-action = "↓"
-action_name = "Mover hacia arriba"
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 22
+text = "Mover hacia arriba"
 
-[node name="ActionMap5" parent="Panel/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("1_bgta1")]
+[node name="ActionMap2" type="PanelContainer" parent="Panel/Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-action = "Click_primario"
-action_name = "Mover hacia arriba"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap2"]
+layout_mode = 2
+
+[node name="ActionKeyButton" type="Button" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap2/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 20
+text = "⭠"
+
+[node name="ActionNameLabel" type="Label" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap2/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 22
+text = "Mover hacia la izquierda"
+
+[node name="ActionMap3" type="PanelContainer" parent="Panel/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap3"]
+layout_mode = 2
+
+[node name="ActionKeyButton" type="Button" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap3/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 20
+text = "⭢"
+
+[node name="ActionNameLabel" type="Label" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap3/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 22
+text = "Mover hacia la derecha"
+
+[node name="ActionMap4" type="PanelContainer" parent="Panel/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap4"]
+layout_mode = 2
+
+[node name="ActionKeyButton" type="Button" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap4/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 20
+text = "↓"
+
+[node name="ActionNameLabel" type="Label" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap4/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 22
+text = "Mover hacia abajo"
+
+[node name="ActionMap5" type="PanelContainer" parent="Panel/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap5"]
+layout_mode = 2
+
+[node name="ActionKeyButton" type="Button" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap5/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 20
+text = "Click primario"
+
+[node name="ActionNameLabel" type="Label" parent="Panel/Panel/ScrollContainer/VBoxContainer/ActionMap5/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_prn2g")
+theme_override_font_sizes/font_size = 22
+text = "Atacar"
 
 [connection signal="pressed" from="Panel/ReturnButton" to="." method="_on_return_button_pressed"]
