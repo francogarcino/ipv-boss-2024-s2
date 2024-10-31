@@ -10,6 +10,7 @@ signal subir_nivel()
 var attacking: bool = false 
 var container: Node2D
 var defeated_enemies = 0
+var actual_level = 1
 
 func attackAt(position: Vector2) -> void:
 	if(!attacking):
@@ -29,8 +30,12 @@ func _end_attack() -> void:
 
 func _demon_deleted() -> void:
 	defeated_enemies += 1
-	if defeated_enemies == 10:
-		defeated_enemies = 0
+	if defeated_enemies == (actual_level * 20):
+		actual_level += 1
+		if actual_level % 3 == 0:
+			# señal para spawnear un santuario
+			pass
+		print("level_up: ", actual_level)
 		emit_signal("subir_nivel")
 
 func _obtener_mejora() -> void:

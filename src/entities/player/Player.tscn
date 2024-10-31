@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3ebpydlhc0bk"]
+[gd_scene load_steps=6 format=3 uid="uid://c3ebpydlhc0bk"]
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_465p4"]
 [ext_resource type="Texture2D" uid="uid://c7fx673ab0a3i" path="res://assets/textures/player/player.png" id="2_ul2xl"]
 [ext_resource type="PackedScene" uid="uid://b5nhyysvarcyy" path="res://src/entities/player/LinkedAngel.tscn" id="3_uhc4j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0qwr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4t5gl"]
+radius = 700.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_465p4")
@@ -24,3 +27,12 @@ hframes = 9
 vframes = 5
 
 [node name="LinkedAngel" parent="." instance=ExtResource("3_uhc4j")]
+
+[node name="InRangeToLive" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InRangeToLive"]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_4t5gl")
+debug_color = Color(0.866743, 0.317125, 0.420219, 0.42)
+
+[connection signal="body_exited" from="InRangeToLive" to="." method="_on_in_range_to_live_body_exited"]

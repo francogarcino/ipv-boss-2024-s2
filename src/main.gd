@@ -1,15 +1,19 @@
 extends Node
 
 @export var enemy_scene: PackedScene
-@export var min_distance: float = 100.0
-@export var max_distance: float = 250.0
+@export var x_size: float 
+@export var y_size: float 
 @onready var player_ref: Node2D = $Environment/Entities/Player
 @onready var mejoras_menu: Control = $MejorasLayer/MejorasMenu
 
 func _ready() -> void:
+	x_size = float(get_viewport().size.x / 2) # 540
+	y_size = float(get_viewport().size.y / 2) # 360
+	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
 	mejoras_menu.mejora_angel.connect(_on_angel_mejorado)
 	mejoras_menu.mejora_medium.connect(_on_medium_mejorado)
+	
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("reset"):
@@ -23,16 +27,18 @@ func _on_enemy_timer_timeout() -> void:
 	_spawn_enemies()
 
 func _spawn_enemies() -> void:
-	if (player_ref != null):
-		for i in range(0, 4):
-			var enemy = enemy_scene.instantiate()
-			enemy.target = player_ref
-			var distance_to_player = Vector2(
-				randf_range(min_distance, max_distance), 
-				randf_range(min_distance, max_distance)
-			)
-			enemy.position = player_ref.position + (distance_to_player * _get_relative_direction())
-			add_child(enemy)
+	var enemies = get_tree().get_nodes_in_group("demons")
+	if (enemies.size() < 200):
+		if (player_ref != null):
+			for i in range(0, 10):
+				var enemy = enemy_scene.instantiate()
+				enemy.target = player_ref
+				var distance_to_player = Vector2(x_size + randi_range(0, 120), y_size + randi_range(0, 120))
+				enemy.position = player_ref.position + (distance_to_player * _get_relative_direction())
+				add_child(enemy)
+	else:
+		# Too many enemies :P
+		pass
 
 func _get_relative_direction() -> Vector2:
 	var relative_x 

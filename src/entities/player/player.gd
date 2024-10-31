@@ -44,3 +44,9 @@ func _on_angel_mejorado() -> void:
 func _obtener_mejora() -> void:
 	speed += speed * 0.5
 	print("Medium speed increased!")
+
+
+func _on_in_range_to_live_body_exited(body: Node2D) -> void:
+	if body is Demon:
+		body.queue_free()
+	#pass

@@ -40,7 +40,6 @@ autostart = true
 
 [node name="DebugTimer" type="Timer" parent="."]
 wait_time = 4.5
-autostart = true
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="DebugTimer" to="." method="_on_debug_timer_timeout"]
