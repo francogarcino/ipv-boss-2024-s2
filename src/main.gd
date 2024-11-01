@@ -5,6 +5,7 @@ extends Node
 @export var x_size: float 
 @export var y_size: float 
 @onready var player_ref: Node2D = $Environment/Entities/Player
+@onready var main_menu: Control = $UILayer/MainMenu
 @onready var mejoras_menu: Control = $UILayer/MejorasMenu
 @onready var defeat_menu: Control = $UILayer/DefeatMenu
 @onready var pause_menu: Control = $UILayer/PauseMenu
@@ -16,10 +17,13 @@ func _ready() -> void:
 	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
 	player_ref.invocar_santuario.connect(_spawn_santuario)
+	main_menu.start.connect(_start)
 	mejoras_menu.mejora_angel.connect(_on_angel_mejorado)
 	mejoras_menu.mejora_medium.connect(_on_medium_mejorado)
 	defeat_menu.retry.connect(_reset)
 	pause_menu.retry.connect(_reset)
+
+func _start() -> void:
 	pause_menu.is_accepted = true
 
 func _reset() -> void:
