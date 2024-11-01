@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c7cm7hl41syir" path="res://assets/textures/player/angel_projectile.png" id="2_162k4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eepiv"]
-radius = 5.0
+radius = 6.0
 
 [node name="AngelProjectile" type="Node2D"]
 script = ExtResource("1_vyqk3")
@@ -21,7 +21,7 @@ position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_eepiv")
 
 [node name="Body" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_162k4")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

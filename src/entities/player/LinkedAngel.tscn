@@ -11,7 +11,7 @@ angel_projectile_scene = ExtResource("2_4iuxp")
 [node name="Body" type="Sprite2D" parent="."]
 position = Vector2(-1.06581e-14, -10)
 rotation = -1.5708
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("1_c6840")
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

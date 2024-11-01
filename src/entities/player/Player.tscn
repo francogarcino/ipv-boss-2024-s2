@@ -21,7 +21,7 @@ shape = SubResource("CapsuleShape2D_p0qwr")
 
 [node name="Body" type="Sprite2D" parent="BodyPivot"]
 position = Vector2(-2, -22)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_ul2xl")
 hframes = 9
 vframes = 5
