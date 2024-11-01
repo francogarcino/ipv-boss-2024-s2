@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://clsfjnskewbkv" path="res://src/entities/enemy/enemy.tscn" id="2_oe0xi"]
 [ext_resource type="PackedScene" uid="uid://c3ebpydlhc0bk" path="res://src/entities/player/Player.tscn" id="2_voxir"]
 [ext_resource type="Texture2D" uid="uid://c52g7lqluxqe4" path="res://assets/textures/background/background.png" id="3_fq2yd"]
-[ext_resource type="PackedScene" uid="uid://sq0noqlk8y6y" path="res://src/ui/mejoras_menu.tscn" id="3_jiy77"]
+[ext_resource type="PackedScene" uid="uid://sq0noqlk8y6y" path="res://src/ui/improvements_menu.tscn" id="3_jiy77"]
 [ext_resource type="PackedScene" uid="uid://r3ujw45meqcm" path="res://src/entities/sanctuary/Sanctuary.tscn" id="3_mplx6"]
 [ext_resource type="PackedScene" uid="uid://do41oiqjuue1t" path="res://src/ui/main_menu.tscn" id="4_dlo3d"]
 [ext_resource type="PackedScene" uid="uid://d0xolrof0y750" path="res://src/ui/defeat_menu.tscn" id="4_fcctx"]
@@ -19,7 +19,7 @@ sanctuary_scene = ExtResource("3_mplx6")
 
 [node name="MainMenu" parent="UILayer" instance=ExtResource("4_dlo3d")]
 
-[node name="MejorasMenu" parent="UILayer" instance=ExtResource("3_jiy77")]
+[node name="ImprovementMenu" parent="UILayer" instance=ExtResource("3_jiy77")]
 
 [node name="DefeatMenu" parent="UILayer" instance=ExtResource("4_fcctx")]
 

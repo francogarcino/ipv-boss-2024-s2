@@ -6,7 +6,7 @@ extends Node
 @export var y_size: float 
 @onready var player_ref: Node2D = $Environment/Entities/Player
 @onready var main_menu: Control = $UILayer/MainMenu
-@onready var mejoras_menu: Control = $UILayer/MejorasMenu
+@onready var improvement_menu: Control = $UILayer/ImprovementMenu
 @onready var defeat_menu: Control = $UILayer/DefeatMenu
 @onready var pause_menu: Control = $UILayer/PauseMenu
 
@@ -18,8 +18,8 @@ func _ready() -> void:
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
 	player_ref.invocar_santuario.connect(_spawn_santuario)
 	main_menu.start.connect(_start)
-	mejoras_menu.mejora_angel.connect(_on_angel_mejorado)
-	mejoras_menu.mejora_medium.connect(_on_medium_mejorado)
+	improvement_menu.mejora_angel.connect(_on_angel_mejorado)
+	improvement_menu.mejora_medium.connect(_on_medium_mejorado)
 	defeat_menu.retry.connect(_reset)
 	pause_menu.retry.connect(_reset)
 
@@ -77,12 +77,15 @@ func _destroy_sanctuary() -> void:
 	sanctuary.queue_free()
 
 func _on_mejora_conseguida() -> void:
-	mejoras_menu._show()
+	pause_menu.is_accepted = false
+	improvement_menu._show()
 
 func _on_angel_mejorado() -> void:
+	pause_menu.is_accepted = true
 	player_ref._on_angel_mejorado()
 
 func _on_medium_mejorado() -> void:
+	pause_menu.is_accepted = true
 	player_ref._obtener_mejora()
 	
 func _spawn_santuario() -> void:

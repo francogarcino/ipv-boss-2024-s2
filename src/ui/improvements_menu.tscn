@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://sq0noqlk8y6y"]
 
-[ext_resource type="Script" path="res://src/ui/mejoras_menu.gd" id="1_3p500"]
+[ext_resource type="Script" path="res://src/ui/improvement_menu.gd" id="1_3p500"]
 [ext_resource type="FontFile" uid="uid://b2abx8m8v7p3f" path="res://assets/fonts/Default-Big.tres" id="2_lc7e0"]
 [ext_resource type="Texture2D" uid="uid://cibwx4dcouvac" path="res://assets/textures/ui/mejora_medium.png" id="3_grats"]
 [ext_resource type="Texture2D" uid="uid://dh46u6qfvlre1" path="res://assets/textures/ui/mejora_angel.png" id="3_yxgwe"]
@@ -18,7 +18,7 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 2
 
-[node name="MejorasMenu" type="Control"]
+[node name="ImprovementMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,11 +58,26 @@ offset_bottom = 44.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_lc7e0")
 theme_override_font_sizes/font_size = 31
-text = "Mejora"
+text = "Has subido de nivel!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MejoraAngelButton" type="Button" parent="Panel"]
+[node name="SelectLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = -10.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_lc7e0")
+theme_override_font_sizes/font_size = 31
+text = "Seleccione una mejora"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ImprovementAngelButton" type="Button" parent="Panel"]
 layout_mode = 2
 offset_left = 13.0
 offset_top = 70.0
@@ -71,7 +86,7 @@ offset_bottom = 642.0
 scale = Vector2(0.25, 0.25)
 icon = ExtResource("3_yxgwe")
 
-[node name="MejoraMediumButton" type="Button" parent="Panel"]
+[node name="ImprovementMediumButton" type="Button" parent="Panel"]
 layout_mode = 2
 offset_left = 164.0
 offset_top = 70.0
@@ -80,5 +95,16 @@ offset_bottom = 642.0
 scale = Vector2(0.25, 0.25)
 icon = ExtResource("3_grats")
 
-[connection signal="pressed" from="Panel/MejoraAngelButton" to="." method="_on_mejora_angel_button_pressed"]
-[connection signal="pressed" from="Panel/MejoraMediumButton" to="." method="_on_mejora_medium_button_pressed"]
+[node name="SelectButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 120.0
+offset_right = 310.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("2_lc7e0")
+theme_override_font_sizes/font_size = 28
+text = "Seleccionar mejora"
+
+[connection signal="pressed" from="Panel/ImprovementAngelButton" to="." method="_on_improvement_angel_button_pressed"]
+[connection signal="pressed" from="Panel/ImprovementMediumButton" to="." method="_on_improvement_medium_button_pressed"]
+[connection signal="pressed" from="Panel/SelectButton" to="." method="_on_select_button_pressed"]
