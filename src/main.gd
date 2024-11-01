@@ -9,11 +9,13 @@ extends Node
 @onready var improvement_menu: Control = $UILayer/ImprovementMenu
 @onready var defeat_menu: Control = $UILayer/DefeatMenu
 @onready var pause_menu: Control = $UILayer/PauseMenu
-
+@onready var level_up_sound: AudioStreamPlayer2D = $LevelUpSound
 
 func _ready() -> void:
 	x_size = float(get_viewport().size.x / 3)
 	y_size = float(get_viewport().size.y * 0.5)
+	
+	level_up_sound.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
 	player_ref.invocar_santuario.connect(_spawn_santuario)
@@ -78,6 +80,7 @@ func _destroy_sanctuary() -> void:
 
 func _on_mejora_conseguida() -> void:
 	pause_menu.is_accepted = false
+	level_up_sound.play()
 	improvement_menu._show()
 
 func _on_angel_mejorado() -> void:
