@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 @onready var attack_timer: Timer = $AttackTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -16,7 +16,8 @@ func initialize(container: Node, spawn_position: Vector2, direction: Vector2, sp
 	attack_timer.start()
 
 func _physics_process(delta: float) -> void:
-	position += direction * speed * delta
+	velocity += direction * speed * delta
+	move_and_slide()
 
 func _on_attack_timer_timeout() -> void:
 	queue_free()
