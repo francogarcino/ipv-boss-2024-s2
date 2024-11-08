@@ -2,6 +2,7 @@ extends Node
 
 @export var enemy_scene: PackedScene
 @export var sanctuary_scene: PackedScene
+@export var experience_scene: PackedScene
 @export var x_size: float 
 @export var y_size: float 
 @onready var player_ref: Node2D = $Environment/Entities/Player
@@ -19,6 +20,7 @@ func _ready() -> void:
 	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
 	player_ref.invocar_santuario.connect(_spawn_santuario)
+	player_ref.demonio_eliminado.connect(_spawn_experience)
 	main_menu.start.connect(_start)
 	improvement_menu.mejora_angel.connect(_on_angel_mejorado)
 	improvement_menu.mejora_medium.connect(_on_medium_mejorado)
@@ -96,3 +98,9 @@ func _spawn_santuario() -> void:
 	sanctuary.position = player_ref.position
 	sanctuary.z_index = -1
 	add_child(sanctuary)
+
+func _spawn_experience(demon_position: Vector2) -> void:
+	var experience = experience_scene.instantiate()
+	experience.position = demon_position
+	experience.z_index = -1
+	add_child(experience)

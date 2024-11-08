@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b5nhyysvarcyy" path="res://src/entities/player/LinkedAngel.tscn" id="3_uhc4j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0qwr"]
+radius = 12.0
+height = 41.0935
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4t5gl"]
 radius = 1000.0
@@ -13,26 +15,36 @@ radius = 1000.0
 script = ExtResource("1_465p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15.5)
+position = Vector2(-1, -20)
+scale = Vector2(0.771, 0.75)
+shape = SubResource("CapsuleShape2D_p0qwr")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-1.90735e-06, -20)
 scale = Vector2(1, 0.97339)
 shape = SubResource("CapsuleShape2D_p0qwr")
 
 [node name="BodyPivot" type="Node2D" parent="."]
 
 [node name="Body" type="Sprite2D" parent="BodyPivot"]
-position = Vector2(-2, -22)
+position = Vector2(-5, -28)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_ul2xl")
 hframes = 9
 vframes = 5
 
 [node name="LinkedAngel" parent="." instance=ExtResource("3_uhc4j")]
+position = Vector2(-4, -5)
 
 [node name="InRangeToLive" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InRangeToLive"]
+visible = false
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_4t5gl")
 debug_color = Color(0.866743, 0.317125, 0.420219, 0.42)
 
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="InRangeToLive" to="." method="_on_in_range_to_live_body_exited"]

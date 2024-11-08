@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
+signal demonio_eliminado(demon_position)
+signal finalizar_ataque()
+
 @onready var attack_timer: Timer = $AttackTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var speed: float
-var angel: Node2D
 var direction: Vector2
 
 func initialize(container: Node, spawn_position: Vector2, direction: Vector2, speed: float) -> void:
@@ -21,11 +23,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_attack_timer_timeout() -> void:
 	queue_free()
-	angel._end_attack()
+	emit_signal("finalizar_ataque")
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Demon:
 		print("Attacked o:) ")
 		body.queue_free()
-		angel._demon_deleted()
+		emit_signal("demonio_eliminado", body.global_position)
 		_on_attack_timer_timeout()
