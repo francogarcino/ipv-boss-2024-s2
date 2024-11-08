@@ -6,6 +6,7 @@ extends Node
 @export var x_size: float 
 @export var y_size: float 
 @onready var player_ref: Node2D = $Environment/Entities/Player
+@onready var gui: Control = $UILayer/GUI
 @onready var main_menu: Control = $UILayer/MainMenu
 @onready var improvement_menu: Control = $UILayer/ImprovementMenu
 @onready var defeat_menu: Control = $UILayer/DefeatMenu
@@ -79,6 +80,7 @@ func _player_defeated() -> void:
 func _destroy_sanctuary() -> void:
 	var sanctuary = get_tree().get_nodes_in_group("sanctuaries").pop_at(0)
 	sanctuary.queue_free()
+	gui._lose_life()
 
 func _on_mejora_conseguida() -> void:
 	pause_menu.is_accepted = false
@@ -97,6 +99,7 @@ func _spawn_santuario() -> void:
 	var sanctuary = sanctuary_scene.instantiate()
 	sanctuary.position = player_ref.position
 	sanctuary.z_index = -1
+	gui._add_life()
 	add_child(sanctuary)
 
 func _spawn_experience(demon_position: Vector2) -> void:

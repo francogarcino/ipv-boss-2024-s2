@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=13 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://clsfjnskewbkv" path="res://src/entities/enemy/enemy.tscn" id="2_oe0xi"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://do41oiqjuue1t" path="res://src/ui/main_menu.tscn" id="4_dlo3d"]
 [ext_resource type="PackedScene" uid="uid://d0xolrof0y750" path="res://src/ui/defeat_menu.tscn" id="4_fcctx"]
 [ext_resource type="PackedScene" uid="uid://bwts5gjgdmn2c" path="res://src/entities/enemy/experience.tscn" id="4_qpus4"]
+[ext_resource type="PackedScene" uid="uid://bwkqub4lys8ib" path="res://src/ui/gui.tscn" id="5_e6htw"]
 [ext_resource type="PackedScene" uid="uid://8ohwt1d3500m" path="res://src/ui/pause_menu.tscn" id="5_qxca1"]
 [ext_resource type="AudioStream" uid="uid://dkcjmnwgbw7vf" path="res://assets/sounds/level_up.wav" id="10_fb3pm"]
 
@@ -19,6 +20,8 @@ sanctuary_scene = ExtResource("3_mplx6")
 experience_scene = ExtResource("4_qpus4")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="UILayer" instance=ExtResource("5_e6htw")]
 
 [node name="MainMenu" parent="UILayer" instance=ExtResource("4_dlo3d")]
 

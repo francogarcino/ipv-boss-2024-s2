@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwkqub4lys8ib"]
+
+[ext_resource type="Script" path="res://src/ui/gui.gd" id="1_mlmj6"]
+[ext_resource type="Texture2D" uid="uid://qxxoed2gmyh6" path="res://assets/textures/ui/GUISprite.png" id="1_ps6b8"]
+[ext_resource type="Texture2D" uid="uid://cpvlglcc007lr" path="res://assets/textures/sanctuary/iglesia.png" id="3_sene8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j60wh"]
+atlas = ExtResource("1_ps6b8")
+region = Rect2(16, 16, 16, 16)
+margin = Rect2(8, 8, 0, 0)
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mlmj6")
+
+[node name="StatsContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Life" type="TextureProgressBar" parent="StatsContainer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+texture_under = SubResource("AtlasTexture_j60wh")
+
+[node name="AmountOfLifes" type="Label" parent="StatsContainer"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 27.0
+offset_right = 105.0
+offset_bottom = 50.0
+text = "1"
+
+[node name="Sanctuary" type="Sprite2D" parent="StatsContainer"]
+position = Vector2(40, 90)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_sene8")
+
+[node name="AmountOfSanctuaries" type="Label" parent="StatsContainer"]
+offset_left = 65.0
+offset_top = 85.0
+offset_right = 105.0
+offset_bottom = 108.0
+text = "0"
