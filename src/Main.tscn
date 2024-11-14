@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=15 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://clsfjnskewbkv" path="res://src/entities/enemy/enemy.tscn" id="2_oe0xi"]
@@ -12,6 +12,23 @@
 [ext_resource type="PackedScene" uid="uid://bwkqub4lys8ib" path="res://src/ui/gui.tscn" id="5_e6htw"]
 [ext_resource type="PackedScene" uid="uid://8ohwt1d3500m" path="res://src/ui/pause_menu.tscn" id="5_qxca1"]
 [ext_resource type="AudioStream" uid="uid://dkcjmnwgbw7vf" path="res://assets/sounds/level_up.wav" id="10_fb3pm"]
+[ext_resource type="Shader" uid="uid://dkbl41be0rf7y" path="res://src/resources/shaders/GodRays.tres" id="12_lavsk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oej6r"]
+shader = ExtResource("12_lavsk")
+shader_parameter/angle = 0.2
+shader_parameter/position = 0.15
+shader_parameter/spread = 0.5
+shader_parameter/cutoff = 0.1
+shader_parameter/falloff = 0.2
+shader_parameter/edge_fade = 0.15
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Vector4(255, 255, 255, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
 
 [node name="Main" type="Node"]
 script = ExtResource("1_7xe25")
@@ -26,6 +43,7 @@ experience_scene = ExtResource("4_qpus4")
 [node name="MainMenu" parent="UILayer" instance=ExtResource("4_dlo3d")]
 
 [node name="ImprovementMenu" parent="UILayer" instance=ExtResource("3_jiy77")]
+process_mode = 3
 
 [node name="DefeatMenu" parent="UILayer" instance=ExtResource("4_fcctx")]
 
@@ -52,6 +70,24 @@ texture = ExtResource("3_fq2yd")
 [node name="Camera2D" type="Camera2D" parent="Environment/Entities/Player"]
 ignore_rotation = false
 
+[node name="ResurrectionEffect" type="ColorRect" parent="Environment/Entities/Player"]
+visible = false
+material = SubResource("ShaderMaterial_oej6r")
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -284.0
+offset_right = -36.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="ResurrectionTimer" type="Timer" parent="Environment/Entities/Player/ResurrectionEffect"]
+process_mode = 3
+
 [node name="EnemyTimer" type="Timer" parent="."]
 autostart = true
 
@@ -59,8 +95,10 @@ autostart = true
 wait_time = 4.5
 
 [node name="LevelUpSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("10_fb3pm")
 volume_db = -5.0
 
+[connection signal="timeout" from="Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer" to="." method="_on_resurrection_timer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="DebugTimer" to="." method="_on_debug_timer_timeout"]

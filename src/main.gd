@@ -12,12 +12,12 @@ extends Node
 @onready var defeat_menu: Control = $UILayer/DefeatMenu
 @onready var pause_menu: Control = $UILayer/PauseMenu
 @onready var level_up_sound: AudioStreamPlayer2D = $LevelUpSound
+@onready var resurrection_effect: ColorRect = $Environment/Entities/Player/ResurrectionEffect
+@onready var resurrection_timer: Timer = $Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer
 
 func _ready() -> void:
 	x_size = float(get_viewport().size.x / 3)
 	y_size = float(get_viewport().size.y * 0.5)
-	
-	level_up_sound.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
 	player_ref.invocar_santuario.connect(_spawn_santuario)
@@ -78,13 +78,18 @@ func _player_defeated() -> void:
 	defeat_menu._show()
 
 func _destroy_sanctuary() -> void:
+	pause_menu.is_accepted = false
 	var sanctuary = get_tree().get_nodes_in_group("sanctuaries").pop_at(0)
+	resurrection_effect.show()
+	resurrection_timer.start()
+	get_tree().paused = true
 	sanctuary.queue_free()
 	gui._lose_life()
 
 func _on_mejora_conseguida() -> void:
 	pause_menu.is_accepted = false
 	level_up_sound.play()
+	get_tree().paused = true
 	improvement_menu._show()
 
 func _on_angel_mejorado() -> void:
@@ -107,3 +112,9 @@ func _spawn_experience(demon_position: Vector2) -> void:
 	experience.position = demon_position
 	experience.z_index = -1
 	add_child(experience)
+
+func _on_resurrection_timer_timeout() -> void:
+	resurrection_timer.stop()
+	resurrection_effect.hide()
+	get_tree().paused = false
+	pause_menu.is_accepted = true

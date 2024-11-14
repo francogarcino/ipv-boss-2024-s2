@@ -42,6 +42,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_sene8")
 
 [node name="AmountOfSanctuaries" type="Label" parent="StatsContainer"]
+layout_mode = 0
 offset_left = 65.0
 offset_top = 85.0
 offset_right = 105.0

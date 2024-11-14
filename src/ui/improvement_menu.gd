@@ -10,7 +10,6 @@ signal mejora_medium()
 @onready var select_button: Button = $Panel/SelectButton
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 	hide_options()
 

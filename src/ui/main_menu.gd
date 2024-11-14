@@ -3,7 +3,6 @@ extends Control
 signal start()
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
 	_show()
 
 func _show():

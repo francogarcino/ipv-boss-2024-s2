@@ -18,6 +18,7 @@ corner_radius_bottom_left = 20
 corner_detail = 2
 
 [node name="MainMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
