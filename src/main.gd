@@ -11,6 +11,7 @@ extends Node
 @onready var improvement_menu: Control = $UILayer/ImprovementMenu
 @onready var defeat_menu: Control = $UILayer/DefeatMenu
 @onready var pause_menu: Control = $UILayer/PauseMenu
+@onready var sanctuary_menu: Control = $UILayer/SanctuaryMenu
 @onready var level_up_sound: AudioStreamPlayer2D = $LevelUpSound
 @onready var resurrection_effect: ColorRect = $Environment/Entities/Player/ResurrectionEffect
 @onready var resurrection_timer: Timer = $Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer
@@ -107,6 +108,7 @@ func _spawn_santuario() -> void:
 	sanctuary.z_index = -1
 	gui._add_life()
 	add_child(sanctuary)
+	sanctuary_menu._show()
 
 func _spawn_experience(demon_position: Vector2) -> void:
 	var experience = experience_scene.instantiate()

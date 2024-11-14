@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=17 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://clsfjnskewbkv" path="res://src/entities/enemy/enemy.tscn" id="2_oe0xi"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bwkqub4lys8ib" path="res://src/ui/gui.tscn" id="5_e6htw"]
 [ext_resource type="PackedScene" uid="uid://8ohwt1d3500m" path="res://src/ui/pause_menu.tscn" id="5_qxca1"]
 [ext_resource type="AudioStream" uid="uid://dkcjmnwgbw7vf" path="res://assets/sounds/level_up.wav" id="10_fb3pm"]
+[ext_resource type="PackedScene" uid="uid://dw2shml47fr6p" path="res://src/ui/sanctuary_menu.tscn" id="10_n4q6m"]
 [ext_resource type="Shader" uid="uid://dkbl41be0rf7y" path="res://src/resources/shaders/GodRays.tres" id="12_lavsk"]
 [ext_resource type="AudioStream" uid="uid://bjbkleew7wins" path="res://assets/sounds/resurrection.wav" id="14_g4n3r"]
 
@@ -48,6 +49,8 @@ experience_scene = ExtResource("4_qpus4")
 [node name="DefeatMenu" parent="UILayer" instance=ExtResource("4_fcctx")]
 
 [node name="PauseMenu" parent="UILayer" instance=ExtResource("5_qxca1")]
+
+[node name="SanctuaryMenu" parent="UILayer" instance=ExtResource("10_n4q6m")]
 
 [node name="BackgroundContainer" type="Node" parent="."]
 
