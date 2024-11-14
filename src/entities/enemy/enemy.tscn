@@ -1,10 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://clsfjnskewbkv"]
+[gd_scene load_steps=7 format=3 uid="uid://clsfjnskewbkv"]
 
 [ext_resource type="Script" path="res://src/entities/enemy/enemy.gd" id="1_3mo5i"]
 [ext_resource type="Texture2D" uid="uid://ckqejroq2q4jt" path="res://assets/textures/enemy/enemy.png" id="1_ny1wx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkkp8"]
 height = 22.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mjw7"]
+bg_color = Color(0, 0, 0, 0.301961)
+anti_aliasing_size = 0.625
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2knli"]
+bg_color = Color(1, 0, 0, 1)
+anti_aliasing_size = 0.625
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3q7wa"]
 radius = 10.725
@@ -21,6 +29,25 @@ hframes = 4
 position = Vector2(-1, -13)
 shape = SubResource("CapsuleShape2D_hkkp8")
 debug_color = Color(1, 0.447059, 0.435294, 0.419608)
+
+[node name="HpProgress" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -1.0
+offset_right = 8.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_5mjw7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2knli")
+max_value = 2.0
+step = 1.0
+value = 2.0
+show_percentage = false
 
 [node name="DetectionArea" type="Area2D" parent="."]
 scale = Vector2(1.05234, 1.01755)

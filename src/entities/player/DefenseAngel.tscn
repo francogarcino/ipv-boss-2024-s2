@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://daw2j8ghd6dlh"]
+[gd_scene load_steps=4 format=3 uid="uid://daw2j8ghd6dlh"]
 
 [ext_resource type="Script" path="res://src/entities/player/defense_angel.gd" id="1_kj1xo"]
 [ext_resource type="Texture2D" uid="uid://noo8sl88vp8t" path="res://assets/textures/player/angel.png" id="1_v84i1"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_imaft"]
+radius = 57.0
+
 [node name="DefenseAngel" type="Node2D"]
 script = ExtResource("1_kj1xo")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="Body" type="Sprite2D" parent="."]
 modulate = Color(0.85098, 1, 0.317647, 0.690196)
@@ -14,4 +20,16 @@ rotation = -1.5708
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("1_v84i1")
 
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="BodyCollider" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-9, -8)
+shape = SubResource("CircleShape2D_imaft")
+
 [node name="AngelAttackSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -9)
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

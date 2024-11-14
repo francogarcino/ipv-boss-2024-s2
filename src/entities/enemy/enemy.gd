@@ -5,11 +5,18 @@ const speed = 25.0
 var target: Node2D
 var offset: Vector2 = Vector2.ZERO
 var separation_force: float = 50
-var hp: float = 1.0
+var max_hp: int = 2
+var hp: int = 2
+
+@onready var hp_progress: ProgressBar = $HpProgress
+var hp_tween: Tween
 
 func _ready() -> void:
 	add_to_group("demons")
 	offset = Vector2(randi_range(-50, 50), randi_range(-50, 50))
+	hp_progress.max_value = max_hp
+	hp_progress.value = hp
+	hp_progress.modulate = Color.TRANSPARENT
 
 func _process(delta: float) -> void:
 	if target:
@@ -43,10 +50,17 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 func has_active_sanctuaries() -> bool:
 	return get_tree().get_nodes_in_group("sanctuaries").size() > 0
 
-func hit(amount: float) -> void:
-	hp -= amount
+func hit(amount: int) -> void:
+	hp = clamp(hp - amount, 0, max_hp)
+	print(hp)
+	hp_progress.value = hp
 	if hp <= 0:
 		_remove()
+	if hp_tween:
+		hp_tween.kill()
+	hp_tween = create_tween()
+	hp_progress.modulate = Color.WHITE
+	hp_tween.tween_property(hp_progress, "modulate", Color.TRANSPARENT, 5.0)
 
 func _remove() -> void:
 	get_parent()._spawn_experience(global_position)

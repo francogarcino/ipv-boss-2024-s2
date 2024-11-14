@@ -27,5 +27,5 @@ func _on_attack_timer_timeout() -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Demon:
 		print("Attacked o:) ")
-		body.hit(1.0)
+		body.hit(2)
 		_on_attack_timer_timeout()
