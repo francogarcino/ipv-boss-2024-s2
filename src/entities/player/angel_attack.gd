@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-signal demonio_eliminado(demon_position)
 signal finalizar_ataque()
 
 @onready var attack_timer: Timer = $AttackTimer
@@ -28,6 +27,5 @@ func _on_attack_timer_timeout() -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Demon:
 		print("Attacked o:) ")
-		body.queue_free()
-		emit_signal("demonio_eliminado", body.global_position)
+		body.hit(1.0)
 		_on_attack_timer_timeout()

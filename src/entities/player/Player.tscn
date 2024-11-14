@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3ebpydlhc0bk"]
+[gd_scene load_steps=7 format=3 uid="uid://c3ebpydlhc0bk"]
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_465p4"]
 [ext_resource type="Texture2D" uid="uid://c7fx673ab0a3i" path="res://assets/textures/player/player.png" id="2_ul2xl"]
 [ext_resource type="PackedScene" uid="uid://b5nhyysvarcyy" path="res://src/entities/player/LinkedAngel.tscn" id="3_uhc4j"]
+[ext_resource type="PackedScene" uid="uid://daw2j8ghd6dlh" path="res://src/entities/player/DefenseAngel.tscn" id="4_jf8xk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0qwr"]
 radius = 12.0
@@ -37,6 +38,9 @@ vframes = 5
 
 [node name="LinkedAngel" parent="." instance=ExtResource("3_uhc4j")]
 position = Vector2(-4, -5)
+
+[node name="DefenseAngel" parent="." instance=ExtResource("4_jf8xk")]
+position = Vector2(7, -5)
 
 [node name="InRangeToLive" type="Area2D" parent="."]
 

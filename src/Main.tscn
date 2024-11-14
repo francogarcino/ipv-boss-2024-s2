@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=19 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://clsfjnskewbkv" path="res://src/entities/enemy/enemy.tscn" id="2_oe0xi"]
@@ -10,11 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://d0xolrof0y750" path="res://src/ui/defeat_menu.tscn" id="4_fcctx"]
 [ext_resource type="PackedScene" uid="uid://bwts5gjgdmn2c" path="res://src/entities/enemy/experience.tscn" id="4_qpus4"]
 [ext_resource type="PackedScene" uid="uid://bwkqub4lys8ib" path="res://src/ui/gui.tscn" id="5_e6htw"]
+[ext_resource type="PackedScene" uid="uid://l4bj5safln1i" path="res://src/entities/angels/defender_angel.tscn" id="5_jd824"]
 [ext_resource type="PackedScene" uid="uid://8ohwt1d3500m" path="res://src/ui/pause_menu.tscn" id="5_qxca1"]
 [ext_resource type="AudioStream" uid="uid://dkcjmnwgbw7vf" path="res://assets/sounds/level_up.wav" id="10_fb3pm"]
 [ext_resource type="PackedScene" uid="uid://dw2shml47fr6p" path="res://src/ui/sanctuary_menu.tscn" id="10_n4q6m"]
 [ext_resource type="Shader" uid="uid://dkbl41be0rf7y" path="res://src/resources/shaders/GodRays.tres" id="12_lavsk"]
 [ext_resource type="AudioStream" uid="uid://bjbkleew7wins" path="res://assets/sounds/resurrection.wav" id="14_g4n3r"]
+[ext_resource type="AudioStream" uid="uid://crly7ivcn3580" path="res://assets/sounds/demon_death.wav" id="16_pkcda"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oej6r"]
 shader = ExtResource("12_lavsk")
@@ -37,6 +39,7 @@ script = ExtResource("1_7xe25")
 enemy_scene = ExtResource("2_oe0xi")
 sanctuary_scene = ExtResource("3_mplx6")
 experience_scene = ExtResource("4_qpus4")
+defender_angel_scene = ExtResource("5_jd824")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -95,9 +98,6 @@ wait_time = 7.0
 [node name="EnemyTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="DebugTimer" type="Timer" parent="."]
-wait_time = 4.5
-
 [node name="LevelUpSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("10_fb3pm")
@@ -108,6 +108,9 @@ process_mode = 3
 stream = ExtResource("14_g4n3r")
 volume_db = -5.0
 
+[node name="DemonDeathSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("16_pkcda")
+
 [connection signal="timeout" from="Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer" to="." method="_on_resurrection_timer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
-[connection signal="timeout" from="DebugTimer" to="." method="_on_debug_timer_timeout"]

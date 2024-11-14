@@ -5,6 +5,7 @@ const speed = 25.0
 var target: Node2D
 var offset: Vector2 = Vector2.ZERO
 var separation_force: float = 50
+var hp: float = 1.0
 
 func _ready() -> void:
 	add_to_group("demons")
@@ -41,3 +42,16 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 
 func has_active_sanctuaries() -> bool:
 	return get_tree().get_nodes_in_group("sanctuaries").size() > 0
+
+func hit(amount: float) -> void:
+	hp -= amount
+	if hp <= 0:
+		_remove()
+
+func _remove() -> void:
+	get_parent()._spawn_experience(global_position)
+	deleted()
+
+func deleted() -> void:
+	get_parent().remove_child(self)
+	queue_free()

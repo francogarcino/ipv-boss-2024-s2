@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5nhyysvarcyy"]
+[gd_scene load_steps=5 format=3 uid="uid://b5nhyysvarcyy"]
 
 [ext_resource type="Texture2D" uid="uid://noo8sl88vp8t" path="res://assets/textures/player/angel.png" id="1_c6840"]
 [ext_resource type="Script" path="res://src/entities/player/linked_angel.gd" id="1_lh5ts"]
 [ext_resource type="PackedScene" uid="uid://bbc5jgt6ofjmd" path="res://src/entities/player/AngelAttack.tscn" id="2_4iuxp"]
-[ext_resource type="AudioStream" uid="uid://crly7ivcn3580" path="res://assets/sounds/demon_death.wav" id="4_0tfij"]
 [ext_resource type="AudioStream" uid="uid://d0vfl2golrmpo" path="res://assets/sounds/angel_attack.wav" id="5_vrufd"]
 
 [node name="LinkedAngel" type="Node2D"]
@@ -16,14 +15,7 @@ rotation = -1.5708
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("1_c6840")
 
-[node name="DemonDeathSound" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("4_0tfij")
-volume_db = -8.0
-
 [node name="AngelAttackSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("5_vrufd")
 volume_db = -5.0
-
-[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

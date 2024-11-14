@@ -3,16 +3,13 @@ class_name Player
 
 signal subir_nivel()
 signal invocar_santuario()
-signal demonio_eliminado(demon_position)
 
 @onready var angel: Node2D = $LinkedAngel
+@onready var defense_angel: DefenseAngel = $DefenseAngel
 @export var speed: float = 150.0
 var projectile_container: Node
 var experience_gained = 0
 var actual_level = 0
-
-func _ready() -> void:
-	angel.demonio_eliminado.connect(_demon_deleted)
 
 func _process_input(delta) -> void:
 	if Input.is_action_just_pressed("angel_attack"):
@@ -48,17 +45,17 @@ func _obtener_mejora() -> void:
 
 func _on_in_range_to_live_body_exited(body: Node2D) -> void:
 	if body is Demon:
-		body.queue_free()
-
-func _demon_deleted(demon_position: Vector2) -> void:
-	emit_signal("demonio_eliminado", demon_position)
+		body.deleted()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Experience:
-		body.queue_free()
+		body._remove()
 		experience_gained += 1
 		if actual_level < 10 && experience_gained == ((actual_level + 1) * 2):
 			_level_up()
+	elif body is DefenderAngel:
+		body._remove()
+		defense_angel.show()
 
 func _level_up() -> void:
 	actual_level += 1

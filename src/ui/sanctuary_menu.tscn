@@ -33,11 +33,13 @@ grow_vertical = 2
 script = ExtResource("1_k03ls")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 0.25098)
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 370.0
 offset_top = 220.0
 offset_right = 710.0

@@ -1,8 +1,5 @@
 extends Node2D
-class_name Sanctuary
-
-func _ready() -> void:
-	add_to_group("sanctuaries")
+class_name DefenderAngel
 
 func _remove() -> void:
 	get_parent().remove_child(self)

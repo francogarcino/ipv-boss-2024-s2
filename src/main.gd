@@ -3,6 +3,7 @@ extends Node
 @export var enemy_scene: PackedScene
 @export var sanctuary_scene: PackedScene
 @export var experience_scene: PackedScene
+@export var defender_angel_scene: PackedScene
 @export var x_size: float 
 @export var y_size: float 
 @onready var player_ref: Node2D = $Environment/Entities/Player
@@ -16,6 +17,9 @@ extends Node
 @onready var resurrection_effect: ColorRect = $Environment/Entities/Player/ResurrectionEffect
 @onready var resurrection_timer: Timer = $Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer
 @onready var resurrection_sound: AudioStreamPlayer2D = $ResurrectionSound
+@onready var demon_death_sound: AudioStreamPlayer2D = $DemonDeathSound
+
+var actual_level = 0
 
 func _ready() -> void:
 	x_size = float(get_viewport().size.x / 3)
@@ -23,7 +27,6 @@ func _ready() -> void:
 	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
 	player_ref.invocar_santuario.connect(_spawn_santuario)
-	player_ref.demonio_eliminado.connect(_spawn_experience)
 	main_menu.start.connect(_start)
 	improvement_menu.mejora_angel.connect(_on_angel_mejorado)
 	improvement_menu.mejora_medium.connect(_on_medium_mejorado)
@@ -69,12 +72,6 @@ func _get_relative_direction() -> Vector2:
 	
 	return Vector2(relative_x, relative_y)
 
-func _on_debug_timer_timeout() -> void:
-	# delete the enemies to clear the map - ONLY DEBUG
-	var enemies = get_tree().get_nodes_in_group("demons")
-	for entity in enemies:
-		entity.queue_free()
-
 func _player_defeated() -> void:
 	pause_menu.is_accepted = false
 	defeat_menu._show()
@@ -86,10 +83,11 @@ func _destroy_sanctuary() -> void:
 	resurrection_sound.play()
 	resurrection_timer.start()
 	get_tree().paused = true
-	sanctuary.queue_free()
+	sanctuary._remove()
 	gui._lose_life()
 
 func _on_mejora_conseguida() -> void:
+	actual_level += 1
 	pause_menu.is_accepted = false
 	level_up_sound.play()
 	improvement_menu._show()
@@ -104,15 +102,26 @@ func _on_medium_mejorado() -> void:
 	player_ref._obtener_mejora()
 	
 func _spawn_santuario() -> void:
+	actual_level += 1
 	var sanctuary = sanctuary_scene.instantiate()
 	sanctuary.position = player_ref.position
 	sanctuary.z_index = -1
 	gui._add_life()
 	add_child(sanctuary)
-	sanctuary_menu._show()
 	gui._add_lvl()
+	if actual_level == 3:
+		spawn_angel_defender()
+	sanctuary_menu._show()
+
+func spawn_angel_defender() -> void:
+	var defender_angel = defender_angel_scene.instantiate()
+	var distance_to_player = Vector2(x_size + randi_range(0, 320), y_size + randi_range(0, 80))
+	defender_angel.position = player_ref.position + distance_to_player
+	defender_angel.z_index = -1
+	add_child(defender_angel)
 
 func _spawn_experience(demon_position: Vector2) -> void:
+	demon_death_sound.play()
 	var experience = experience_scene.instantiate()
 	experience.position = demon_position
 	experience.z_index = -1
