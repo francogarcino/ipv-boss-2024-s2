@@ -93,6 +93,7 @@ func _on_mejora_conseguida() -> void:
 	pause_menu.is_accepted = false
 	level_up_sound.play()
 	improvement_menu._show()
+	gui._add_lvl()
 
 func _on_angel_mejorado() -> void:
 	pause_menu.is_accepted = true
@@ -109,6 +110,7 @@ func _spawn_santuario() -> void:
 	gui._add_life()
 	add_child(sanctuary)
 	sanctuary_menu._show()
+	gui._add_lvl()
 
 func _spawn_experience(demon_position: Vector2) -> void:
 	var experience = experience_scene.instantiate()

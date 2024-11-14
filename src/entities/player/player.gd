@@ -57,10 +57,13 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Experience:
 		body.queue_free()
 		experience_gained += 1
-		if experience_gained == ((actual_level + 1) * 2):
-			actual_level += 1
-			if actual_level % 3 == 0:
-				emit_signal("invocar_santuario")
-			else:
-				emit_signal("subir_nivel")
-			print("level_up: ", actual_level)
+		if actual_level < 10 && experience_gained == ((actual_level + 1) * 2):
+			_level_up()
+
+func _level_up() -> void:
+	actual_level += 1
+	if actual_level % 3 == 0:
+		emit_signal("invocar_santuario")
+	else:
+		emit_signal("subir_nivel")
+	print("level_up: ", actual_level)
