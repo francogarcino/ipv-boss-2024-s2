@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://do41oiqjuue1t"]
+[gd_scene load_steps=6 format=3 uid="uid://do41oiqjuue1t"]
 
 [ext_resource type="FontFile" uid="uid://b2abx8m8v7p3f" path="res://assets/fonts/Default-Big.tres" id="1_07x4s"]
 [ext_resource type="Script" path="res://src/ui/main_menu.gd" id="1_pxw7g"]
 [ext_resource type="PackedScene" uid="uid://dvh8x27u662eu" path="res://src/ui/options_menu.tscn" id="3_243n7"]
+[ext_resource type="AudioStream" uid="uid://dfj0bvxy0831p" path="res://assets/sounds/game_theme.wav" id="4_qfe1p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr7kv"]
 bg_color = Color(0.403922, 0.658824, 0.603922, 1)
@@ -67,6 +68,10 @@ text = "Salir"
 
 [node name="OptionsMenu" parent="." instance=ExtResource("3_243n7")]
 layout_mode = 1
+
+[node name="GameSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("4_qfe1p")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="OptionsMenu" method="show"]
