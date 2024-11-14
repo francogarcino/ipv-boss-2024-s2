@@ -116,7 +116,7 @@ func _spawn_santuario() -> void:
 func spawn_angel_defender() -> void:
 	var defender_angel = defender_angel_scene.instantiate()
 	var distance_to_player = Vector2(x_size + randi_range(0, 320), y_size + randi_range(0, 80))
-	defender_angel.position = player_ref.position + distance_to_player
+	defender_angel.position = player_ref.position + (distance_to_player * _get_relative_direction())
 	defender_angel.z_index = -1
 	add_child(defender_angel)
 

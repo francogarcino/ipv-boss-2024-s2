@@ -23,12 +23,10 @@ func attack() -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Demon:
 		demons_in_area.push_back(body)
-		print(demons_in_area)
 
 func _on_hitbox_body_exited(body: Node2D) -> void:
 	if body is Demon:
 		demons_in_area.pop_at(demons_in_area.find(body))
-		print(demons_in_area)
 
 func _on_attack_timer_timeout() -> void:
 	attack_timer.stop()

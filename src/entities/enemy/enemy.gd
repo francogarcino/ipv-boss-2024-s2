@@ -52,7 +52,6 @@ func has_active_sanctuaries() -> bool:
 
 func hit(amount: int) -> void:
 	hp = clamp(hp - amount, 0, max_hp)
-	print(hp)
 	hp_progress.value = hp
 	if hp <= 0:
 		_remove()
