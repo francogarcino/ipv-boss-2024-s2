@@ -43,7 +43,6 @@ experience_scene = ExtResource("4_qpus4")
 [node name="MainMenu" parent="UILayer" instance=ExtResource("4_dlo3d")]
 
 [node name="ImprovementMenu" parent="UILayer" instance=ExtResource("3_jiy77")]
-process_mode = 3
 
 [node name="DefeatMenu" parent="UILayer" instance=ExtResource("4_fcctx")]
 

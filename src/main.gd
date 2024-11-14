@@ -89,7 +89,6 @@ func _destroy_sanctuary() -> void:
 func _on_mejora_conseguida() -> void:
 	pause_menu.is_accepted = false
 	level_up_sound.play()
-	get_tree().paused = true
 	improvement_menu._show()
 
 func _on_angel_mejorado() -> void:

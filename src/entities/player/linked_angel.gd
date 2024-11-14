@@ -12,10 +12,6 @@ signal demonio_eliminado(demon_position)
 var attacking: bool = false 
 var container: Node2D
 
-func _ready() -> void:
-	demon_death_sound.process_mode = Node.PROCESS_MODE_ALWAYS
-	angel_attack_sound.process_mode = Node.PROCESS_MODE_ALWAYS
-
 func attackAt(position: Vector2) -> void:
 	if(!attacking):
 		attacking = true

@@ -61,5 +61,6 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 			actual_level += 1
 			if actual_level % 3 == 0:
 				emit_signal("invocar_santuario")
+			else:
+				emit_signal("subir_nivel")
 			print("level_up: ", actual_level)
-			emit_signal("subir_nivel")

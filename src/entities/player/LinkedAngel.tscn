@@ -17,10 +17,12 @@ scale = Vector2(0.45, 0.45)
 texture = ExtResource("1_c6840")
 
 [node name="DemonDeathSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("4_0tfij")
 volume_db = -8.0
 
 [node name="AngelAttackSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("5_vrufd")
 volume_db = -5.0
 
