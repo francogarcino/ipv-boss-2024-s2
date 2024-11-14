@@ -14,6 +14,7 @@ extends Node
 @onready var level_up_sound: AudioStreamPlayer2D = $LevelUpSound
 @onready var resurrection_effect: ColorRect = $Environment/Entities/Player/ResurrectionEffect
 @onready var resurrection_timer: Timer = $Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer
+@onready var resurrection_sound: AudioStreamPlayer2D = $ResurrectionSound
 
 func _ready() -> void:
 	x_size = float(get_viewport().size.x / 3)
@@ -81,6 +82,7 @@ func _destroy_sanctuary() -> void:
 	pause_menu.is_accepted = false
 	var sanctuary = get_tree().get_nodes_in_group("sanctuaries").pop_at(0)
 	resurrection_effect.show()
+	resurrection_sound.play()
 	resurrection_timer.start()
 	get_tree().paused = true
 	sanctuary.queue_free()

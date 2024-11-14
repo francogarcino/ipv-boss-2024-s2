@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=16 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://clsfjnskewbkv" path="res://src/entities/enemy/enemy.tscn" id="2_oe0xi"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://8ohwt1d3500m" path="res://src/ui/pause_menu.tscn" id="5_qxca1"]
 [ext_resource type="AudioStream" uid="uid://dkcjmnwgbw7vf" path="res://assets/sounds/level_up.wav" id="10_fb3pm"]
 [ext_resource type="Shader" uid="uid://dkbl41be0rf7y" path="res://src/resources/shaders/GodRays.tres" id="12_lavsk"]
+[ext_resource type="AudioStream" uid="uid://bjbkleew7wins" path="res://assets/sounds/resurrection.wav" id="14_g4n3r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oej6r"]
 shader = ExtResource("12_lavsk")
@@ -86,6 +87,7 @@ scale = Vector2(3, 3)
 
 [node name="ResurrectionTimer" type="Timer" parent="Environment/Entities/Player/ResurrectionEffect"]
 process_mode = 3
+wait_time = 7.0
 
 [node name="EnemyTimer" type="Timer" parent="."]
 autostart = true
@@ -96,6 +98,11 @@ wait_time = 4.5
 [node name="LevelUpSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("10_fb3pm")
+volume_db = -5.0
+
+[node name="ResurrectionSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("14_g4n3r")
 volume_db = -5.0
 
 [connection signal="timeout" from="Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer" to="." method="_on_resurrection_timer_timeout"]
