@@ -30,6 +30,21 @@ shape = SubResource("CircleShape2D_imaft")
 [node name="AngelAttackSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -9)
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-9, -15)
+emitting = false
+amount = 1600
+lifetime = 0.57
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+color = Color(0.141176, 1, 0.156863, 1)
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

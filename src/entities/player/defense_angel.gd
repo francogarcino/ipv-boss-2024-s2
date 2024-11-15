@@ -3,6 +3,7 @@ class_name DefenseAngel
 
 @onready var attack_timer: Timer = $AttackTimer
 @onready var angel_attack_sound: AudioStreamPlayer2D = $AngelAttackSound
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 
 var demons_in_area: Array = []
 var attacking: bool = false
@@ -17,6 +18,7 @@ func _physics_process(delta: float) -> void:
 		attack_timer.start()
 
 func attack() -> void:
+	cpu_particles_2d.restart()
 	for demon in demons_in_area:
 		demon.hit(1)
 		var direction = (demon.global_position - global_position).normalized()
