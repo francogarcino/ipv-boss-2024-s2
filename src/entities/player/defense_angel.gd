@@ -22,15 +22,6 @@ func _physics_process(delta: float) -> void:
 func set_container(container: Node2D) -> void:
 	self.container = container
 
-#func attack() -> void:
-#	var angel_shock_wave_instance = angel_shock_wave_scene.instantiate()
-#	get_parent().add_child(angel_shock_wave_instance)
-#	angel_shock_wave_instance.initialize(global_position)
-	#for demon in demons_in_area:
-	#	demon.hit(1)
-	#	var direction = (demon.global_position - global_position).normalized()
-	#	demon.push_velocity = direction * 40.0
-
 func _on_attack_timer_timeout() -> void:
 	attack_timer.stop()
 	attacking = false
