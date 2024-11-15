@@ -1,36 +1,35 @@
 extends Node2D
 class_name DefenseAngel
 
+@export var angel_shock_wave_scene: PackedScene
 @onready var attack_timer: Timer = $AttackTimer
 @onready var angel_attack_sound: AudioStreamPlayer2D = $AngelAttackSound
-@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 
-var demons_in_area: Array = []
 var attacking: bool = false
+var container: Node2D
 
 func _ready() -> void:
 	hide()
-	
+
 func _physics_process(delta: float) -> void:
-	if (visible && !attacking && !demons_in_area.is_empty()):
+	if (visible && !attacking):
 		attacking = true
-		attack()
+		var angel_shock_wave_instance = angel_shock_wave_scene.instantiate()
+		container.add_child(angel_shock_wave_instance)
+		angel_shock_wave_instance.initialize(container, global_position)
 		attack_timer.start()
 
-func attack() -> void:
-	cpu_particles_2d.restart()
-	for demon in demons_in_area:
-		demon.hit(1)
-		var direction = (demon.global_position - global_position).normalized()
-		demon.push_velocity = direction * 40.0
+func set_container(container: Node2D) -> void:
+	self.container = container
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body is Demon:
-		demons_in_area.push_back(body)
-
-func _on_hitbox_body_exited(body: Node2D) -> void:
-	if body is Demon:
-		demons_in_area.pop_at(demons_in_area.find(body))
+#func attack() -> void:
+#	var angel_shock_wave_instance = angel_shock_wave_scene.instantiate()
+#	get_parent().add_child(angel_shock_wave_instance)
+#	angel_shock_wave_instance.initialize(global_position)
+	#for demon in demons_in_area:
+	#	demon.hit(1)
+	#	var direction = (demon.global_position - global_position).normalized()
+	#	demon.push_velocity = direction * 40.0
 
 func _on_attack_timer_timeout() -> void:
 	attack_timer.stop()

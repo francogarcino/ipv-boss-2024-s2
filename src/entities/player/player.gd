@@ -55,6 +55,8 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 			_level_up()
 	elif body is DefenderAngel:
 		body._remove()
+		if (defense_angel.container == null):
+			defense_angel.set_container(projectile_container)
 		defense_angel.show()
 
 func _level_up() -> void:
