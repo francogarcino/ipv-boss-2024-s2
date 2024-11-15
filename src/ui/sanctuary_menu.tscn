@@ -77,6 +77,25 @@ Tienes una vida extra!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SanctuaryAndAngelLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 45.0
+offset_right = -2.0
+offset_bottom = 217.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_38exc")
+theme_override_font_sizes/font_size = 31
+text = "Un santuario ha aparecido!
+Tienes una vida extra!
+Un angel ha aparecido!
+Encuentralo y hazte 
+mas fuerte!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ExitButton" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 19.845

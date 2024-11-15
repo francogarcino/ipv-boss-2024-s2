@@ -30,7 +30,7 @@ func _process_input(delta) -> void:
 		velocity.y -= 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		
+	
 	position += velocity * delta
 
 func _physics_process(delta: float) -> void:

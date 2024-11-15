@@ -111,7 +111,7 @@ func _spawn_santuario() -> void:
 	gui._add_lvl()
 	if actual_level == 3:
 		spawn_angel_defender()
-	sanctuary_menu._show()
+	sanctuary_menu._show(actual_level)
 
 func spawn_angel_defender() -> void:
 	var defender_angel = defender_angel_scene.instantiate()
