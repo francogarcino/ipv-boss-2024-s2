@@ -7,6 +7,8 @@ var offset: Vector2 = Vector2.ZERO
 var separation_force: float = 50
 var max_hp: int = 2
 var hp: int = 2
+var push_velocity = Vector2.ZERO
+var push_decay = 0.2
 
 @onready var hp_progress: ProgressBar = $HpProgress
 var hp_tween: Tween
@@ -27,6 +29,9 @@ func _process(delta: float) -> void:
 		var separation = calculate_separation()
 		if separation.length() > 0:
 			velocity += separation.normalized() * speed * 0.5
+		
+		velocity += push_velocity
+		push_velocity = push_velocity.move_toward(Vector2.ZERO, push_decay)
 		
 		position += velocity * delta
 

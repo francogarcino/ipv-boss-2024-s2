@@ -19,6 +19,8 @@ func _physics_process(delta: float) -> void:
 func attack() -> void:
 	for demon in demons_in_area:
 		demon.hit(1)
+		var direction = (demon.global_position - global_position).normalized()
+		demon.push_velocity = direction * 40.0
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Demon:
