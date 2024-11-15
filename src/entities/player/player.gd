@@ -44,12 +44,12 @@ func _obtener_mejora() -> void:
 	print("Medium speed increased!")
 
 func _on_in_range_to_live_body_exited(body: Node2D) -> void:
-	if body is Demon:
+	if body is Demon || body is Experience:
 		body.deleted()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Experience:
-		body._remove()
+		body.deleted()
 		experience_gained += 1
 		if actual_level < 10 && experience_gained == ((actual_level + 1) * 2):
 			_level_up()

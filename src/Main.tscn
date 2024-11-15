@@ -101,16 +101,19 @@ autostart = true
 [node name="LevelUpSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("10_fb3pm")
-volume_db = -5.0
+volume_db = 5.0
+max_distance = 1e+07
 
 [node name="ResurrectionSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("14_g4n3r")
-volume_db = -5.0
+volume_db = 7.0
+max_distance = 1e+07
 
 [node name="DemonDeathSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("16_pkcda")
+max_distance = 1e+07
 
 [connection signal="timeout" from="Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer" to="." method="_on_resurrection_timer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

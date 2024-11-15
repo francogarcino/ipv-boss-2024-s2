@@ -72,6 +72,7 @@ layout_mode = 1
 [node name="GameSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("4_qfe1p")
+max_distance = 1e+07
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="OptionsMenu" method="show"]

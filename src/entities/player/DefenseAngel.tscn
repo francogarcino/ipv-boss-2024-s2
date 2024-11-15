@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://daw2j8ghd6dlh"]
+[gd_scene load_steps=5 format=3 uid="uid://daw2j8ghd6dlh"]
 
 [ext_resource type="Script" path="res://src/entities/player/defense_angel.gd" id="1_kj1xo"]
 [ext_resource type="Texture2D" uid="uid://noo8sl88vp8t" path="res://assets/textures/player/angel.png" id="1_v84i1"]
 [ext_resource type="PackedScene" uid="uid://c0nund8urr35h" path="res://src/entities/player/shock_wave.tscn" id="2_sydh4"]
+[ext_resource type="AudioStream" uid="uid://dt4txgo8t5kvl" path="res://assets/sounds/shock_wave.wav" id="4_imqeu"]
 
 [node name="DefenseAngel" type="Node2D"]
 script = ExtResource("1_kj1xo")
@@ -21,5 +22,6 @@ texture = ExtResource("1_v84i1")
 
 [node name="AngelAttackSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -9)
+stream = ExtResource("4_imqeu")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

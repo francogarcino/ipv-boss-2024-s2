@@ -102,6 +102,7 @@ func _on_medium_mejorado() -> void:
 	player_ref._obtener_mejora()
 	
 func _spawn_santuario() -> void:
+	level_up_sound.play()
 	actual_level += 1
 	var sanctuary = sanctuary_scene.instantiate()
 	sanctuary.position = player_ref.position

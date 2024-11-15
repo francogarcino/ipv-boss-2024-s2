@@ -18,6 +18,7 @@ func _physics_process(delta: float) -> void:
 		container.add_child(angel_shock_wave_instance)
 		angel_shock_wave_instance.initialize(container, global_position)
 		attack_timer.start()
+		angel_attack_sound.play()
 
 func set_container(container: Node2D) -> void:
 	self.container = container
