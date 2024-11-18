@@ -21,7 +21,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_play_animation("walk")
 	if target:
-		#var velocity = Vector2.ZERO
 		var target_position = target.global_position
 		velocity = (target_position - global_position).normalized() * speed
 		

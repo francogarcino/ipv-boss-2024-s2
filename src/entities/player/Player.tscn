@@ -51,7 +51,6 @@ position = Vector2(7, -5)
 [node name="InRangeToLive" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InRangeToLive"]
-visible = false
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_4t5gl")
 debug_color = Color(0.866743, 0.317125, 0.420219, 0.42)

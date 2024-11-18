@@ -45,7 +45,7 @@ func _on_enemy_timer_timeout() -> void:
 
 func _spawn_enemies() -> void:
 	var enemies = get_tree().get_nodes_in_group("demons")
-	if (enemies.size() < 200):
+	if (enemies.size() < (actual_level + 1) * 15):
 		if (player_ref != null):
 			for i in range(0, 10):
 				var enemy = enemy_scene.instantiate()
