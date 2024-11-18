@@ -1,26 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3ebpydlhc0bk"]
+[gd_scene load_steps=8 format=3 uid="uid://c3ebpydlhc0bk"]
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_465p4"]
 [ext_resource type="Texture2D" uid="uid://c7fx673ab0a3i" path="res://assets/textures/player/player.png" id="2_ul2xl"]
 [ext_resource type="PackedScene" uid="uid://b5nhyysvarcyy" path="res://src/entities/player/LinkedAngel.tscn" id="3_uhc4j"]
 [ext_resource type="PackedScene" uid="uid://daw2j8ghd6dlh" path="res://src/entities/player/DefenseAngel.tscn" id="4_jf8xk"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivaca"]
+radius = 16.8612
+height = 53.3333
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0qwr"]
-radius = 12.0
+radius = 11.0
 height = 41.0935
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4t5gl"]
 radius = 1000.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_465p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -20)
 scale = Vector2(0.771, 0.75)
-shape = SubResource("CapsuleShape2D_p0qwr")
+shape = SubResource("CapsuleShape2D_ivaca")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(-1.90735e-06, -20)
@@ -45,6 +51,7 @@ position = Vector2(7, -5)
 [node name="InRangeToLive" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InRangeToLive"]
+visible = false
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_4t5gl")
 debug_color = Color(0.866743, 0.317125, 0.420219, 0.42)

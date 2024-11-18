@@ -3,7 +3,6 @@ class_name Demon
 
 const speed = 25.0
 var target: Node2D
-var separation_force: float = 50
 var max_hp: int = 2
 var hp: int = 2
 var push_velocity = Vector2.ZERO
@@ -22,27 +21,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_play_animation("walk")
 	if target:
-		var velocity = Vector2.ZERO
+		#var velocity = Vector2.ZERO
 		var target_position = target.global_position
 		velocity = (target_position - global_position).normalized() * speed
-
-		var separation = calculate_separation()
-		if separation.length() > 0:
-			velocity += separation.normalized() * speed * 0.5
 		
 		velocity += push_velocity
 		push_velocity = push_velocity.move_toward(Vector2.ZERO, push_decay)
 		
-		position += velocity * delta
-
-func calculate_separation() -> Vector2:
-	var separation = Vector2.ZERO
-	for demon in get_tree().get_nodes_in_group("demons"):
-		if demon != self:
-			var distance = global_position.distance_to(demon.global_position)
-			if distance < separation_force:
-				separation -= (demon.global_position - global_position).normalized() / distance
-	return separation
+		move_and_slide()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Player:

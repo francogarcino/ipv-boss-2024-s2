@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ch44ftk42yunv" path="res://assets/textures/enemy/demon_spritesheet.png" id="2_gnajw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkkp8"]
-height = 22.0
+radius = 8.0
+height = 21.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mjw7"]
 bg_color = Color(0, 0, 0, 0.301961)
@@ -54,7 +55,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3q7wa"]
-radius = 10.725
+radius = 10.4529
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_3mo5i")
@@ -98,8 +99,7 @@ libraries = {
 scale = Vector2(1.05234, 1.01755)
 
 [node name="BodyShape" type="CollisionShape2D" parent="DetectionArea"]
-visible = false
-position = Vector2(-1, -12)
+position = Vector2(-0.950263, -12.7758)
 shape = SubResource("CircleShape2D_3q7wa")
 debug_color = Color(1, 0.446084, 0.433357, 0.42)
 
