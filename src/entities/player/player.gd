@@ -44,7 +44,7 @@ func _obtener_mejora() -> void:
 	print("Medium speed increased!")
 
 func _on_in_range_to_live_body_exited(body: Node2D) -> void:
-	if body is Demon || body is Experience:
+	if body is Demon:
 		body.deleted()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
