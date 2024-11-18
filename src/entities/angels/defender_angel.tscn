@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://l4bj5safln1i"]
 
-[ext_resource type="Texture2D" uid="uid://noo8sl88vp8t" path="res://assets/textures/player/angel.png" id="1_b6hej"]
 [ext_resource type="Script" path="res://src/entities/angels/defender_angel.gd" id="1_tl7hd"]
+[ext_resource type="Texture2D" uid="uid://ddcv6sjgwm3rh" path="res://assets/textures/player/blue_fire_sheet.png" id="2_a1ush"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rmuoc"]
 radius = 9.0
@@ -10,13 +10,14 @@ height = 38.0
 [node name="DefenderAngel" type="CharacterBody2D"]
 script = ExtResource("1_tl7hd")
 
-[node name="Body2" type="Sprite2D" parent="."]
+[node name="Body" type="Sprite2D" parent="."]
 modulate = Color(0.85098, 1, 0.317647, 0.690196)
 self_modulate = Color(1, 0.913725, 0.278431, 1)
 position = Vector2(1.06581e-14, -22)
-rotation = -1.5708
-texture = ExtResource("1_b6hej")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_a1ush")
+hframes = 63
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -19)
+position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_rmuoc")

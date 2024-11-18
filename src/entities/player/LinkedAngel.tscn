@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5nhyysvarcyy"]
 
-[ext_resource type="Texture2D" uid="uid://noo8sl88vp8t" path="res://assets/textures/player/angel.png" id="1_c6840"]
 [ext_resource type="Script" path="res://src/entities/player/linked_angel.gd" id="1_lh5ts"]
 [ext_resource type="PackedScene" uid="uid://bbc5jgt6ofjmd" path="res://src/entities/player/AngelAttack.tscn" id="2_4iuxp"]
+[ext_resource type="Texture2D" uid="uid://ddcv6sjgwm3rh" path="res://assets/textures/player/blue_fire_sheet.png" id="3_ujnvv"]
 [ext_resource type="AudioStream" uid="uid://d0vfl2golrmpo" path="res://assets/sounds/angel_attack.wav" id="5_vrufd"]
 
 [node name="LinkedAngel" type="Node2D"]
@@ -11,9 +11,10 @@ angel_projectile_scene = ExtResource("2_4iuxp")
 
 [node name="Body" type="Sprite2D" parent="."]
 position = Vector2(-1.06581e-14, -10)
-rotation = -1.5708
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("1_c6840")
+rotation = -6.28319
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_ujnvv")
+hframes = 63
 
 [node name="AngelAttackSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3

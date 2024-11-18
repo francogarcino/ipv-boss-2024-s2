@@ -11,6 +11,7 @@ var push_velocity = Vector2.ZERO
 var push_decay = 0.2
 
 @onready var hp_progress: ProgressBar = $HpProgress
+@onready var demon_animations: AnimationPlayer = $DemonAnimations
 var hp_tween: Tween
 
 func _ready() -> void:
@@ -21,6 +22,7 @@ func _ready() -> void:
 	hp_progress.modulate = Color.TRANSPARENT
 
 func _process(delta: float) -> void:
+	_play_animation("walk")
 	if target:
 		var velocity = Vector2.ZERO
 		var target_position = target.global_position + offset
@@ -73,3 +75,7 @@ func _remove() -> void:
 func deleted() -> void:
 	get_parent().remove_child(self)
 	queue_free()
+
+func _play_animation(animation: String) -> void:
+	if demon_animations.has_animation(animation):
+		demon_animations.play(animation)
