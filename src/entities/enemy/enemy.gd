@@ -3,7 +3,6 @@ class_name Demon
 
 const speed = 25.0
 var target: Node2D
-var offset: Vector2 = Vector2.ZERO
 var separation_force: float = 50
 var max_hp: int = 2
 var hp: int = 2
@@ -16,7 +15,6 @@ var hp_tween: Tween
 
 func _ready() -> void:
 	add_to_group("demons")
-	offset = Vector2(randi_range(-50, 50), randi_range(-50, 50))
 	hp_progress.max_value = max_hp
 	hp_progress.value = hp
 	hp_progress.modulate = Color.TRANSPARENT
@@ -25,7 +23,7 @@ func _process(delta: float) -> void:
 	_play_animation("walk")
 	if target:
 		var velocity = Vector2.ZERO
-		var target_position = target.global_position + offset
+		var target_position = target.global_position
 		velocity = (target_position - global_position).normalized() * speed
 
 		var separation = calculate_separation()
