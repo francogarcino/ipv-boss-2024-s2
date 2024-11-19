@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=22 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://dx3mubkbud77a" path="res://src/entities/demons/basic_demon.tscn" id="2_ragoi"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cclywu680fhgs" path="res://src/entities/demons/fast_demon.tscn" id="3_phru2"]
 [ext_resource type="PackedScene" uid="uid://do41oiqjuue1t" path="res://src/ui/main_menu.tscn" id="4_dlo3d"]
 [ext_resource type="PackedScene" uid="uid://d0xolrof0y750" path="res://src/ui/defeat_menu.tscn" id="4_fcctx"]
+[ext_resource type="PackedScene" uid="uid://10aa0cu8r2c7" path="res://src/entities/demons/heavy_demon.tscn" id="4_mj5r6"]
 [ext_resource type="PackedScene" uid="uid://bwts5gjgdmn2c" path="res://src/entities/experience/experience.tscn" id="4_qpus4"]
 [ext_resource type="PackedScene" uid="uid://bwkqub4lys8ib" path="res://src/ui/gui.tscn" id="5_e6htw"]
 [ext_resource type="PackedScene" uid="uid://l4bj5safln1i" path="res://src/entities/angels/defender_angel.tscn" id="5_jd824"]
@@ -40,6 +41,7 @@ shader_parameter/seed = 5.0
 script = ExtResource("1_7xe25")
 basic_demon_scene = ExtResource("2_ragoi")
 fast_demon_scene = ExtResource("3_phru2")
+heavy_demon_scene = ExtResource("4_mj5r6")
 sanctuary_scene = ExtResource("3_mplx6")
 experience_scene = ExtResource("4_qpus4")
 defender_angel_scene = ExtResource("5_jd824")

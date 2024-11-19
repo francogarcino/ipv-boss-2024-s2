@@ -14,7 +14,8 @@ var hp_tween: Tween
 
 func _ready() -> void:
 	add_to_group("demons")
-	assign_hp()
+	hp_progress.max_value = hp
+	hp_progress.value = hp
 	hp_progress.modulate = Color.TRANSPARENT
 
 func initialize(speed: float, target: Node2D, hp: int, spawn_position: Vector2) -> void:
@@ -23,11 +24,6 @@ func initialize(speed: float, target: Node2D, hp: int, spawn_position: Vector2) 
 	self.max_hp = hp
 	self.hp = hp
 	position = spawn_position
-	assign_hp()
-
-func assign_hp() -> void:
-	hp_progress.max_value = hp
-	hp_progress.value = hp
 
 func _process(delta: float) -> void:
 	_play_animation("walk")
