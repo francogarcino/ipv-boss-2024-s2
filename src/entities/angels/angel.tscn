@@ -3,9 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://ddcv6sjgwm3rh" path="res://assets/textures/player/blue_fire_sheet.png" id="1_5me4k"]
 
 [node name="Angel" type="Node2D"]
+position = Vector2(0, -10)
 
 [node name="Body" type="Sprite2D" parent="."]
-position = Vector2(-1.06581e-14, -10)
+position = Vector2(-5.04871e-29, -4.76837e-07)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_5me4k")
 hframes = 63

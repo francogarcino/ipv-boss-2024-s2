@@ -59,12 +59,12 @@ libraries = {
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="BodyCollider" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-2, -4)
+position = Vector2(1, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_jgjiq")
 
 [node name="Body" type="Sprite2D" parent="."]
-position = Vector2(-3, -4)
+position = Vector2(2.84217e-14, -4.76837e-07)
 rotation = -1.5708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_c1e23")
@@ -73,17 +73,17 @@ hframes = 63
 [node name="Raycasts" type="Node2D" parent="."]
 
 [node name="RayCast2D" type="RayCast2D" parent="Raycasts"]
-position = Vector2(5.5, -1)
-rotation = -1.5708
+position = Vector2(11, 3)
+rotation = 4.71239
 target_position = Vector2(0, 1)
 
 [node name="RayCast2D2" type="RayCast2D" parent="Raycasts"]
-position = Vector2(5.5, -4)
+position = Vector2(11, 0)
 rotation = 4.71239
 target_position = Vector2(0, 1)
 
 [node name="RayCast2D3" type="RayCast2D" parent="Raycasts"]
-position = Vector2(5.5, -7)
+position = Vector2(11, -3)
 rotation = 4.71239
 target_position = Vector2(0, 1)
 

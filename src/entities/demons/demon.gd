@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Demon
 
-const speed = 25.0
+var speed: float = 25.0
 var target: Node2D
 var max_hp: int = 2
 var hp: int = 2
@@ -14,9 +14,20 @@ var hp_tween: Tween
 
 func _ready() -> void:
 	add_to_group("demons")
-	hp_progress.max_value = max_hp
-	hp_progress.value = hp
+	assign_hp()
 	hp_progress.modulate = Color.TRANSPARENT
+
+func initialize(speed: float, target: Node2D, hp: int, spawn_position: Vector2) -> void:
+	self.speed = speed
+	self.target = target
+	self.max_hp = hp
+	self.hp = hp
+	position = spawn_position
+	assign_hp()
+
+func assign_hp() -> void:
+	hp_progress.max_value = hp
+	hp_progress.value = hp
 
 func _process(delta: float) -> void:
 	_play_animation("walk")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=21 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://dx3mubkbud77a" path="res://src/entities/demons/basic_demon.tscn" id="2_ragoi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c52g7lqluxqe4" path="res://assets/textures/background/background.png" id="3_fq2yd"]
 [ext_resource type="PackedScene" uid="uid://sq0noqlk8y6y" path="res://src/ui/improvements_menu.tscn" id="3_jiy77"]
 [ext_resource type="PackedScene" uid="uid://r3ujw45meqcm" path="res://src/entities/sanctuary/Sanctuary.tscn" id="3_mplx6"]
+[ext_resource type="PackedScene" uid="uid://cclywu680fhgs" path="res://src/entities/demons/fast_demon.tscn" id="3_phru2"]
 [ext_resource type="PackedScene" uid="uid://do41oiqjuue1t" path="res://src/ui/main_menu.tscn" id="4_dlo3d"]
 [ext_resource type="PackedScene" uid="uid://d0xolrof0y750" path="res://src/ui/defeat_menu.tscn" id="4_fcctx"]
 [ext_resource type="PackedScene" uid="uid://bwts5gjgdmn2c" path="res://src/entities/experience/experience.tscn" id="4_qpus4"]
@@ -17,6 +18,7 @@
 [ext_resource type="Shader" uid="uid://dkbl41be0rf7y" path="res://src/resources/shaders/GodRays.tres" id="12_lavsk"]
 [ext_resource type="AudioStream" uid="uid://bjbkleew7wins" path="res://assets/sounds/resurrection.wav" id="14_g4n3r"]
 [ext_resource type="AudioStream" uid="uid://crly7ivcn3580" path="res://assets/sounds/demon_death.wav" id="16_pkcda"]
+[ext_resource type="AudioStream" uid="uid://dfj0bvxy0831p" path="res://assets/sounds/game_theme.wav" id="19_eiq6o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oej6r"]
 shader = ExtResource("12_lavsk")
@@ -36,7 +38,8 @@ shader_parameter/seed = 5.0
 
 [node name="Main" type="Node"]
 script = ExtResource("1_7xe25")
-demon_scene = ExtResource("2_ragoi")
+basic_demon_scene = ExtResource("2_ragoi")
+fast_demon_scene = ExtResource("3_phru2")
 sanctuary_scene = ExtResource("3_mplx6")
 experience_scene = ExtResource("4_qpus4")
 defender_angel_scene = ExtResource("5_jd824")
@@ -113,6 +116,11 @@ max_distance = 1e+07
 [node name="DemonDeathSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("16_pkcda")
+max_distance = 1e+07
+
+[node name="GameSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("19_eiq6o")
 max_distance = 1e+07
 
 [connection signal="timeout" from="Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer" to="." method="_on_resurrection_timer_timeout"]

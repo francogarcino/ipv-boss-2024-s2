@@ -45,11 +45,11 @@ hframes = 9
 vframes = 5
 
 [node name="LinkedAngel" parent="." instance=ExtResource("3_uhc4j")]
-position = Vector2(-4, -5)
+position = Vector2(-4, -15)
 angel_projectile_scene = ExtResource("4_sc615")
 
 [node name="DefenseAngel" parent="." instance=ExtResource("4_jf8xk")]
-position = Vector2(7, -5)
+position = Vector2(7, -15)
 angel_shock_wave_scene = ExtResource("6_0h2ad")
 
 [node name="InRangeToLive" type="Area2D" parent="."]

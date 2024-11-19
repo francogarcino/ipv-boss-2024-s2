@@ -1,6 +1,7 @@
 extends Node
 
-@export var demon_scene: PackedScene
+@export var basic_demon_scene: PackedScene
+@export var fast_demon_scene: PackedScene
 @export var sanctuary_scene: PackedScene
 @export var experience_scene: PackedScene
 @export var defender_angel_scene: PackedScene
@@ -18,6 +19,7 @@ extends Node
 @onready var resurrection_timer: Timer = $Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer
 @onready var resurrection_sound: AudioStreamPlayer2D = $ResurrectionSound
 @onready var demon_death_sound: AudioStreamPlayer2D = $DemonDeathSound
+@onready var game_sound: AudioStreamPlayer2D = $GameSound
 
 var actual_level = 0
 
@@ -35,6 +37,7 @@ func _ready() -> void:
 
 func _start() -> void:
 	pause_menu.is_accepted = true
+	game_sound.play()
 
 func _reset() -> void:
 	get_tree().paused = false
@@ -47,15 +50,31 @@ func _spawn_enemies() -> void:
 	var enemies = get_tree().get_nodes_in_group("demons")
 	if (enemies.size() < (actual_level + 1) * 15):
 		if (player_ref != null):
-			for i in range(0, 10):
-				var demon = demon_scene.instantiate()
-				demon.target = player_ref
-				var distance_to_player = Vector2(x_size + randi_range(0, 320), y_size + randi_range(0, 80))
-				demon.position = player_ref.position + (distance_to_player * _get_relative_direction())
-				add_child(demon)
+			instantiate_for_lvl_0_to_4()
+			instantiate_for_lvl_4_to_7()
 	else:
 		# Too many enemies :P
 		pass
+
+func instantiate_for_lvl_0_to_4() -> void:
+	if actual_level < 4:
+		instantiate_demons(basic_demon_scene, 10, 25.0, 2)
+
+func instantiate_for_lvl_4_to_7() -> void:
+	if actual_level == 4:
+		instantiate_demons(basic_demon_scene, 9, 25.0, 2)
+		instantiate_demons(fast_demon_scene, 1, 100, 2)
+	if actual_level > 4 && actual_level < 7:
+		instantiate_demons(basic_demon_scene, 8, 25.0, 2)
+		instantiate_demons(fast_demon_scene, 2, 100, 2)
+
+func instantiate_demons(demon_scene: PackedScene, amount: int, speed: float, hp: int) -> void:
+	for i in range(0, amount):
+		var demon = demon_scene.instantiate()
+		var distance_to_player = Vector2(x_size + randi_range(0, 320), y_size + randi_range(0, 80))
+		var position = player_ref.position + (distance_to_player * _get_relative_direction())
+		add_child(demon)
+		demon.initialize(speed, player_ref, hp, position)
 
 func _get_relative_direction() -> Vector2:
 	var relative_x 
