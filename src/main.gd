@@ -1,6 +1,6 @@
 extends Node
 
-@export var enemy_scene: PackedScene
+@export var demon_scene: PackedScene
 @export var sanctuary_scene: PackedScene
 @export var experience_scene: PackedScene
 @export var defender_angel_scene: PackedScene
@@ -48,11 +48,11 @@ func _spawn_enemies() -> void:
 	if (enemies.size() < (actual_level + 1) * 15):
 		if (player_ref != null):
 			for i in range(0, 10):
-				var enemy = enemy_scene.instantiate()
-				enemy.target = player_ref
+				var demon = demon_scene.instantiate()
+				demon.target = player_ref
 				var distance_to_player = Vector2(x_size + randi_range(0, 320), y_size + randi_range(0, 80))
-				enemy.position = player_ref.position + (distance_to_player * _get_relative_direction())
-				add_child(enemy)
+				demon.position = player_ref.position + (distance_to_player * _get_relative_direction())
+				add_child(demon)
 	else:
 		# Too many enemies :P
 		pass

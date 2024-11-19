@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player
+class_name Medium
 
 signal subir_nivel()
 signal invocar_santuario()

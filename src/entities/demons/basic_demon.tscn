@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx3mubkbud77a"]
+
+[ext_resource type="PackedScene" uid="uid://bprep53xbb0ge" path="res://src/entities/demons/demon.tscn" id="1_xy8wa"]
+[ext_resource type="Texture2D" uid="uid://ch44ftk42yunv" path="res://assets/textures/enemy/demon_spritesheet.png" id="2_tsk4y"]
+
+[node name="BasicDemon" instance=ExtResource("1_xy8wa")]
+
+[node name="Body" parent="." index="0"]
+texture = ExtResource("2_tsk4y")
