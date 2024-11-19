@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5nhyysvarcyy"]
+
+[ext_resource type="PackedScene" uid="uid://ccmck3r2plu4d" path="res://src/entities/angels/angel.tscn" id="1_53rc2"]
+[ext_resource type="Script" path="res://src/entities/angels/linked_angel.gd" id="1_hpovk"]
+[ext_resource type="Texture2D" uid="uid://ddcv6sjgwm3rh" path="res://assets/textures/player/blue_fire_sheet.png" id="3_yymca"]
+[ext_resource type="AudioStream" uid="uid://d0vfl2golrmpo" path="res://assets/sounds/angel_attack.wav" id="4_hwnmn"]
+
+[node name="LinkedAngel" instance=ExtResource("1_53rc2")]
+script = ExtResource("1_hpovk")
+
+[node name="Body" parent="." index="0"]
+texture = ExtResource("3_yymca")
+
+[node name="AngelAttackSound" parent="." index="1"]
+stream = ExtResource("4_hwnmn")
+volume_db = 3.0

@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3ebpydlhc0bk"]
+[gd_scene load_steps=10 format=3 uid="uid://c3ebpydlhc0bk"]
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_465p4"]
 [ext_resource type="Texture2D" uid="uid://c7fx673ab0a3i" path="res://assets/textures/player/player.png" id="2_ul2xl"]
-[ext_resource type="PackedScene" uid="uid://b5nhyysvarcyy" path="res://src/entities/player/LinkedAngel.tscn" id="3_uhc4j"]
-[ext_resource type="PackedScene" uid="uid://daw2j8ghd6dlh" path="res://src/entities/player/DefenseAngel.tscn" id="4_jf8xk"]
+[ext_resource type="PackedScene" uid="uid://b5nhyysvarcyy" path="res://src/entities/angels/linked_angel.tscn" id="3_uhc4j"]
+[ext_resource type="PackedScene" uid="uid://daw2j8ghd6dlh" path="res://src/entities/angels/defense_angel.tscn" id="4_jf8xk"]
+[ext_resource type="PackedScene" uid="uid://bbc5jgt6ofjmd" path="res://src/entities/angels/angel_attack.tscn" id="4_sc615"]
+[ext_resource type="PackedScene" uid="uid://c0nund8urr35h" path="res://src/entities/angels/shock_wave.tscn" id="6_0h2ad"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivaca"]
 radius = 16.8612
@@ -44,9 +46,11 @@ vframes = 5
 
 [node name="LinkedAngel" parent="." instance=ExtResource("3_uhc4j")]
 position = Vector2(-4, -5)
+angel_projectile_scene = ExtResource("4_sc615")
 
 [node name="DefenseAngel" parent="." instance=ExtResource("4_jf8xk")]
 position = Vector2(7, -5)
+angel_shock_wave_scene = ExtResource("6_0h2ad")
 
 [node name="InRangeToLive" type="Area2D" parent="."]
 

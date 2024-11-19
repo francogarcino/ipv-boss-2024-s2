@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccmck3r2plu4d"]
+
+[ext_resource type="Texture2D" uid="uid://ddcv6sjgwm3rh" path="res://assets/textures/player/blue_fire_sheet.png" id="1_5me4k"]
+
+[node name="Angel" type="Node2D"]
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(-1.06581e-14, -10)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_5me4k")
+hframes = 63
+
+[node name="AngelAttackSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+position = Vector2(0, -9)
