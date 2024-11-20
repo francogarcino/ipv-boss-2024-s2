@@ -25,12 +25,13 @@ func _on_attack_timer_timeout() -> void:
 	queue_free()
 	emit_signal("finalizar_ataque")
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
+func _play_animation(animation: String) -> void:
+	if angel_animations.has_animation(animation):
+		angel_animations.play(animation)
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	if body is Demon:
 		print("Attacked o:) ")
 		body.hit(2)
 		_on_attack_timer_timeout()
-
-func _play_animation(animation: String) -> void:
-	if angel_animations.has_animation(animation):
-		angel_animations.play(animation)

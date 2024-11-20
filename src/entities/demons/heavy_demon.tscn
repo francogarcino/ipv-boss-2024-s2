@@ -3,9 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bprep53xbb0ge" path="res://src/entities/demons/demon.tscn" id="1_x2ou8"]
 [ext_resource type="Texture2D" uid="uid://c0qnp1ucu86t5" path="res://assets/textures/enemy/heavy_demon_sheet.png" id="2_l5ojx"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_28bd1"]
-radius = 15.0
-height = 46.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_hkkvl"]
+radius = 30.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gvwux"]
 radius = 16.1545
@@ -20,7 +19,7 @@ texture = ExtResource("2_l5ojx")
 
 [node name="CollisionBody" parent="." index="1"]
 position = Vector2(0, -24)
-shape = SubResource("CapsuleShape2D_28bd1")
+shape = SubResource("CircleShape2D_hkkvl")
 
 [node name="HpProgress" parent="." index="2"]
 offset_left = -14.0

@@ -3,9 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bprep53xbb0ge" path="res://src/entities/demons/demon.tscn" id="1_xy8wa"]
 [ext_resource type="Texture2D" uid="uid://ch44ftk42yunv" path="res://assets/textures/enemy/demon_spritesheet.png" id="2_tsk4y"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkkp8"]
-radius = 8.0
-height = 21.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_3m72i"]
+radius = 16.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mjw7"]
 bg_color = Color(0, 0, 0, 0.301961)
@@ -15,8 +14,9 @@ anti_aliasing_size = 0.625
 bg_color = Color(1, 0, 0, 1)
 anti_aliasing_size = 0.625
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3q7wa"]
-radius = 10.4529
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mw61k"]
+radius = 7.60211
+height = 21.6206
 
 [node name="BasicDemon" instance=ExtResource("1_xy8wa")]
 
@@ -24,11 +24,12 @@ radius = 10.4529
 texture = ExtResource("2_tsk4y")
 
 [node name="CollisionBody" parent="." index="1"]
-shape = SubResource("CapsuleShape2D_hkkp8")
+shape = SubResource("CircleShape2D_3m72i")
 
 [node name="HpProgress" parent="." index="2"]
 theme_override_styles/background = SubResource("StyleBoxFlat_5mjw7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_2knli")
 
 [node name="BodyShape" parent="DetectionArea" index="0"]
-shape = SubResource("CircleShape2D_3q7wa")
+position = Vector2(-0.950263, -12.7758)
+shape = SubResource("CapsuleShape2D_mw61k")

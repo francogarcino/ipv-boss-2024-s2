@@ -21,7 +21,8 @@ func remove():
 	get_parent().remove_child(self)
 	queue_free()
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	if body is Demon:
 		body.hit(1)
 		var direction = (body.global_position - global_position).normalized()

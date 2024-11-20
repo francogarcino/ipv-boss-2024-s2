@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" path="res://src/entities/demons/demon.gd" id="1_6oclu"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkkp8"]
-radius = 8.0
-height = 21.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgk5d"]
+radius = 16.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mjw7"]
 bg_color = Color(0, 0, 0, 0.301961)
@@ -13,6 +12,21 @@ anti_aliasing_size = 0.625
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2knli"]
 bg_color = Color(1, 0, 0, 1)
 anti_aliasing_size = 0.625
+
+[sub_resource type="Animation" id="Animation_n1hb8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_fc1g1"]
 resource_name = "walk"
@@ -31,31 +45,18 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_n1hb8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_06s81"]
 _data = {
 "RESET": SubResource("Animation_n1hb8"),
 "walk": SubResource("Animation_fc1g1")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3q7wa"]
-radius = 10.4529
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ldpu"]
+height = 25.0
 
 [node name="Demon" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_6oclu")
 
 [node name="Body" type="Sprite2D" parent="."]
@@ -65,7 +66,7 @@ hframes = 4
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -13)
-shape = SubResource("CapsuleShape2D_hkkp8")
+shape = SubResource("CircleShape2D_lgk5d")
 debug_color = Color(1, 0.447059, 0.435294, 0.419608)
 
 [node name="HpProgress" type="ProgressBar" parent="."]
@@ -97,7 +98,7 @@ scale = Vector2(1.05234, 1.01755)
 
 [node name="BodyShape" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(-0.950263, -12.7758)
-shape = SubResource("CircleShape2D_3q7wa")
+shape = SubResource("CapsuleShape2D_8ldpu")
 debug_color = Color(1, 0.446084, 0.433357, 0.42)
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
