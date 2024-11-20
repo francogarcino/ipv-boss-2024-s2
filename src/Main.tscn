@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=23 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://dx3mubkbud77a" path="res://src/entities/demons/basic_demon.tscn" id="2_ragoi"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bwkqub4lys8ib" path="res://src/ui/gui.tscn" id="5_e6htw"]
 [ext_resource type="PackedScene" uid="uid://l4bj5safln1i" path="res://src/entities/angels/defender_angel.tscn" id="5_jd824"]
 [ext_resource type="PackedScene" uid="uid://8ohwt1d3500m" path="res://src/ui/pause_menu.tscn" id="5_qxca1"]
+[ext_resource type="PackedScene" uid="uid://8ka3sepy2huf" path="res://src/entities/angels/attacking_angel.tscn" id="8_cr2ku"]
 [ext_resource type="AudioStream" uid="uid://dkcjmnwgbw7vf" path="res://assets/sounds/level_up.wav" id="10_fb3pm"]
 [ext_resource type="PackedScene" uid="uid://dw2shml47fr6p" path="res://src/ui/sanctuary_menu.tscn" id="10_n4q6m"]
 [ext_resource type="Shader" uid="uid://dkbl41be0rf7y" path="res://src/resources/shaders/GodRays.tres" id="12_lavsk"]
@@ -45,6 +46,7 @@ heavy_demon_scene = ExtResource("4_mj5r6")
 sanctuary_scene = ExtResource("3_mplx6")
 experience_scene = ExtResource("4_qpus4")
 defender_angel_scene = ExtResource("5_jd824")
+attacking_angel_scene = ExtResource("8_cr2ku")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 

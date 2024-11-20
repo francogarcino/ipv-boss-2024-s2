@@ -1,29 +1,101 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3ebpydlhc0bk"]
+[gd_scene load_steps=16 format=3 uid="uid://c3ebpydlhc0bk"]
 
 [ext_resource type="Script" path="res://src/entities/medium/medium.gd" id="1_465p4"]
-[ext_resource type="Texture2D" uid="uid://c7fx673ab0a3i" path="res://assets/textures/player/player.png" id="2_ul2xl"]
+[ext_resource type="Texture2D" uid="uid://b1q7klq6xjsmy" path="res://assets/textures/player/medium_idle.png" id="2_rqot3"]
+[ext_resource type="Texture2D" uid="uid://bnqtnpru3c77r" path="res://assets/textures/player/medium_run.png" id="3_m5rp8"]
 [ext_resource type="PackedScene" uid="uid://b5nhyysvarcyy" path="res://src/entities/angels/linked_angel.tscn" id="3_uhc4j"]
 [ext_resource type="PackedScene" uid="uid://daw2j8ghd6dlh" path="res://src/entities/angels/defense_angel.tscn" id="4_jf8xk"]
 [ext_resource type="PackedScene" uid="uid://bbc5jgt6ofjmd" path="res://src/entities/angels/angel_attack.tscn" id="4_sc615"]
 [ext_resource type="PackedScene" uid="uid://c0nund8urr35h" path="res://src/entities/angels/shock_wave.tscn" id="6_0h2ad"]
+[ext_resource type="PackedScene" uid="uid://bp84iw27q65dh" path="res://src/entities/angels/explosive_angel.tscn" id="7_rnkk7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivaca"]
-radius = 16.8612
+radius = 8.0
 height = 53.3333
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0qwr"]
-radius = 11.0
+radius = 6.5
 height = 41.0935
+
+[sub_resource type="Animation" id="Animation_mhmko"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/BodyIdle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyPivot/BodyRun:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_n872f"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/BodyIdle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 5]
+}
+
+[sub_resource type="Animation" id="Animation_av7a4"]
+resource_name = "run"
+length = 0.675
+loop_mode = 1
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/BodyRun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2h3oo"]
+_data = {
+"RESET": SubResource("Animation_mhmko"),
+"idle": SubResource("Animation_n872f"),
+"run": SubResource("Animation_av7a4")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4t5gl"]
 radius = 1000.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Medium" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_465p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -20)
+position = Vector2(1, -20)
 scale = Vector2(0.771, 0.75)
 shape = SubResource("CapsuleShape2D_ivaca")
 
@@ -31,28 +103,49 @@ shape = SubResource("CapsuleShape2D_ivaca")
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(-1.90735e-06, -20)
+position = Vector2(1, -20)
 scale = Vector2(1, 0.97339)
 shape = SubResource("CapsuleShape2D_p0qwr")
 
 [node name="BodyPivot" type="Node2D" parent="."]
 
-[node name="Body" type="Sprite2D" parent="BodyPivot"]
-position = Vector2(-5, -28)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_ul2xl")
+[node name="BodyIdle" type="Sprite2D" parent="BodyPivot"]
+modulate = Color(100, 100, 100, 1)
+position = Vector2(3, -22)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_rqot3")
+hframes = 6
+
+[node name="BodyRun" type="Sprite2D" parent="BodyPivot"]
+modulate = Color(100, 100, 100, 1)
+position = Vector2(3, -22)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_m5rp8")
 hframes = 9
-vframes = 5
+frame = 4
+
+[node name="MediumAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2h3oo")
+}
 
 [node name="LinkedAngel" parent="." instance=ExtResource("3_uhc4j")]
-position = Vector2(-4, -15)
+position = Vector2(-3, -21)
+scale = Vector2(0.85, 0.85)
 angel_projectile_scene = ExtResource("4_sc615")
 
 [node name="DefenseAngel" parent="." instance=ExtResource("4_jf8xk")]
-position = Vector2(7, -15)
+position = Vector2(4, -21)
+scale = Vector2(0.85, 0.85)
 angel_shock_wave_scene = ExtResource("6_0h2ad")
 
+[node name="ExplosiveAngel" parent="." instance=ExtResource("7_rnkk7")]
+position = Vector2(-3, -21)
+scale = Vector2(0.85, 0.85)
+
 [node name="InRangeToLive" type="Area2D" parent="."]
+visible = false
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InRangeToLive"]
 position = Vector2(0, -14)

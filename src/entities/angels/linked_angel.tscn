@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5nhyysvarcyy"]
+[gd_scene load_steps=5 format=3 uid="uid://b5nhyysvarcyy"]
 
 [ext_resource type="PackedScene" uid="uid://ccmck3r2plu4d" path="res://src/entities/angels/angel.tscn" id="1_53rc2"]
 [ext_resource type="Script" path="res://src/entities/angels/linked_angel.gd" id="1_hpovk"]
+[ext_resource type="PackedScene" uid="uid://bbc5jgt6ofjmd" path="res://src/entities/angels/angel_attack.tscn" id="3_ownsc"]
 [ext_resource type="AudioStream" uid="uid://d0vfl2golrmpo" path="res://assets/sounds/angel_attack.wav" id="4_hwnmn"]
 
 [node name="LinkedAngel" instance=ExtResource("1_53rc2")]
 script = ExtResource("1_hpovk")
+angel_projectile_scene = ExtResource("3_ownsc")
 
 [node name="Body" parent="." index="0"]
+modulate = Color(1, 1, 1, 0.690196)
 position = Vector2(-1.79366e-43, -9.53674e-07)
 
 [node name="AngelAttackSound" parent="." index="1"]

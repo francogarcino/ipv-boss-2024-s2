@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://da1admrnmiyf3"]
+
+[ext_resource type="PackedScene" uid="uid://bbc5jgt6ofjmd" path="res://src/entities/angels/angel_attack.tscn" id="1_187y2"]
+[ext_resource type="Script" path="res://src/entities/angels/angel_explosive_attack.gd" id="2_g3fxl"]
+[ext_resource type="PackedScene" uid="uid://c5x8mbth433qg" path="res://src/entities/angels/explosive_bomb.tscn" id="3_cf2tq"]
+
+[node name="AngelExplosiveProjectile" instance=ExtResource("1_187y2")]
+script = ExtResource("2_g3fxl")
+angel_explosive_bomb_scene = ExtResource("3_cf2tq")
+
+[node name="Body" parent="." index="3"]
+modulate = Color(1, 0.4, 1, 0.690196)
+self_modulate = Color(1, 0, 0.803922, 1)

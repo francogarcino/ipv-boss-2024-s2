@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://daw2j8ghd6dlh"]
+[gd_scene load_steps=5 format=3 uid="uid://daw2j8ghd6dlh"]
 
 [ext_resource type="PackedScene" uid="uid://ccmck3r2plu4d" path="res://src/entities/angels/angel.tscn" id="1_so4ec"]
 [ext_resource type="Script" path="res://src/entities/angels/defense_angel.gd" id="1_we7wt"]
+[ext_resource type="PackedScene" uid="uid://c0nund8urr35h" path="res://src/entities/angels/shock_wave.tscn" id="3_dnhy0"]
 [ext_resource type="AudioStream" uid="uid://dt4txgo8t5kvl" path="res://assets/sounds/shock_wave.wav" id="4_sef2c"]
 
 [node name="DefenseAngel" instance=ExtResource("1_so4ec")]
 script = ExtResource("1_we7wt")
+angel_shock_wave_scene = ExtResource("3_dnhy0")
 
 [node name="AttackTimer" type="Timer" parent="." index="0"]
 wait_time = 3.0

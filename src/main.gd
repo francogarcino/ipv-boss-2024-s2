@@ -6,6 +6,7 @@ extends Node
 @export var sanctuary_scene: PackedScene
 @export var experience_scene: PackedScene
 @export var defender_angel_scene: PackedScene
+@export var attacking_angel_scene: PackedScene
 @export var x_size: float 
 @export var y_size: float 
 @onready var player_ref: Node2D = $Environment/Entities/Player
@@ -143,6 +144,8 @@ func _spawn_santuario() -> void:
 	gui._add_lvl()
 	if actual_level == 3:
 		spawn_angel_defender()
+	if actual_level == 6:
+		spawn_attacking_angel()
 	sanctuary_menu._show(actual_level)
 
 func spawn_angel_defender() -> void:
@@ -151,6 +154,13 @@ func spawn_angel_defender() -> void:
 	defender_angel.position = player_ref.position + (distance_to_player * _get_relative_direction())
 	defender_angel.z_index = -1
 	add_child(defender_angel)
+
+func spawn_attacking_angel() -> void:
+	var attacking_angel = attacking_angel_scene.instantiate()
+	var distance_to_player = Vector2(x_size + randi_range(0, 320), y_size + randi_range(0, 80))
+	attacking_angel.position = player_ref.position + (distance_to_player * _get_relative_direction())
+	attacking_angel.z_index = -1
+	add_child(attacking_angel)
 
 func _spawn_experience(demon_position: Vector2) -> void:
 	demon_death_sound.play()

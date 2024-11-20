@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5x8mbth433qg"]
+
+[ext_resource type="PackedScene" uid="uid://c0nund8urr35h" path="res://src/entities/angels/shock_wave.tscn" id="1_y7g44"]
+
+[node name="ExplosiveBomb" instance=ExtResource("1_y7g44")]
+
+[node name="CPUParticles2D" parent="." index="1"]
+modulate = Color(1, 0.498039, 0, 1)
+self_modulate = Color(70, 1.00392, 0, 1)
+emitting = true
+amount = 2500
+one_shot = false
+emission_sphere_radius = 30.0

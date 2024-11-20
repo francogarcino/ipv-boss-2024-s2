@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp84iw27q65dh"]
+
+[ext_resource type="PackedScene" uid="uid://ccmck3r2plu4d" path="res://src/entities/angels/angel.tscn" id="1_nojef"]
+[ext_resource type="Script" path="res://src/entities/angels/explosive_angel.gd" id="2_0xckm"]
+[ext_resource type="PackedScene" uid="uid://da1admrnmiyf3" path="res://src/entities/angels/angel_explosive_attack.tscn" id="3_2in35"]
+[ext_resource type="AudioStream" uid="uid://d0vfl2golrmpo" path="res://assets/sounds/angel_attack.wav" id="4_lw6lp"]
+
+[node name="ExplosiveAngel" instance=ExtResource("1_nojef")]
+script = ExtResource("2_0xckm")
+angel_projectile_scene = ExtResource("3_2in35")
+
+[node name="Body" parent="." index="0"]
+modulate = Color(1, 0.4, 1, 0.690196)
+self_modulate = Color(1, 0, 0.803922, 1)
+
+[node name="AngelAttackSound" parent="." index="1"]
+stream = ExtResource("4_lw6lp")
+volume_db = 3.0

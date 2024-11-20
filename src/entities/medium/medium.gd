@@ -4,20 +4,33 @@ class_name Medium
 signal subir_nivel()
 signal invocar_santuario()
 
+@onready var body_pivot: Node2D = $BodyPivot
+@onready var body_idle: Sprite2D = $BodyPivot/BodyIdle
+@onready var body_run: Sprite2D = $BodyPivot/BodyRun
+@onready var medium_animations: AnimationPlayer = $MediumAnimations
 @onready var angel: Node2D = $LinkedAngel
 @onready var defense_angel: DefenseAngel = $DefenseAngel
+@onready var explosive_angel: ExplosiveAngel = $ExplosiveAngel
 @export var speed: float = 150.0
 var projectile_container: Node
 var experience_gained = 0
 var actual_level = 0
 
+func _ready() -> void:
+	body_run.hide()
+
 func _process_input(delta) -> void:
 	if Input.is_action_just_pressed("angel_attack"):
 		if projectile_container == null:
 			projectile_container = get_parent()
-		if (angel.container == null):
-			angel.set_container(projectile_container)
-		angel.attackAt(get_global_mouse_position())
+		if angel.visible:
+			if (angel.container == null):
+				angel.set_container(projectile_container)
+			angel.attackAt(get_global_mouse_position())
+		elif explosive_angel.visible:
+			if (explosive_angel.container == null):
+				explosive_angel.set_container(projectile_container)
+			explosive_angel.attackAt(get_global_mouse_position())
 	
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
@@ -32,6 +45,19 @@ func _process_input(delta) -> void:
 		velocity = velocity.normalized() * speed
 	
 	position += velocity * delta
+	
+	var h_movement_direction: int = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
+	if h_movement_direction != 0:
+		body_pivot.scale.x = 1 - 2 * float(h_movement_direction < 0)
+	
+	if (velocity.x == 0 && velocity.y == 0):
+		_play_animation("idle")
+		body_run.hide()
+		body_idle.show()
+	else:
+		_play_animation("run")
+		body_idle.hide()
+		body_run.show()
 
 func _physics_process(delta: float) -> void:
 	_process_input(delta)
@@ -58,6 +84,10 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		if (defense_angel.container == null):
 			defense_angel.set_container(projectile_container)
 		defense_angel.show()
+	elif body is AttackingAngel:
+		body._remove()
+		angel.hide()
+		explosive_angel.show()
 
 func _level_up() -> void:
 	actual_level += 1
@@ -66,3 +96,7 @@ func _level_up() -> void:
 	else:
 		emit_signal("subir_nivel")
 	print("level_up: ", actual_level)
+
+func _play_animation(animation: String) -> void:
+	if medium_animations.has_animation(animation):
+		medium_animations.play(animation)

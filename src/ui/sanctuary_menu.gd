@@ -8,7 +8,7 @@ func _ready() -> void:
 	sanctuary_and_angel_label.visible = false
 
 func _show(level: int):
-	if level == 3:
+	if level == 3 || level == 6:
 		sanctuary_label.visible = false
 		sanctuary_and_angel_label.visible = true
 	show()
