@@ -65,20 +65,20 @@ func instantiate_for_lvl_0_to_4() -> void:
 func instantiate_for_lvl_4_to_7() -> void:
 	if actual_level == 4:
 		instantiate_demons(basic_demon_scene, 9, 25.0, 2)
-		instantiate_demons(fast_demon_scene, 1, 50, 2)
+		instantiate_demons(heavy_demon_scene, 1, 25.0, 10)
 	if actual_level > 4 && actual_level < 7:
 		instantiate_demons(basic_demon_scene, 8, 25.0, 2)
-		instantiate_demons(fast_demon_scene, 2, 50, 2)
+		instantiate_demons(heavy_demon_scene, 2, 25.0, 10)
 
 func instantiate_for_lvl_7_to_10() -> void:
 	if actual_level >= 7 && actual_level < 9:
 		instantiate_demons(basic_demon_scene, 6, 25.0, 2)
-		instantiate_demons(fast_demon_scene, 2, 50, 2)
 		instantiate_demons(heavy_demon_scene, 2, 25.0, 10)
+		instantiate_demons(fast_demon_scene, 2, 75, 2)
 	if actual_level == 9:
 		instantiate_demons(basic_demon_scene, 4, 25.0, 2)
-		instantiate_demons(fast_demon_scene, 3, 50, 2)
 		instantiate_demons(heavy_demon_scene, 3, 25.0, 10)
+		instantiate_demons(fast_demon_scene, 3, 75, 2)
 
 func instantiate_demons(demon_scene: PackedScene, amount: int, speed: float, hp: int) -> void:
 	for i in range(0, amount):
