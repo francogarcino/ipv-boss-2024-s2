@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn43824f23l1l"]
+
+[ext_resource type="FontFile" uid="uid://b2abx8m8v7p3f" path="res://assets/fonts/Default-Big.tres" id="1_70ass"]
+[ext_resource type="Script" path="res://src/ui/action_input.gd" id="1_dwr2f"]
+
+[node name="ActionInput" type="PanelContainer"]
+script = ExtResource("1_dwr2f")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ActionButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="ActionNameLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_70ass")
+theme_override_font_sizes/font_size = 22
+
+[connection signal="pressed" from="HBoxContainer/ActionButton" to="." method="_on_action_button_pressed"]
