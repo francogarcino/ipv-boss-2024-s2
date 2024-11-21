@@ -1,9 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=26 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://dx3mubkbud77a" path="res://src/entities/demons/basic_demon.tscn" id="2_ragoi"]
 [ext_resource type="PackedScene" uid="uid://c3ebpydlhc0bk" path="res://src/entities/medium/medium.tscn" id="2_voxir"]
-[ext_resource type="Texture2D" uid="uid://c52g7lqluxqe4" path="res://assets/textures/background/background.png" id="3_fq2yd"]
+[ext_resource type="Texture2D" uid="uid://bormd6ywqwkhj" path="res://assets/textures/background/background.png" id="3_fq2yd"]
 [ext_resource type="PackedScene" uid="uid://sq0noqlk8y6y" path="res://src/ui/improvements_menu.tscn" id="3_jiy77"]
 [ext_resource type="PackedScene" uid="uid://r3ujw45meqcm" path="res://src/entities/sanctuary/Sanctuary.tscn" id="3_mplx6"]
 [ext_resource type="PackedScene" uid="uid://cclywu680fhgs" path="res://src/entities/demons/fast_demon.tscn" id="3_phru2"]
@@ -22,6 +22,12 @@
 [ext_resource type="PackedScene" uid="uid://ddo40b6wou1r1" path="res://src/ui/victory_menu.tscn" id="15_kpbr7"]
 [ext_resource type="AudioStream" uid="uid://crly7ivcn3580" path="res://assets/sounds/demon_death.wav" id="16_pkcda"]
 [ext_resource type="AudioStream" uid="uid://dfj0bvxy0831p" path="res://assets/sounds/game_theme.wav" id="19_eiq6o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbad7"]
+size = Vector2(1940, 31.8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oghfn"]
+size = Vector2(31.8, 1084.8)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oej6r"]
 shader = ExtResource("12_lavsk")
@@ -49,6 +55,26 @@ experience_scene = ExtResource("4_qpus4")
 defender_angel_scene = ExtResource("5_jd824")
 attacking_angel_scene = ExtResource("8_cr2ku")
 
+[node name="EndOfPassage" type="StaticBody2D" parent="."]
+scale = Vector2(2.5, 2.5)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndOfPassage"]
+position = Vector2(40, -524.3)
+shape = SubResource("RectangleShape2D_hbad7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="EndOfPassage"]
+position = Vector2(40, 534.4)
+shape = SubResource("RectangleShape2D_hbad7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="EndOfPassage"]
+position = Vector2(-917.6, 3.2)
+shape = SubResource("RectangleShape2D_oghfn")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="EndOfPassage"]
+position = Vector2(1000, 3.2)
+shape = SubResource("RectangleShape2D_oghfn")
+
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="UILayer" instance=ExtResource("5_e6htw")]
@@ -70,11 +96,11 @@ attacking_angel_scene = ExtResource("8_cr2ku")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="BackgroundContainer"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BackgroundContainer/ParallaxBackground"]
-motion_mirroring = Vector2(2880, 1440)
+motion_mirroring = Vector2(4800, 2700)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundContainer/ParallaxBackground/ParallaxLayer"]
 position = Vector2(64, 0)
-scale = Vector2(22.5, 22.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_fq2yd")
 
 [node name="Environment" type="Node2D" parent="."]

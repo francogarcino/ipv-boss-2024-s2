@@ -29,6 +29,8 @@ var actual_level = 0
 func _ready() -> void:
 	x_size = float(get_viewport().size.x / 3)
 	y_size = float(get_viewport().size.y * 0.5)
+	print(get_viewport().size.x)
+	print(get_viewport().size.y)
 	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
 	player_ref.invocar_santuario.connect(_spawn_santuario)
@@ -157,15 +159,15 @@ func _spawn_santuario() -> void:
 
 func spawn_angel_defender() -> void:
 	var defender_angel = defender_angel_scene.instantiate()
-	var distance_to_player = Vector2(x_size + randi_range(0, 320), y_size + randi_range(0, 80))
-	defender_angel.position = player_ref.position + (distance_to_player * _get_relative_direction())
+	var distance_to_player = Vector2(x_size + randi_range(0, 1800), y_size + randi_range(0, 900))
+	defender_angel.position = distance_to_player * _get_relative_direction()
 	defender_angel.z_index = -1
 	add_child(defender_angel)
 
 func spawn_attacking_angel() -> void:
 	var attacking_angel = attacking_angel_scene.instantiate()
-	var distance_to_player = Vector2(x_size + randi_range(0, 320), y_size + randi_range(0, 80))
-	attacking_angel.position = player_ref.position + (distance_to_player * _get_relative_direction())
+	var distance_to_player = Vector2(x_size + randi_range(0, 1800), y_size + randi_range(0, 900))
+	attacking_angel.position = distance_to_player * _get_relative_direction()
 	attacking_angel.z_index = -1
 	add_child(attacking_angel)
 

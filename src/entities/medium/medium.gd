@@ -12,7 +12,7 @@ signal experiencia_obtenida()
 @onready var angel: Node2D = $LinkedAngel
 @onready var defense_angel: DefenseAngel = $DefenseAngel
 @onready var explosive_angel: ExplosiveAngel = $ExplosiveAngel
-@export var speed: float = 150.0
+@export var speed: float = 200
 var projectile_container: Node
 var experience_gained = 0
 var actual_level = 0
@@ -33,7 +33,7 @@ func _process_input(delta) -> void:
 				explosive_angel.set_container(projectile_container)
 			explosive_angel.attackAt(get_global_mouse_position())
 	
-	var velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -43,9 +43,12 @@ func _process_input(delta) -> void:
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		velocity = velocity.normalized() * speed * delta
+
+func _physics_process(delta: float) -> void:
+	_process_input(delta)
 	
-	position += velocity * delta
+	move_and_collide(velocity)
 	
 	var h_movement_direction: int = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	if h_movement_direction != 0:
@@ -59,9 +62,6 @@ func _process_input(delta) -> void:
 		_play_animation("run")
 		body_idle.hide()
 		body_run.show()
-
-func _physics_process(delta: float) -> void:
-	_process_input(delta)
 
 func _on_angel_mejorado() -> void:
 	angel._obtener_mejora()
