@@ -5,6 +5,7 @@ extends Control
 @onready var amount_of_sanctuaries: Label = $StatsContainer/AmountOfSanctuaries
 @onready var lvl: Label = $StatsContainer/Panel/Lvl
 @onready var exp_progress: ProgressBar = $StatsContainer/ExpProgress
+@onready var score_points: Label = $StatsContainer/ScorePoints
 
 func _add_life() -> void:
 	amount_of_lifes.text = str(int(amount_of_lifes.text) + 1)
@@ -22,4 +23,9 @@ func _add_exp() -> void:
 
 func _reset_exp() -> void:
 	exp_progress.value = 0
-	
+
+func _add_score(score: int) -> void:
+	score_points.text = str(int(score_points.text) + score)
+
+func _score_points() -> String:
+	return score_points.text

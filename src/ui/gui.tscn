@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwkqub4lys8ib"]
+[gd_scene load_steps=9 format=3 uid="uid://bwkqub4lys8ib"]
 
 [ext_resource type="Script" path="res://src/ui/gui.gd" id="1_mlmj6"]
 [ext_resource type="Texture2D" uid="uid://qxxoed2gmyh6" path="res://assets/textures/ui/GUISprite.png" id="1_ps6b8"]
 [ext_resource type="Texture2D" uid="uid://cpvlglcc007lr" path="res://assets/textures/sanctuary/iglesia.png" id="3_sene8"]
+[ext_resource type="FontFile" uid="uid://ct3ypufofw6dm" path="res://assets/fonts/Roboto-Bold.ttf" id="4_rrqhl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j60wh"]
 atlas = ExtResource("1_ps6b8")
@@ -112,3 +113,28 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_3ucfb")
 max_value = 5.0
 step = 1.0
 show_percentage = false
+
+[node name="Score" type="Label" parent="StatsContainer"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 204.0
+offset_right = 53.0
+offset_bottom = 227.0
+theme_override_colors/font_color = Color(0.705882, 0.466667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_rrqhl")
+text = "Score"
+horizontal_alignment = 1
+
+[node name="ScorePoints" type="Label" parent="StatsContainer"]
+offset_left = 48.0
+offset_top = 204.0
+offset_right = 94.0
+offset_bottom = 227.0
+theme_override_colors/font_color = Color(0.705882, 0.466667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_rrqhl")
+text = "0"
+horizontal_alignment = 1

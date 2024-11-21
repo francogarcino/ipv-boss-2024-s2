@@ -1,12 +1,13 @@
 extends CharacterBody2D
 class_name Demon
 
-var speed: float = 25.0
+var speed: float
 var target: Node2D
-var max_hp: int = 2
-var hp: int = 2
+var max_hp: int
+var hp: int
 var push_velocity = Vector2.ZERO
 var push_decay = 0.2
+var score: int
 
 @onready var hp_progress: ProgressBar = $HpProgress
 @onready var demon_animations: AnimationPlayer = $DemonAnimations
@@ -18,12 +19,13 @@ func _ready() -> void:
 	hp_progress.value = hp
 	hp_progress.modulate = Color.TRANSPARENT
 
-func initialize(speed: float, target: Node2D, hp: int, spawn_position: Vector2) -> void:
+func initialize(speed: float, target: Node2D, hp: int, spawn_position: Vector2, score: int) -> void:
 	self.speed = speed
 	self.target = target
 	self.max_hp = hp
 	self.hp = hp
 	position = spawn_position
+	self.score = score
 
 func _process(delta: float) -> void:
 	_play_animation("walk")
@@ -59,8 +61,9 @@ func hit(amount: int) -> void:
 	hp_tween.tween_property(hp_progress, "modulate", Color.TRANSPARENT, 5.0)
 
 func _remove() -> void:
-	get_parent()._spawn_experience(global_position)
+	var container = get_parent()
 	deleted()
+	container._spawn_experience_and_score_addition(global_position, score)
 
 func deleted() -> void:
 	get_parent().remove_child(self)

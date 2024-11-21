@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0xolrof0y750"]
+[gd_scene load_steps=4 format=3 uid="uid://ddo40b6wou1r1"]
 
-[ext_resource type="Script" path="res://src/ui/defeat_menu.gd" id="1_8sqg3"]
-[ext_resource type="FontFile" uid="uid://b2abx8m8v7p3f" path="res://assets/fonts/Default-Big.tres" id="2_5hwa2"]
+[ext_resource type="FontFile" uid="uid://b2abx8m8v7p3f" path="res://assets/fonts/Default-Big.tres" id="1_nldtv"]
+[ext_resource type="Script" path="res://src/ui/victory_menu.gd" id="1_u72cq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mixdb"]
 bg_color = Color(0.403922, 0.658824, 0.603922, 1)
@@ -16,7 +16,7 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 2
 
-[node name="DefeatMenu" type="Control"]
+[node name="VictoryMenu" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 8
@@ -30,7 +30,7 @@ offset_right = 540.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8sqg3")
+script = ExtResource("1_u72cq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -52,9 +52,9 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 310.0
 offset_bottom = 50.0
-theme_override_fonts/font = ExtResource("2_5hwa2")
+theme_override_fonts/font = ExtResource("1_nldtv")
 theme_override_font_sizes/font_size = 31
-text = "Has sido eliminado!"
+text = "Has completado el juego!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -63,20 +63,20 @@ offset_left = 10.0
 offset_top = 60.0
 offset_right = 310.0
 offset_bottom = 100.0
-theme_override_fonts/font = ExtResource("2_5hwa2")
+theme_override_fonts/font = ExtResource("1_nldtv")
 theme_override_font_sizes/font_size = 27
 text = "Puntuacion obtenida:  "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartButton" type="Button" parent="Panel"]
-layout_mode = 0
 offset_left = 13.0
 offset_top = 110.0
 offset_right = 306.0
 offset_bottom = 165.0
-theme_override_fonts/font = ExtResource("2_5hwa2")
+theme_override_fonts/font = ExtResource("1_nldtv")
 theme_override_font_sizes/font_size = 28
-text = "Reintentar"
+text = "Volver a jugar
+"
 
 [connection signal="pressed" from="Panel/RestartButton" to="." method="_on_restart_button_pressed"]

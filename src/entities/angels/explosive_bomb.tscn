@@ -7,7 +7,5 @@
 [node name="CPUParticles2D" parent="." index="1"]
 modulate = Color(1, 0.498039, 0, 1)
 self_modulate = Color(70, 1.00392, 0, 1)
-emitting = true
 amount = 2500
-one_shot = false
 emission_sphere_radius = 30.0

@@ -16,6 +16,7 @@ extends Node
 @onready var defeat_menu: Control = $UILayer/DefeatMenu
 @onready var pause_menu: Control = $UILayer/PauseMenu
 @onready var sanctuary_menu: Control = $UILayer/SanctuaryMenu
+@onready var victory_menu: Control = $UILayer/VictoryMenu
 @onready var level_up_sound: AudioStreamPlayer2D = $LevelUpSound
 @onready var resurrection_effect: ColorRect = $Environment/Entities/Player/ResurrectionEffect
 @onready var resurrection_timer: Timer = $Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer
@@ -37,6 +38,7 @@ func _ready() -> void:
 	improvement_menu.mejora_medium.connect(_on_medium_mejorado)
 	defeat_menu.retry.connect(_reset)
 	pause_menu.retry.connect(_reset)
+	victory_menu.retry.connect(_reset)
 
 func _start() -> void:
 	pause_menu.is_accepted = true
@@ -50,44 +52,45 @@ func _on_enemy_timer_timeout() -> void:
 	_spawn_enemies()
 
 func _spawn_enemies() -> void:
-	var enemies = get_tree().get_nodes_in_group("demons")
-	if (enemies.size() < (actual_level + 1) * 15):
-		if (player_ref != null):
-			instantiate_for_lvl_0_to_4()
-			instantiate_for_lvl_4_to_7()
-			instantiate_for_lvl_7_to_10()
-	else:
-		# Too many enemies :P
-		pass
+	if actual_level < 10:
+		var enemies = get_tree().get_nodes_in_group("demons")
+		if (enemies.size() < (actual_level + 1) * 15):
+			if (player_ref != null):
+				instantiate_for_lvl_0_to_4()
+				instantiate_for_lvl_4_to_7()
+				instantiate_for_lvl_7_to_10()
+		else:
+			# Too many enemies :P
+			pass
 
 func instantiate_for_lvl_0_to_4() -> void:
 	if actual_level < 4:
-		instantiate_demons(basic_demon_scene, 10, 25.0, 2)
+		instantiate_demons(basic_demon_scene, 10, 25.0, 2, 1)
 
 func instantiate_for_lvl_4_to_7() -> void:
 	if actual_level == 4:
-		instantiate_demons(basic_demon_scene, 9, 25.0, 2)
-		instantiate_demons(heavy_demon_scene, 1, 25.0, 10)
+		instantiate_demons(basic_demon_scene, 9, 25.0, 2, 1)
+		instantiate_demons(heavy_demon_scene, 1, 25.0, 10, 5)
 	if actual_level > 4 && actual_level < 7:
-		instantiate_demons(basic_demon_scene, 8, 25.0, 2)
-		instantiate_demons(heavy_demon_scene, 2, 25.0, 10)
+		instantiate_demons(basic_demon_scene, 8, 25.0, 2, 1)
+		instantiate_demons(heavy_demon_scene, 2, 25.0, 10, 5)
 
 func instantiate_for_lvl_7_to_10() -> void:
 	if actual_level >= 7 && actual_level < 9:
-		instantiate_demons(basic_demon_scene, 6, 25.0, 2)
-		instantiate_demons(heavy_demon_scene, 2, 25.0, 10)
-		instantiate_demons(fast_demon_scene, 2, 75, 2)
+		instantiate_demons(basic_demon_scene, 6, 25.0, 2, 1)
+		instantiate_demons(heavy_demon_scene, 2, 25.0, 10, 5)
+		instantiate_demons(fast_demon_scene, 2, 75.0, 2, 3)
 	if actual_level == 9:
-		instantiate_demons(basic_demon_scene, 4, 25.0, 2)
-		instantiate_demons(heavy_demon_scene, 3, 25.0, 10)
-		instantiate_demons(fast_demon_scene, 3, 75, 2)
+		instantiate_demons(basic_demon_scene, 4, 25.0, 2, 1)
+		instantiate_demons(heavy_demon_scene, 3, 25.0, 10, 5)
+		instantiate_demons(fast_demon_scene, 3, 75.0, 2, 3)
 
-func instantiate_demons(demon_scene: PackedScene, amount: int, speed: float, hp: int) -> void:
+func instantiate_demons(demon_scene: PackedScene, amount: int, speed: float, hp: int, score: int) -> void:
 	for i in range(0, amount):
 		var demon = demon_scene.instantiate()
 		var distance_to_player = Vector2(x_size + randi_range(0, 320), y_size + randi_range(0, 80))
 		var position = player_ref.position + (distance_to_player * _get_relative_direction())
-		demon.initialize(speed, player_ref, hp, position)
+		demon.initialize(speed, player_ref, hp, position, score)
 		add_child(demon)
 
 func _get_relative_direction() -> Vector2:
@@ -107,7 +110,7 @@ func _get_relative_direction() -> Vector2:
 
 func _player_defeated() -> void:
 	pause_menu.is_accepted = false
-	defeat_menu._show()
+	defeat_menu._show(gui._score_points())
 
 func _destroy_sanctuary() -> void:
 	pause_menu.is_accepted = false
@@ -166,12 +169,17 @@ func spawn_attacking_angel() -> void:
 	attacking_angel.z_index = -1
 	add_child(attacking_angel)
 
-func _spawn_experience(demon_position: Vector2) -> void:
+func _spawn_experience_and_score_addition(demon_position: Vector2, score: int) -> void:
 	demon_death_sound.play()
 	var experience = experience_scene.instantiate()
 	experience.position = demon_position
 	experience.z_index = -1
 	add_child(experience)
+	gui._add_score(score)
+	if actual_level == 10:
+		var enemies = get_tree().get_nodes_in_group("demons")
+		if enemies.size() == 0:
+			victory_menu._show(gui._score_points())
 
 func _on_resurrection_timer_timeout() -> void:
 	resurrection_timer.stop()
