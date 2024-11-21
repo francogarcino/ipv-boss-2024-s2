@@ -31,6 +31,7 @@ func _ready() -> void:
 	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
 	player_ref.invocar_santuario.connect(_spawn_santuario)
+	player_ref.experiencia_obtenida.connect(gui._add_exp)
 	main_menu.start.connect(_start)
 	improvement_menu.mejora_angel.connect(_on_angel_mejorado)
 	improvement_menu.mejora_medium.connect(_on_medium_mejorado)
@@ -124,6 +125,8 @@ func _on_mejora_conseguida() -> void:
 	level_up_sound.play()
 	improvement_menu._show()
 	gui._add_lvl()
+	if actual_level < 10:
+		gui._reset_exp()
 
 func _on_angel_mejorado() -> void:
 	pause_menu.is_accepted = true
@@ -142,6 +145,7 @@ func _spawn_santuario() -> void:
 	gui._add_life()
 	add_child(sanctuary)
 	gui._add_lvl()
+	gui._reset_exp()
 	if actual_level == 3:
 		spawn_angel_defender()
 	if actual_level == 6:

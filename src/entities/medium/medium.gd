@@ -3,6 +3,7 @@ class_name Medium
 
 signal subir_nivel()
 signal invocar_santuario()
+signal experiencia_obtenida()
 
 @onready var body_pivot: Node2D = $BodyPivot
 @onready var body_idle: Sprite2D = $BodyPivot/BodyIdle
@@ -64,6 +65,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_angel_mejorado() -> void:
 	angel._obtener_mejora()
+	explosive_angel._obtener_mejora()
 
 func _obtener_mejora() -> void:
 	speed += speed * 0.5
@@ -77,7 +79,9 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Experience:
 		body.deleted()
 		experience_gained += 1
-		if actual_level < 10 && experience_gained == ((actual_level + 1) * 2):
+		if actual_level < 10:
+			emit_signal("experiencia_obtenida")
+		if actual_level < 10 && experience_gained == ((actual_level + 1) * 5):
 			_level_up()
 	elif body is DefenderAngel:
 		body._remove()
