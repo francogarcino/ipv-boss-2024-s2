@@ -5,10 +5,12 @@ signal subir_nivel()
 signal invocar_santuario()
 signal experiencia_obtenida()
 
+@onready var collision_body: CollisionShape2D = $CollisionBody
 @onready var body_pivot: Node2D = $BodyPivot
 @onready var body_idle: Sprite2D = $BodyPivot/BodyIdle
 @onready var body_run: Sprite2D = $BodyPivot/BodyRun
 @onready var medium_animations: AnimationPlayer = $MediumAnimations
+@onready var revive_timer: Timer = $ReviveTimer
 @onready var angel: Node2D = $LinkedAngel
 @onready var defense_angel: DefenseAngel = $DefenseAngel
 @onready var explosive_angel: ExplosiveAngel = $ExplosiveAngel
@@ -100,6 +102,14 @@ func _level_up() -> void:
 	else:
 		emit_signal("subir_nivel")
 	print("level_up: ", actual_level)
+
+func _revive() -> void:
+	collision_body.disabled = true
+	revive_timer.start()
+
+func _on_revive_timer_timeout() -> void:
+	collision_body.disabled = false
+	revive_timer.stop()
 
 func _play_animation(animation: String) -> void:
 	if medium_animations.has_animation(animation):

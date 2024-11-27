@@ -165,7 +165,7 @@ scale = Vector2(3, 3)
 
 [node name="ResurrectionTimer" type="Timer" parent="Environment/Entities/Player/ResurrectionEffect"]
 process_mode = 3
-wait_time = 7.0
+wait_time = 4.0
 
 [node name="Objects" type="Node2D" parent="Environment"]
 

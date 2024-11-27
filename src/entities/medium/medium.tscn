@@ -92,7 +92,7 @@ radius = 1000.0
 collision_mask = 2
 script = ExtResource("1_465p4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBody" type="CollisionShape2D" parent="."]
 position = Vector2(1, -19)
 scale = Vector2(1, 0.973)
 shape = SubResource("CapsuleShape2D_ivaca")
@@ -125,6 +125,9 @@ libraries = {
 "": SubResource("AnimationLibrary_2h3oo")
 }
 
+[node name="ReviveTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [node name="LinkedAngel" parent="." instance=ExtResource("3_uhc4j")]
 position = Vector2(-5, -20)
 scale = Vector2(0.85, 0.85)
@@ -147,4 +150,5 @@ shape = SubResource("CircleShape2D_4t5gl")
 debug_color = Color(0.866743, 0.317125, 0.420219, 0.42)
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="timeout" from="ReviveTimer" to="." method="_on_revive_timer_timeout"]
 [connection signal="body_exited" from="InRangeToLive" to="." method="_on_in_range_to_live_body_exited"]

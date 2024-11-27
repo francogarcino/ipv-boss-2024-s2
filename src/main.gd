@@ -186,3 +186,4 @@ func _on_resurrection_timer_timeout() -> void:
 	resurrection_effect.hide()
 	get_tree().paused = false
 	pause_menu.is_accepted = true
+	player_ref._revive()
