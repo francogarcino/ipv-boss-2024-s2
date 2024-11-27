@@ -9,11 +9,11 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivaca"]
 radius = 8.0
-height = 53.3333
+height = 57.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0qwr"]
-radius = 6.5
-height = 41.0935
+radius = 8.0
+height = 57.0
 
 [sub_resource type="Animation" id="Animation_mhmko"]
 length = 0.001
@@ -93,15 +93,15 @@ collision_mask = 2
 script = ExtResource("1_465p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -20)
-scale = Vector2(0.771, 0.75)
+position = Vector2(1, -19)
+scale = Vector2(1, 0.973)
 shape = SubResource("CapsuleShape2D_ivaca")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(1, -20)
+position = Vector2(1, -19)
 scale = Vector2(1, 0.97339)
 shape = SubResource("CapsuleShape2D_p0qwr")
 
@@ -110,14 +110,12 @@ shape = SubResource("CapsuleShape2D_p0qwr")
 [node name="BodyIdle" type="Sprite2D" parent="BodyPivot"]
 modulate = Color(100, 100, 100, 1)
 position = Vector2(3, -22)
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_rqot3")
 hframes = 6
 
 [node name="BodyRun" type="Sprite2D" parent="BodyPivot"]
 modulate = Color(100, 100, 100, 1)
 position = Vector2(3, -22)
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_m5rp8")
 hframes = 9
 frame = 4
@@ -128,15 +126,15 @@ libraries = {
 }
 
 [node name="LinkedAngel" parent="." instance=ExtResource("3_uhc4j")]
-position = Vector2(-3, -21)
+position = Vector2(-5, -20)
 scale = Vector2(0.85, 0.85)
 
 [node name="DefenseAngel" parent="." instance=ExtResource("4_jf8xk")]
-position = Vector2(4, -21)
+position = Vector2(5, -20)
 scale = Vector2(0.85, 0.85)
 
 [node name="ExplosiveAngel" parent="." instance=ExtResource("7_rnkk7")]
-position = Vector2(-3, -21)
+position = Vector2(-5, -20)
 scale = Vector2(0.85, 0.85)
 
 [node name="InRangeToLive" type="Area2D" parent="."]

@@ -29,8 +29,6 @@ var actual_level = 0
 func _ready() -> void:
 	x_size = float(get_viewport().size.x / 3)
 	y_size = float(get_viewport().size.y * 0.5)
-	print(get_viewport().size.x)
-	print(get_viewport().size.y)
 	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
 	player_ref.invocar_santuario.connect(_spawn_santuario)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkp8ixbdjtplc"]
+
+[ext_resource type="Texture2D" uid="uid://21muragoihb3" path="res://assets/textures/background/tree.png" id="1_rwg84"]
+
+[node name="Tree" type="StaticBody2D"]
+collision_layer = 2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.4, 0.87451)
+position = Vector2(0, -178)
+scale = Vector2(3.90234, 3.56055)
+texture = ExtResource("1_rwg84")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-19, -1, -19, -102, -23, -113, -23, -158, -27, -162, -27, -177, -31, -180, -31, -190, -31, -205, -14, -213, -8, -206, -8, -164, -8, -158, -4, -154, -4, -120, 0, -120, 4, -126, 4, -173, 8, -178, 8, -188, 12, -192, 12, -198, 24, -210, 29, -220, 36, -221, 40, -215, 25, -188, 23, -159, 29, -162, 35, -175, 41, -171, 38, -154, 35, -142, 12, -108, 8, -85, 8, 0)

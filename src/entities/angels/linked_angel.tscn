@@ -11,7 +11,8 @@ angel_projectile_scene = ExtResource("3_ownsc")
 
 [node name="Body" parent="." index="0"]
 modulate = Color(1, 1, 1, 0.690196)
-position = Vector2(-1.79366e-43, -9.53674e-07)
+position = Vector2(0, -5)
+scale = Vector2(0.28, 0.28)
 
 [node name="AngelAttackSound" parent="." index="1"]
 stream = ExtResource("4_hwnmn")

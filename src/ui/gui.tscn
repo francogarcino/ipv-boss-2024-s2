@@ -128,6 +128,7 @@ text = "Score"
 horizontal_alignment = 1
 
 [node name="ScorePoints" type="Label" parent="StatsContainer"]
+layout_mode = 0
 offset_left = 48.0
 offset_top = 204.0
 offset_right = 94.0

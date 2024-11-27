@@ -37,7 +37,7 @@ script = ExtResource("1_2xdj0")
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 720.0
-color = Color(0, 0, 0, 0.25098)
+color = Color(0, 0, 0, 0)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0

@@ -8,9 +8,6 @@
 script = ExtResource("2_g3fxl")
 angel_explosive_bomb_scene = ExtResource("3_cf2tq")
 
-[node name="AttackTimer" parent="." index="0"]
-wait_time = 1.0
-
 [node name="Body" parent="." index="3"]
 modulate = Color(1, 0.4, 1, 0.690196)
 self_modulate = Color(1, 0, 0.803922, 1)

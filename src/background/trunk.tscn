@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmpudt6x54jjm"]
+
+[ext_resource type="Texture2D" uid="uid://bsifrapku1a63" path="res://assets/textures/background/trunk.png" id="1_cwynv"]
+
+[node name="Trunk" type="StaticBody2D"]
+collision_layer = 2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0.608312, 0.412156, 0, 1)
+z_index = -1
+position = Vector2(0, -18)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_cwynv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 26)
+scale = Vector2(2.5, 2.5)
+polygon = PackedVector2Array(-31, -7, -22, -12, -17, -18, -15, -30, -12, -34, 1, -35, 13, -34, 18, -31, 21, -12, 31, -7, 31, -5, 19, -6, 12, -9, 10, -10, 1, -10, -12, -1, -13, -3, -8, -7, -8, -11, -14, -11, -21, -7)
