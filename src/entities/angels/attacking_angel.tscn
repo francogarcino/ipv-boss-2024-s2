@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rmuoc"]
 radius = 9.0
-height = 38.0
+height = 60.0
 
 [sub_resource type="Animation" id="Animation_t14ot"]
 length = 0.001
@@ -52,7 +52,7 @@ script = ExtResource("1_fyx0j")
 modulate = Color(1, 0.4, 1, 0.690196)
 self_modulate = Color(1, 0, 0.803922, 1)
 position = Vector2(1.06581e-14, -22)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_ey4dq")
 hframes = 63
 
