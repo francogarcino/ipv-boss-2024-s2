@@ -31,5 +31,4 @@ theme_override_styles/background = SubResource("StyleBoxFlat_5mjw7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_2knli")
 
 [node name="BodyShape" parent="DetectionArea" index="0"]
-position = Vector2(-0.950263, -12.7758)
 shape = SubResource("CapsuleShape2D_mw61k")

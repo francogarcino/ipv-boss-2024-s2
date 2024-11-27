@@ -46,7 +46,6 @@ _data = {
 }
 
 [node name="AttackingAngel" type="CharacterBody2D"]
-collision_layer = 2
 script = ExtResource("1_fyx0j")
 
 [node name="Body" type="Sprite2D" parent="."]
