@@ -12,6 +12,7 @@ extends Node
 @onready var player_ref: Node2D = $Environment/Entities/Player
 @onready var gui: Control = $UILayer/GUI
 @onready var main_menu: Control = $UILayer/MainMenu
+@onready var lore_menu: Control = $UILayer/LoreMenu
 @onready var improvement_menu: Control = $UILayer/ImprovementMenu
 @onready var defeat_menu: Control = $UILayer/DefeatMenu
 @onready var pause_menu: Control = $UILayer/PauseMenu
@@ -41,6 +42,12 @@ func _ready() -> void:
 	victory_menu.retry.connect(_reset)
 
 func _start() -> void:
+	get_tree().paused = true
+	lore_menu.show()
+	await get_tree().create_timer(5.0).timeout
+	lore_menu.hide()
+	get_tree().paused = false
+	
 	pause_menu.is_accepted = true
 	game_sound.play()
 
