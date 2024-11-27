@@ -44,6 +44,8 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Medium:
 		if has_active_sanctuaries():
 			get_parent()._destroy_sanctuary()
+			var direction = (global_position - body.global_position).normalized()
+			push_velocity = direction * 80.0
 		else:
 			print('Player detected!')
 			get_parent()._player_defeated()
