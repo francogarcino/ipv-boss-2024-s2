@@ -3,6 +3,7 @@ class_name Demon
 
 var speed: float
 var target: Node2D
+var offset: Vector2 = Vector2.ZERO
 var max_hp: int
 var hp: int
 var push_velocity = Vector2.ZERO
@@ -15,6 +16,7 @@ var hp_tween: Tween
 
 func _ready() -> void:
 	add_to_group("demons")
+	offset = Vector2(randi_range(-15, 15), randi_range(-25, 25))
 	hp_progress.max_value = hp
 	hp_progress.value = hp
 	hp_progress.modulate = Color.TRANSPARENT
@@ -30,7 +32,7 @@ func initialize(speed: float, target: Node2D, hp: int, spawn_position: Vector2, 
 func _process(delta: float) -> void:
 	_play_animation("walk")
 	if target:
-		var target_position = target.global_position
+		var target_position = target.global_position + offset
 		velocity = (target_position - global_position).normalized() * speed
 		
 		velocity += push_velocity
