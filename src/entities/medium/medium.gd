@@ -70,7 +70,7 @@ func _on_angel_mejorado() -> void:
 	explosive_angel._obtener_mejora()
 
 func _obtener_mejora() -> void:
-	speed += speed * 0.5
+	speed += 50
 	print("Medium speed increased!")
 
 func _on_in_range_to_live_body_exited(body: Node2D) -> void:

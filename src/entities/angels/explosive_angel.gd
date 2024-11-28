@@ -30,7 +30,7 @@ func _end_attack() -> void:
 	attacking = false
 
 func _obtener_mejora() -> void:
-	speed += speed * 0.5
+	speed += 100
 	print("Angel speed increased!")
 
 func _set_speed(actual_speed: float) -> void:
