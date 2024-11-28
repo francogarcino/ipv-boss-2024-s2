@@ -1,24 +1,14 @@
 extends Control
 
-@onready var sanctuary_label: Label = $Panel/SanctuaryLabel
-@onready var sanctuary_and_angel_label: Label = $Panel/SanctuaryAndAngelLabel
+@onready var timer: Timer = $Timer
 
 func _ready() -> void:
 	hide()
-	sanctuary_and_angel_label.visible = false
 
-func _show(level: int):
-	if level == 3 || level == 6:
-		sanctuary_label.visible = false
-		sanctuary_and_angel_label.visible = true
+func _show() -> void:
 	show()
-	get_tree().paused = true
+	timer.start()
 
-func _hide():
+func _on_timer_timeout() -> void:
+	timer.stop()
 	hide()
-	get_tree().paused = false
-
-func _on_exit_button_pressed() -> void:
-	_hide()
-	sanctuary_label.visible = true
-	sanctuary_and_angel_label.visible = false

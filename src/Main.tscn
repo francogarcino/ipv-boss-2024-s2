@@ -114,6 +114,8 @@ texture = ExtResource("10_1mr17")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
+[node name="SanctuaryMenu" parent="UILayer" instance=ExtResource("10_n4q6m")]
+
 [node name="GUI" parent="UILayer" instance=ExtResource("5_e6htw")]
 
 [node name="MainMenu" parent="UILayer" instance=ExtResource("4_dlo3d")]
@@ -123,8 +125,6 @@ texture = ExtResource("10_1mr17")
 [node name="DefeatMenu" parent="UILayer" instance=ExtResource("4_fcctx")]
 
 [node name="PauseMenu" parent="UILayer" instance=ExtResource("5_qxca1")]
-
-[node name="SanctuaryMenu" parent="UILayer" instance=ExtResource("10_n4q6m")]
 
 [node name="VictoryMenu" parent="UILayer" instance=ExtResource("15_kpbr7")]
 

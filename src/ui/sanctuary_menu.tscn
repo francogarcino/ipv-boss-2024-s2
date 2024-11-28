@@ -39,11 +39,12 @@ offset_bottom = 720.0
 color = Color(0, 0, 0, 0)
 
 [node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.7)
 layout_mode = 0
 offset_left = 370.0
-offset_top = 220.0
+offset_top = 450.0
 offset_right = 710.0
-offset_bottom = 500.0
+offset_bottom = 590.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_me0lw")
 
 [node name="Label" type="Label" parent="Panel"]
@@ -55,6 +56,7 @@ offset_top = 4.0
 offset_right = -10.0
 offset_bottom = 44.0
 grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_38exc")
 theme_override_font_sizes/font_size = 31
 text = "Has subido de nivel!"
@@ -66,9 +68,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 2.0
-offset_top = 100.0
+offset_top = 50.0
 offset_right = -2.0
-offset_bottom = 180.0
+offset_bottom = 130.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_38exc")
 theme_override_font_sizes/font_size = 31
@@ -77,33 +79,7 @@ Tienes una vida extra!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SanctuaryAndAngelLabel" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 2.0
-offset_top = 45.0
-offset_right = -2.0
-offset_bottom = 217.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_38exc")
-theme_override_font_sizes/font_size = 31
-text = "Un santuario ha aparecido!
-Tienes una vida extra!
-Un angel ha aparecido!
-Encuentralo y hazte 
-mas fuerte!"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 
-[node name="ExitButton" type="Button" parent="Panel"]
-layout_mode = 0
-offset_left = 19.845
-offset_top = 220.0
-offset_right = 319.845
-offset_bottom = 260.0
-theme_override_fonts/font = ExtResource("1_38exc")
-theme_override_font_sizes/font_size = 28
-text = "Continuar"
-
-[connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

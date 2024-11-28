@@ -53,6 +53,7 @@ offset_left = 12.0
 offset_top = 4.0
 offset_right = 326.0
 offset_bottom = 44.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_prn2g")
 theme_override_font_sizes/font_size = 31
 text = "Opciones del mando/teclado"
