@@ -51,7 +51,7 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 			push_velocity = direction * 80.0
 		else:
 			print('Player detected!')
-			#get_parent()._player_defeated()
+			get_parent()._player_defeated()
 
 func has_active_sanctuaries() -> bool:
 	return get_tree().get_nodes_in_group("sanctuaries").size() > 0

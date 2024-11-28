@@ -116,7 +116,6 @@ theme_override_font_sizes/font_size = 28
 text = "Salir"
 
 [node name="OptionsMenu" parent="." instance=ExtResource("3_243n7")]
-visible = false
 layout_mode = 1
 offset_top = -260.0
 offset_bottom = 460.0
