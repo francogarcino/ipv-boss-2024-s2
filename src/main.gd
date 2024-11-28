@@ -28,7 +28,7 @@ extends Node
 var actual_level = 0
 
 func _ready() -> void:
-	x_size = float(get_viewport().size.x / 3)
+	x_size = float(get_viewport().size.x * 0.5)
 	y_size = float(get_viewport().size.y * 0.5)
 	
 	player_ref.subir_nivel.connect(_on_mejora_conseguida)
@@ -95,7 +95,11 @@ func instantiate_for_lvl_7_to_10() -> void:
 func instantiate_demons(demon_scene: PackedScene, amount: int, speed: float, hp: int, score: int) -> void:
 	for i in range(0, amount):
 		var demon = demon_scene.instantiate()
-		var distance_to_player = Vector2(x_size + randi_range(0, 320), y_size + randi_range(0, 80))
+		var distance_to_player
+		if (randi() % 2 == 0):
+			distance_to_player = Vector2(x_size + randi_range(-(x_size), 0), y_size)
+		else:
+			distance_to_player = Vector2(x_size, y_size + randi_range(-(y_size), 0))
 		var position = player_ref.position + (distance_to_player * _get_relative_direction())
 		demon.initialize(speed, player_ref, hp, position, score)
 		add_child(demon)
@@ -164,15 +168,15 @@ func _spawn_santuario() -> void:
 
 func spawn_angel_defender() -> void:
 	var defender_angel = defender_angel_scene.instantiate()
-	var distance_to_player = Vector2(x_size + randi_range(0, 1800), y_size + randi_range(0, 900))
-	defender_angel.position = distance_to_player * _get_relative_direction()
+	var distance_to_player = Vector2(randi_range(0, x_size), randi_range(0, y_size))
+	defender_angel.position = player_ref.position + (distance_to_player * _get_relative_direction())
 	defender_angel.z_index = -1
 	add_child(defender_angel)
 
 func spawn_attacking_angel() -> void:
 	var attacking_angel = attacking_angel_scene.instantiate()
-	var distance_to_player = Vector2(x_size + randi_range(0, 1800), y_size + randi_range(0, 900))
-	attacking_angel.position = distance_to_player * _get_relative_direction()
+	var distance_to_player = Vector2(randi_range(0, x_size), randi_range(0, y_size))
+	attacking_angel.position = player_ref.position + (distance_to_player * _get_relative_direction())
 	attacking_angel.z_index = -1
 	add_child(attacking_angel)
 
@@ -194,3 +198,6 @@ func _on_resurrection_timer_timeout() -> void:
 	get_tree().paused = false
 	pause_menu.is_accepted = true
 	player_ref._revive()
+
+func _on_game_sound_finished() -> void:
+	game_sound.play()

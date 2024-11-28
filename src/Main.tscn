@@ -352,3 +352,4 @@ max_distance = 1e+07
 
 [connection signal="timeout" from="Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer" to="." method="_on_resurrection_timer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="finished" from="GameSound" to="." method="_on_game_sound_finished"]
