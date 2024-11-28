@@ -105,9 +105,13 @@ func _level_up() -> void:
 
 func _revive() -> void:
 	collision_body.disabled = true
+	body_idle.modulate = Color8(25500, 25500, 25500, 145)
+	body_run.modulate = Color8(25500, 25500, 25500, 145)
 	revive_timer.start()
 
 func _on_revive_timer_timeout() -> void:
+	body_idle.modulate = Color8(25500, 25500, 25500, 255)
+	body_run.modulate = Color8(25500, 25500, 25500, 255)
 	collision_body.disabled = false
 	revive_timer.stop()
 
