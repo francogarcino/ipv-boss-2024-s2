@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://8ka3sepy2huf"]
 
-[ext_resource type="Texture2D" uid="uid://ddcv6sjgwm3rh" path="res://assets/textures/player/blue_fire_sheet.png" id="1_ey4dq"]
+[ext_resource type="Texture2D" uid="uid://ddcv6sjgwm3rh" path="res://assets/textures/angel/blue_fire_sheet.png" id="1_ey4dq"]
 [ext_resource type="Script" path="res://src/entities/angels/attacking_angel.gd" id="1_fyx0j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rmuoc"]

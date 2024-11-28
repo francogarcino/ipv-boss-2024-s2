@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbc5jgt6ofjmd"]
 
 [ext_resource type="Script" path="res://src/entities/angels/angel_attack.gd" id="1_vyqk3"]
-[ext_resource type="Texture2D" uid="uid://ddcv6sjgwm3rh" path="res://assets/textures/player/blue_fire_sheet.png" id="2_c1e23"]
+[ext_resource type="Texture2D" uid="uid://ddcv6sjgwm3rh" path="res://assets/textures/angel/blue_fire_sheet.png" id="2_c1e23"]
 
 [sub_resource type="Animation" id="Animation_6wi3v"]
 length = 0.001

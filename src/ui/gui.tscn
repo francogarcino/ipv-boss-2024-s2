@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/ui/gui.gd" id="1_mlmj6"]
 [ext_resource type="Texture2D" uid="uid://qxxoed2gmyh6" path="res://assets/textures/ui/GUISprite.png" id="1_ps6b8"]
-[ext_resource type="Texture2D" uid="uid://cpvlglcc007lr" path="res://assets/textures/sanctuary/iglesia.png" id="3_sene8"]
+[ext_resource type="Texture2D" uid="uid://cpvlglcc007lr" path="res://assets/textures/sanctuary/sanctuary.png" id="3_sene8"]
 [ext_resource type="FontFile" uid="uid://ct3ypufofw6dm" path="res://assets/fonts/Roboto-Bold.ttf" id="4_rrqhl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j60wh"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpvlglcc007lr"
-path="res://.godot/imported/iglesia.png-27e893b3a4756c9055f2c000922899b4.ctex"
+uid="uid://b1q7klq6xjsmy"
+path="res://.godot/imported/medium_idle.png-22a5dacd0406d386b0cdcad1756c3279.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/sanctuary/iglesia.png"
-dest_files=["res://.godot/imported/iglesia.png-27e893b3a4756c9055f2c000922899b4.ctex"]
+source_file="res://assets/textures/medium/medium_idle.png"
+dest_files=["res://.godot/imported/medium_idle.png-22a5dacd0406d386b0cdcad1756c3279.ctex"]
 
 [params]
 

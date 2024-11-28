@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dx3mubkbud77a"]
 
 [ext_resource type="PackedScene" uid="uid://bprep53xbb0ge" path="res://src/entities/demons/demon.tscn" id="1_xy8wa"]
-[ext_resource type="Texture2D" uid="uid://ch44ftk42yunv" path="res://assets/textures/enemy/demon_spritesheet.png" id="2_tsk4y"]
+[ext_resource type="Texture2D" uid="uid://ch44ftk42yunv" path="res://assets/textures/demons/demon_spritesheet.png" id="2_tsk4y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3m72i"]
 radius = 16.0

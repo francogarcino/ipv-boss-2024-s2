@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7cm7hl41syir"
-path="res://.godot/imported/angel_projectile.png-d0e9520db413ffd1c39dc584e33fbb9e.ctex"
+uid="uid://c0qnp1ucu86t5"
+path="res://.godot/imported/heavy_demon_sheet.png-b6ff315185fddfc7583826e0107d1db6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/angel_projectile.png"
-dest_files=["res://.godot/imported/angel_projectile.png-d0e9520db413ffd1c39dc584e33fbb9e.ctex"]
+source_file="res://assets/textures/demons/heavy_demon_sheet.png"
+dest_files=["res://.godot/imported/heavy_demon_sheet.png-b6ff315185fddfc7583826e0107d1db6.ctex"]
 
 [params]
 

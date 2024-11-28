@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://c3ebpydlhc0bk"]
 
 [ext_resource type="Script" path="res://src/entities/medium/medium.gd" id="1_465p4"]
-[ext_resource type="Texture2D" uid="uid://b1q7klq6xjsmy" path="res://assets/textures/player/medium_idle.png" id="2_rqot3"]
-[ext_resource type="Texture2D" uid="uid://bnqtnpru3c77r" path="res://assets/textures/player/medium_run.png" id="3_m5rp8"]
+[ext_resource type="Texture2D" uid="uid://b1q7klq6xjsmy" path="res://assets/textures/medium/medium_idle.png" id="2_rqot3"]
+[ext_resource type="Texture2D" uid="uid://bnqtnpru3c77r" path="res://assets/textures/medium/medium_run.png" id="3_m5rp8"]
 [ext_resource type="PackedScene" uid="uid://b5nhyysvarcyy" path="res://src/entities/angels/linked_angel.tscn" id="3_uhc4j"]
 [ext_resource type="PackedScene" uid="uid://daw2j8ghd6dlh" path="res://src/entities/angels/defense_angel.tscn" id="4_jf8xk"]
 [ext_resource type="PackedScene" uid="uid://bp84iw27q65dh" path="res://src/entities/angels/explosive_angel.tscn" id="7_rnkk7"]

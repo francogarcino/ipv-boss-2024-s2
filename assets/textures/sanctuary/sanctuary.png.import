@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://noo8sl88vp8t"
-path="res://.godot/imported/angel.png-685adcc0f919b7b09cc3cfe4d5db1920.ctex"
+uid="uid://cpvlglcc007lr"
+path="res://.godot/imported/sanctuary.png-cd71057f30bbae21dcc3299a6b94a3ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/angel.png"
-dest_files=["res://.godot/imported/angel.png-685adcc0f919b7b09cc3cfe4d5db1920.ctex"]
+source_file="res://assets/textures/sanctuary/sanctuary.png"
+dest_files=["res://.godot/imported/sanctuary.png-cd71057f30bbae21dcc3299a6b94a3ec.ctex"]
 
 [params]
 

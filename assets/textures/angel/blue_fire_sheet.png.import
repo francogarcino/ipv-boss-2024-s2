@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch44ftk42yunv"
-path="res://.godot/imported/demon_spritesheet.png-7b6a6e1ea20b6f20a4b9e47b63db1db9.ctex"
+uid="uid://ddcv6sjgwm3rh"
+path="res://.godot/imported/blue_fire_sheet.png-f5c51647fc80d212c1cce23ae6ef45f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/enemy/demon_spritesheet.png"
-dest_files=["res://.godot/imported/demon_spritesheet.png-7b6a6e1ea20b6f20a4b9e47b63db1db9.ctex"]
+source_file="res://assets/textures/angel/blue_fire_sheet.png"
+dest_files=["res://.godot/imported/blue_fire_sheet.png-f5c51647fc80d212c1cce23ae6ef45f6.ctex"]
 
 [params]
 
