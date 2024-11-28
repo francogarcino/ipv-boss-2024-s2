@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=36 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://dx3mubkbud77a" path="res://src/entities/demons/basic_demon.tscn" id="2_ragoi"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://dkcjmnwgbw7vf" path="res://assets/sounds/level_up.wav" id="10_fb3pm"]
 [ext_resource type="PackedScene" uid="uid://dw2shml47fr6p" path="res://src/ui/sanctuary_menu.tscn" id="10_n4q6m"]
 [ext_resource type="Shader" uid="uid://dkbl41be0rf7y" path="res://src/resources/shaders/GodRays.tres" id="12_lavsk"]
+[ext_resource type="PackedScene" uid="uid://d1qlraa1cstxn" path="res://src/ui/lvl_10_menu.tscn" id="12_vhlb0"]
 [ext_resource type="AudioStream" uid="uid://bjbkleew7wins" path="res://assets/sounds/resurrection.wav" id="14_g4n3r"]
 [ext_resource type="PackedScene" uid="uid://ddo40b6wou1r1" path="res://src/ui/victory_menu.tscn" id="15_kpbr7"]
 [ext_resource type="AudioStream" uid="uid://crly7ivcn3580" path="res://assets/sounds/demon_death.wav" id="16_pkcda"]
@@ -116,6 +117,8 @@ texture = ExtResource("10_1mr17")
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="SanctuaryMenu" parent="UILayer" instance=ExtResource("10_n4q6m")]
+
+[node name="Lvl10Menu" parent="UILayer" instance=ExtResource("12_vhlb0")]
 
 [node name="GUI" parent="UILayer" instance=ExtResource("5_e6htw")]
 
@@ -330,6 +333,9 @@ position = Vector2(2153, 135)
 [node name="EnemyTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="Lvl10Timer" type="Timer" parent="."]
+wait_time = 180.0
+
 [node name="LevelUpSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("10_fb3pm")
@@ -354,4 +360,5 @@ max_distance = 1e+07
 
 [connection signal="timeout" from="Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer" to="." method="_on_resurrection_timer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="Lvl10Timer" to="." method="_on_lvl_10_timer_timeout"]
 [connection signal="finished" from="GameSound" to="." method="_on_game_sound_finished"]
