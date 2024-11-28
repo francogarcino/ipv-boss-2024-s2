@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c06fvt27whwei"]
+[gd_scene load_steps=35 format=3 uid="uid://c06fvt27whwei"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_7xe25"]
 [ext_resource type="PackedScene" uid="uid://dx3mubkbud77a" path="res://src/entities/demons/basic_demon.tscn" id="2_ragoi"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bsq1o5h7bkhu4" path="res://assets/textures/background/grass.png" id="19_osnck"]
 [ext_resource type="Texture2D" uid="uid://dppks7pr1fw0b" path="res://assets/textures/background/stone.png" id="19_qhsas"]
 [ext_resource type="Texture2D" uid="uid://dv1tls0wo7u23" path="res://assets/textures/background/stone-2.png" id="19_wpueb"]
+[ext_resource type="Script" path="res://src/entities/medium/camera_2d.gd" id="21_c8vrr"]
 [ext_resource type="PackedScene" uid="uid://dkp8ixbdjtplc" path="res://src/background/tree.tscn" id="21_wort0"]
 [ext_resource type="PackedScene" uid="uid://cmpudt6x54jjm" path="res://src/background/trunk.tscn" id="23_o0s8r"]
 [ext_resource type="Texture2D" uid="uid://dpve6coih7fpg" path="res://assets/textures/background/cloud.png" id="28_juluw"]
@@ -149,7 +150,8 @@ texture = ExtResource("3_fq2yd")
 [node name="Player" parent="Environment/Entities" instance=ExtResource("2_voxir")]
 
 [node name="Camera2D" type="Camera2D" parent="Environment/Entities/Player"]
-ignore_rotation = false
+process_mode = 3
+script = ExtResource("21_c8vrr")
 
 [node name="ResurrectionEffect" type="ColorRect" parent="Environment/Entities/Player"]
 visible = false

@@ -22,6 +22,7 @@ extends Node
 @onready var resurrection_effect: ColorRect = $Environment/Entities/Player/ResurrectionEffect
 @onready var resurrection_timer: Timer = $Environment/Entities/Player/ResurrectionEffect/ResurrectionTimer
 @onready var resurrection_sound: AudioStreamPlayer2D = $ResurrectionSound
+@onready var camera_2d: Camera2D = $Environment/Entities/Player/Camera2D
 @onready var demon_death_sound: AudioStreamPlayer2D = $DemonDeathSound
 @onready var game_sound: AudioStreamPlayer2D = $GameSound
 
@@ -129,6 +130,7 @@ func _destroy_sanctuary() -> void:
 	resurrection_effect.show()
 	resurrection_sound.play()
 	resurrection_timer.start()
+	camera_2d.shake(4, 5, 5)
 	get_tree().paused = true
 	sanctuary._remove()
 	gui._lose_life()
