@@ -22,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://bjbkleew7wins" path="res://assets/sounds/resurrection.wav" id="14_g4n3r"]
 [ext_resource type="PackedScene" uid="uid://ddo40b6wou1r1" path="res://src/ui/victory_menu.tscn" id="15_kpbr7"]
 [ext_resource type="AudioStream" uid="uid://crly7ivcn3580" path="res://assets/sounds/demon_death.wav" id="16_pkcda"]
-[ext_resource type="PackedScene" uid="uid://chyohgc0l65ej" path="res://src/ui/lore_menu.tscn" id="18_j6v8s"]
+[ext_resource type="PackedScene" uid="uid://blmfuk4ihn4xh" path="res://src/ui/lore_menu.tscn" id="18_j6v8s"]
 [ext_resource type="AudioStream" uid="uid://dfj0bvxy0831p" path="res://assets/sounds/game_theme.wav" id="19_eiq6o"]
 [ext_resource type="Texture2D" uid="uid://bsq1o5h7bkhu4" path="res://assets/textures/background/grass.png" id="19_osnck"]
 [ext_resource type="Texture2D" uid="uid://dppks7pr1fw0b" path="res://assets/textures/background/stone.png" id="19_qhsas"]

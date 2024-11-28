@@ -85,6 +85,7 @@ offset_top = 70.0
 offset_right = 585.0
 offset_bottom = 642.0
 scale = Vector2(0.25, 0.25)
+mouse_default_cursor_shape = 2
 icon = ExtResource("3_yxgwe")
 
 [node name="ImprovementMediumButton" type="Button" parent="Panel"]
@@ -94,6 +95,7 @@ offset_top = 70.0
 offset_right = 736.0
 offset_bottom = 642.0
 scale = Vector2(0.25, 0.25)
+mouse_default_cursor_shape = 2
 icon = ExtResource("3_grats")
 
 [node name="SelectButton" type="Button" parent="Panel"]
@@ -102,6 +104,7 @@ offset_left = 10.0
 offset_top = 120.0
 offset_right = 310.0
 offset_bottom = 160.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_lc7e0")
 theme_override_font_sizes/font_size = 28
 text = "Seleccionar mejora"

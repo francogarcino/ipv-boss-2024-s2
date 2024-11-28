@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Demon
 
+@onready var body: Sprite2D = $Body
 var speed: float
 var target: Node2D
 var offset: Vector2 = Vector2.ZERO
@@ -39,6 +40,8 @@ func _process(delta: float) -> void:
 		push_velocity = push_velocity.move_toward(Vector2.ZERO, push_decay)
 		
 		move_and_slide()
+		
+		body.flip_h = (target.global_position - global_position).x < 0
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Medium:
@@ -48,7 +51,7 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 			push_velocity = direction * 80.0
 		else:
 			print('Player detected!')
-			get_parent()._player_defeated()
+			#get_parent()._player_defeated()
 
 func has_active_sanctuaries() -> bool:
 	return get_tree().get_nodes_in_group("sanctuaries").size() > 0

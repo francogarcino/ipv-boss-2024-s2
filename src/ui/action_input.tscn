@@ -11,6 +11,7 @@ layout_mode = 2
 
 [node name="ActionButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 20
 
 [node name="ActionNameLabel" type="Label" parent="HBoxContainer"]

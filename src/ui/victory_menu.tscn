@@ -76,6 +76,7 @@ offset_left = 13.0
 offset_top = 110.0
 offset_right = 306.0
 offset_bottom = 165.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_nldtv")
 theme_override_font_sizes/font_size = 28
 text = "Volver a jugar

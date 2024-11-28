@@ -65,6 +65,7 @@ offset_left = 23.0
 offset_top = 210.0
 offset_right = 316.0
 offset_bottom = 265.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_prn2g")
 theme_override_font_sizes/font_size = 31
 text = "Salir"
